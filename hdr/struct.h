@@ -139,6 +139,7 @@ typedef struct s_object
 	double move_speed;
 	double dist_to_player;
 
+	short sprite_pos;
 	// Animaton
 	int		first_sprite_walk;
 	int		num_of_sprites_walk;

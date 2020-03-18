@@ -13,8 +13,8 @@
 #ifndef DOOM_NUKEM_H
 # define DOOM_NUKEM_H
 
-# include "/Users/acostaz/.brew/include/SDL2/SDL.h"
-# include "/Users/acostaz/.brew/include/SDL2/SDL_TTF.h"
+# include "/usr/local/include/SDL2/SDL.h"
+# include "/usr/local/include/SDL2/SDL_TTF.h"
 # include "struct.h"
 # include "proto.h"
 # include "../libft/inc/libft.h"
@@ -44,5 +44,9 @@
 # define DYING 0
 # define WALKING 1
 # define ATTACKING 2
+
+# define GROUND 0
+# define FLOAT 1
+# define ROOF 2
 
 #endif

@@ -185,7 +185,7 @@ void pathfind(t_data *data, t_object *obj);
 void sort_objects(t_data *data);
 void objectcaster(t_data *data, t_object *obj);
 void set_objcast_values(t_data *data, t_objcast *val, t_object *iterator, t_sprite sprite);
-int get_movescreen_value(t_data *data, t_objcast o);
+int get_movescreen_value(t_data *data, t_objcast o, int pos);
 void		get_dist_to_player(t_data *data);
 
 /*

@@ -43,7 +43,7 @@ void		set_objcast_values(t_data *data, t_objcast *val, t_object *iterator,
 	val->screen_x = ((SCREEN_WIDTH / 2) * (1 + val->pos.x / val->pos.y));
 	val->height = abs((int)(SCREEN_HEIGHT / val->pos.y)) * sprite.scale.y;
 	val->drawend.y = val->height / 2 + (SCREEN_HEIGHT + data->yaw) / 2;
-	val->movescreen = get_movescreen_value(data, *val);
+	val->movescreen = get_movescreen_value(data, *val, iterator->sprite_pos);
 	val->drawend.y += val->movescreen;
 	set_objcast_values_2(data, val, sprite);
 	iterator->pix_mid_x = (val->drawstart.x + val->drawend.x) / 2;
