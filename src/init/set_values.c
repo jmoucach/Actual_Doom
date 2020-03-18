@@ -32,6 +32,8 @@ static void	create_sprites_2(t_data *data)
 			(t_d_point){1, 1}, data);
 	data->obj_sprite[18] = create_sprites("sprites/pickups/key.bmp",
 			(t_d_point){1, 1}, data);
+	data->obj_sprite[19] = create_sprites("sprites/pickups/hud_key.bmp",
+			(t_d_point){1, 1}, data);
 }
 
 static void	create_sprites_1(t_data *data)
@@ -67,9 +69,9 @@ static void	alloc_data_structs(t_data *data)
 	if (!(data->surface = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 9)))
 		clean_exit(data, "Surface malloc error");
 	nullify_tab((void**)data->surface, 9);
-	if (!(data->obj_sprite = (t_sprite*)malloc(sizeof(t_sprite) * 19)))
+	if (!(data->obj_sprite = (t_sprite*)malloc(sizeof(t_sprite) * 20)))
 		clean_exit(data, "Object sprite malloc error");
-	nullify_sprites(data->obj_sprite, 19);
+	nullify_sprites(data->obj_sprite, 20);
 	if (!(data->zBuffer = (double *)malloc(sizeof(double) * SCREEN_WIDTH)))
 		clean_exit(data, "ZBuffer malloc error");
 }

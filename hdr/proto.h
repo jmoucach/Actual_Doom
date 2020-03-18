@@ -142,6 +142,7 @@ void prepare_hud(t_data *data);
 void display_hud(t_data *data);
 void display_health(t_data *data);
 void display_ammo_side(t_data *data);
+void	display_hud_keys(t_data *data);
 
 /*
 ** Weapon
