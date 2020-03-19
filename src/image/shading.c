@@ -32,7 +32,7 @@ Uint32			shaded_color(t_data *data, Uint32 color, double dist,
 	double	lbd;
 
 	if (obj)
-		if (data->time - obj->hl_time < 90 && obj->hl_time != 0)
+		if (data->time - obj->hl_time < 90 && obj->hl_time != 0 && obj->state != DYING)
 			color = highlighted_color(color);
 	if (!data->shaded)
 		return (color);

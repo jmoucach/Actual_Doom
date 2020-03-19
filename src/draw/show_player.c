@@ -14,7 +14,6 @@
 
 void			show_player(t_data *data, t_point length)
 {
-	Uint32		*pix;
 	t_point		pt1;
 	t_point		pt2;
 	t_d_point	dir;
@@ -23,7 +22,6 @@ void			show_player(t_data *data, t_point length)
 	pt1.y = data->p.pos.x * length.y;
 	dir.y = data->p.dir.x * 10;
 	dir.x = data->p.dir.y * 10;
-	pix = data->pixels;
 	drawline(pt1, (t_point){pt1.x + dir.x, pt1.y + dir.y}, data, 0);
 	pt2.x = pt1.x + 1;
 	pt2.y = pt1.y + 1;
@@ -34,7 +32,6 @@ void			show_player(t_data *data, t_point length)
 
 void			show_enemies(t_data *data, t_point length)
 {
-	Uint32		*pix;
 	t_point		pt1;
 	t_point		pt2;
 	t_object	*iterator;
@@ -42,11 +39,10 @@ void			show_enemies(t_data *data, t_point length)
 	iterator = data->obj;
 	while (iterator)
 	{
-		if (iterator->obj_type == 0)
+		if (iterator->obj_type <= 1)
 		{
 			pt1.x = iterator->pos.y * length.x;
 			pt1.y = iterator->pos.x * length.y;
-			pix = data->pixels;
 			pt2.x = pt1.x + 1;
 			pt2.y = pt1.y + 1;
 			pt1.x -= 1;

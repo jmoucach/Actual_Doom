@@ -14,22 +14,22 @@
 
 t_object		*new_object(int id, int type, t_d_point pos)
 {
-	static void	(*get_obj_data[2])(t_object **) = {get_obj_data_0,
-		get_obj_data_1};
+	static void	(*get_obj_data[3])(t_object **) = {get_obj_data_0,
+		get_obj_data_1, get_obj_data_2};
 	t_object	*new;
 
 	new = NULL;
 	if (!(new = (t_object *)malloc(sizeof(t_object))))
 		return (NULL);
+	ft_bzero(new, sizeof(t_object));
 	new->id_key = id;
 	new->obj_type = type;
 	new->hp = 10;
-	new->hl_time = 0;
 	new->pos = pos;
-	new->dist_to_player = 0;
-	new->lastFrame = 0;
-	new->lastUpdate = 0;
-	get_obj_data[type == 0 ? 1 : 0](&new);
+	if (type > 1)
+		get_obj_data[0](&new);
+	else
+		get_obj_data[type + 1](&new);
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

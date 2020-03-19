@@ -60,6 +60,7 @@ SRC=	init/main.c\
 		objects/state_machine.c\
 		objects/item_pickup.c\
 		objects/ammo_pickup.c\
+		objects/hud_keys.c\
 		exit/clean_exit.c
 
 SRC_DIR = src/
@@ -87,7 +88,7 @@ all: $(SUBDIRS)
 
 $(NAME): $(OBJS) $(INCLUDES)
 	@echo "\033[2K \033[A"
-	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(LIB) $(LIBFT)
+	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(LIB) $(LIBFT) -lm
 	@echo "\033[32m[$(NAME)]: compiled\033[0m"
 
 $(SUBDIRS):

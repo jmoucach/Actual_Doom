@@ -93,6 +93,7 @@ void			game_loop(t_data *data)
 		red_hit_screen(data);
 		green_hp_screen(data);
 		blue_hp_screen(data);
+		display_hud_keys(data);
 		SDL_UpdateTexture(data->texture, NULL, data->pixels,
 			width * 4);
 		SDL_RenderClear(data->renderer);

@@ -12,7 +12,7 @@
 
 #include "../../hdr/doom_nukem.h"
 
-short			get_dying_sprite(t_data *data, t_object *obj)
+static short			get_dying_sprite(t_data *data, t_object *obj)
 {
 	short		removed;
 
@@ -37,16 +37,46 @@ short			get_dying_sprite(t_data *data, t_object *obj)
 	return (removed);
 }
 
-void			enemy_death(t_data *data, t_object *obj)
+void get_stunned_sprite(t_data *data, t_object *obj)
+{
+	(void)data;
+	obj->current_sprite = obj->first_sprite_walk;
+}
+
+static void			enemy_death(t_data *data, t_object *obj)
 {
 	if (get_dying_sprite(data, obj) == 1)
 		remove_object(&(data->obj), obj->id_key);
 }
 
-void			state_machine(t_data *data)
+void			soul_state_machine(t_data *data, t_object *obj)
+{
+	static void	(*action[4])(t_data*, t_object*) =\
+	{enemy_death, pathfind, hits_taken, get_stunned_sprite};
+
+	if (obj->hp <= 0)
+		obj->state = DYING;
+	else if (data->time - obj->hl_time < 500)
+		obj->state = STUNNED;
+	else
+		obj->state = (obj->dist_to_player >= 1) ? WALKING : ATTACKING;
+	action[obj->state](data, obj);
+}
+
+void			imp_state_machine(t_data *data, t_object *obj)
 {
 	static void	(*action[3])(t_data*, t_object*) =\
 	{enemy_death, pathfind, hits_taken};
+
+	if (obj->hp <= 0)
+		obj->state = DYING;
+	else
+		obj->state = (obj->dist_to_player >= 1) ? WALKING : ATTACKING;
+	action[obj->state](data, obj);
+}
+
+void			state_machine(t_data *data)
+{
 	t_object	*iterator;
 
 	iterator = data->obj;
@@ -58,14 +88,9 @@ void			state_machine(t_data *data)
 		while (iterator)
 		{
 			if (iterator->obj_type == 0)
-			{
-				if (iterator->hp <= 0)
-					iterator->state = DYING;
-				else
-					iterator->state = (iterator->dist_to_player >= 1) ?
-						WALKING : ATTACKING;
-				action[iterator->state](data, iterator);
-			}
+				imp_state_machine(data, iterator);
+			else if (iterator->obj_type == 1)
+				soul_state_machine(data, iterator);
 			objectcaster(data, iterator);
 			iterator = iterator->next;
 		}

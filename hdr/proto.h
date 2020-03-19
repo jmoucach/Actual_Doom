@@ -142,6 +142,7 @@ void prepare_hud(t_data *data);
 void display_hud(t_data *data);
 void display_health(t_data *data);
 void display_ammo_side(t_data *data);
+void	display_hud_keys(t_data *data);
 
 /*
 ** Weapon
@@ -209,6 +210,7 @@ void	check_doors(t_data *data);
 
 void			get_obj_data_0(t_object **obj);
 void			get_obj_data_1(t_object **obj);
+void			get_obj_data_2(t_object **obj);
 
 /*
 ** Nullify
