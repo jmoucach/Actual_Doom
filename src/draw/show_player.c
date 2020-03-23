@@ -39,7 +39,7 @@ void			show_enemies(t_data *data, t_point length)
 	iterator = data->obj;
 	while (iterator)
 	{
-		if (iterator->obj_type == 0)
+		if (iterator->obj_type <= 1)
 		{
 			pt1.x = iterator->pos.y * length.x;
 			pt1.y = iterator->pos.x * length.y;

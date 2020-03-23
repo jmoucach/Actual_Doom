@@ -27,14 +27,18 @@ void			get_dist_to_player(t_data *data)
 	}
 }
 
-int				get_movescreen_value(t_data *data, t_objcast o)
+int				get_movescreen_value(t_data *data, t_objcast o, int pos)
 {
 	int hyp_height;
 	int hyp_drawend;
 
-	hyp_height = abs((int)(SCREEN_HEIGHT / o.pos.y));
-	hyp_drawend = hyp_height / 2 + (SCREEN_HEIGHT + data->yaw) / 2;
-	return (hyp_drawend - o.drawend.y);
+	if (pos == GROUND)
+	{
+		hyp_height = abs((int)(SCREEN_HEIGHT / o.pos.y));
+		hyp_drawend = hyp_height / 2 + (SCREEN_HEIGHT + data->yaw) / 2;
+		return (hyp_drawend - o.drawend.y);
+	}
+	return (0);
 }
 
 static void		draw_object(t_data *data, t_objcast o, SDL_Surface *surf,

@@ -15,24 +15,45 @@
 /*
 ** TODO replace malloc sizes with fixed numbers
 */
+static void	create_sprites_3(t_data *data)
+{
+	data->obj_sprite[24] = create_sprites("sprites/pickups/cell.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[25] = create_sprites("sprites/pickups/health_pu.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[26] = create_sprites("sprites/pickups/armor_pu.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[27] = create_sprites("sprites/pickups/key.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[28] = create_sprites("sprites/pickups/hud_key.bmp",
+			(t_d_point){1, 1}, data);
+}
 
 static void	create_sprites_2(t_data *data)
 {
-	data->obj_sprite[12] = create_sprites("pics/pillar.bmp",
+	data->obj_sprite[12] = create_sprites("sprites/enemies/soul_walking_1.bmp",
+			(t_d_point){0.5, 0.5}, data);
+	data->obj_sprite[13] = create_sprites("sprites/enemies/soul_walking_2.bmp",
+			(t_d_point){0.5, 0.5}, data);
+	data->obj_sprite[14] = create_sprites("sprites/enemies/soul_attacking_1.bmp",
+			(t_d_point){0.5, 0.5}, data);
+	data->obj_sprite[15] = create_sprites("sprites/enemies/soul_attacking_2.bmp",
+			(t_d_point){0.5, 0.5}, data);
+	data->obj_sprite[16] = create_sprites("sprites/enemies/soul_dead_1.bmp",
+			(t_d_point){0.5, 0.5}, data);
+	data->obj_sprite[17] = create_sprites("sprites/enemies/soul_dead_2.bmp",
+			(t_d_point){0.5, 0.5}, data);
+	data->obj_sprite[18] = create_sprites("sprites/enemies/soul_dead_3.bmp",
+			(t_d_point){0.5, 0.5}, data);
+	data->obj_sprite[19] = create_sprites("sprites/enemies/soul_dead_4.bmp",
+			(t_d_point){0.5, 0.5}, data);
+	data->obj_sprite[20] = create_sprites("sprites/enemies/soul_dead_5.bmp",
 			(t_d_point){1, 1}, data);
-	data->obj_sprite[13] = create_sprites("sprites/pickups/bullets.bmp",
+	data->obj_sprite[21] = create_sprites("pics/pillar.bmp",
 			(t_d_point){1, 1}, data);
-	data->obj_sprite[14] = create_sprites("sprites/pickups/shells.bmp",
+	data->obj_sprite[22] = create_sprites("sprites/pickups/bullets.bmp",
 			(t_d_point){1, 1}, data);
-	data->obj_sprite[15] = create_sprites("sprites/pickups/cell.bmp",
-			(t_d_point){1, 1}, data);
-	data->obj_sprite[16] = create_sprites("sprites/pickups/health_pu.bmp",
-			(t_d_point){1, 1}, data);
-	data->obj_sprite[17] = create_sprites("sprites/pickups/armor_pu.bmp",
-			(t_d_point){1, 1}, data);
-	data->obj_sprite[18] = create_sprites("sprites/pickups/key.bmp",
-			(t_d_point){1, 1}, data);
-	data->obj_sprite[19] = create_sprites("sprites/pickups/hud_key.bmp",
+	data->obj_sprite[23] = create_sprites("sprites/pickups/shells.bmp",
 			(t_d_point){1, 1}, data);
 }
 
@@ -69,7 +90,7 @@ static void	alloc_data_structs(t_data *data)
 	if (!(data->surface = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 9)))
 		clean_exit(data, "Surface malloc error");
 	nullify_tab((void**)data->surface, 9);
-	if (!(data->obj_sprite = (t_sprite*)malloc(sizeof(t_sprite) * 20)))
+	if (!(data->obj_sprite = (t_sprite*)malloc(sizeof(t_sprite) * 29)))
 		clean_exit(data, "Object sprite malloc error");
 	nullify_sprites(data->obj_sprite, 20);
 	if (!(data->zBuffer = (double *)malloc(sizeof(double) * SCREEN_WIDTH)))
@@ -100,4 +121,5 @@ void		set_values(t_data *data)
 	alloc_data_structs(data);
 	create_sprites_1(data);
 	create_sprites_2(data);
+	create_sprites_3(data);
 }

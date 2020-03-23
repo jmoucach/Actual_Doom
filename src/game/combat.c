@@ -34,7 +34,8 @@ void	get_attacking_sprite(t_data *data, t_object *obj)
 void	hits_taken(t_data *data, t_object *obj)
 {
 	get_attacking_sprite(data, obj);
-	if (obj->current_sprite == obj->first_sprite_attack + 2
+	if (obj->current_sprite == obj->first_sprite_attack
+		+ obj->num_of_sprites_attack - 1
 			&& data->time - data->p_dmgtime > 500)
 	{
 		data->p_dmgtime = data->time;

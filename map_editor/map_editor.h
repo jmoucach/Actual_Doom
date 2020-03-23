@@ -14,8 +14,8 @@
 # define MAP_EDITOR_H
 
 # include "libft/libft.h"
-# include "/Users/jpoulvel/.brew/include/SDL2/SDL.h"
-# include "/Users/jpoulvel/.brew/include/SDL2/SDL_TTF.h"
+# include "/usr/local/include/SDL2/SDL.h"
+# include "/usr/local/include/SDL2/SDL_TTF.h"
 
 //# include <SDL.h>
 //# include <SDL_ttf.h>

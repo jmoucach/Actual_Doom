@@ -36,10 +36,13 @@ static void		deal_damage(t_object *obj, short weapon)
 		damage = 5;
 	if (weapon == 5)
 		damage = 10;
-	if (obj->hp >= damage)
-		obj->hp -= damage;
-	else
-		obj->hp = 0;
+	if (obj->obj_type == 0 || weapon == 5)
+	{
+		if (obj->hp >= damage)
+			obj->hp -= damage;
+		else
+			obj->hp = 0;
+	}
 	obj->hl_time = SDL_GetTicks();
 }
 
@@ -75,7 +78,7 @@ void			hits_dealt(t_data *data)
 	while (iterator)
 	{
 		prev = iterator->prev;
-		if (iterator->obj_type == 0)
+		if (iterator->obj_type <= 1)
 		{
 			if (hitscan(data, iterator))
 			{
