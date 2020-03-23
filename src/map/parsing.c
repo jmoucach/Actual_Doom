@@ -45,21 +45,21 @@ void			parse_boudaries(char *str, t_data *data)
 	int			y;
 
 	y = 0;
-	while (y < data->msize.y)
+	while (y < data->maps[3].height)
 	{
-		if (str[2 * (y * data->msize.x)] < '1'
-			|| str[2 * (y * data->msize.x)] > '7'
-			|| str[2 * (y * data->msize.x + data->msize.x - 1)] < '1'
-			|| str[2 * (y * data->msize.x + data->msize.x - 1)] > '6')
+		if (str[2 * (y * data->maps[3].width)] < '1'
+			|| str[2 * (y * data->maps[3].width)] > '7'
+			|| str[2 * (y * data->maps[3].width + data->maps[3].width - 1)] < '1'
+			|| str[2 * (y * data->maps[3].width + data->maps[3].width - 1)] > '6')
 			clean_exit(data, "Incomplete boundaries");
 		y++;
 	}
 	x = -1;
-	while (++x < data->msize.x)
+	while (++x < data->maps[3].width)
 	{
 		if (str[2 * x] < '1' || str[2 * x] > '6'
-			|| str[2 * (x + (data->msize.y - 1) * data->msize.x)] < '1'
-			|| str[2 * (x + (data->msize.y - 1) * data->msize.x)] > '6')
+			|| str[2 * (x + (data->maps[3].height - 1) * data->maps[3].width)] < '1'
+			|| str[2 * (x + (data->maps[3].height - 1) * data->maps[3].width)] > '6')
 			clean_exit(data, "Incomplete boundaries");
 	}
 }

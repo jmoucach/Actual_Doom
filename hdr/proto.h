@@ -22,7 +22,7 @@
 void			create_renderer_texture_and_pixels(t_data *data);
 void			nullify_surfaces(t_data *data);
 void			init(t_data *data);
-void			set_values(t_data *data);
+void			set_values(t_data *data, int argc);
 void			get_hud_text_1(t_data *data);
 void			set_raycast_values(t_raycast *value, t_player player, int x);
 t_sprite		create_sprites(char *path, t_d_point scale, t_data *data);
@@ -43,7 +43,7 @@ void			drawline(t_point pt_one, t_point pt_two,
 */
 
 short				name_parser(char *file_name);
-void			free_map(t_data *data);
+void			free_maps(t_data *data);
 
 /*
 ** New map
@@ -54,13 +54,17 @@ short			count_lines_and_col(t_data *data, char *str);
 void			allocate_map(t_data *data);
 char			*read_map(int fd);
 void			new_map(t_data *data, char *title);
+void			load_story_maps(t_data *data);
 
 /*
 ** Fill map
 */
 
-void			print_map(t_data data);
-void			fill_map(t_data *data, char *str);
+void			print_map(t_map map);
+int				copy_cur_map(t_data *data);
+void			delete_cur_map(t_data *data);
+void			fill_input_map(t_data *data, char *str);
+void			fill_map(t_data *data, t_map map);
 
 /*
 ** Draw map box
@@ -74,6 +78,7 @@ void			draw_minimap(t_data *data);
 
 void			handle_input2(t_data *data, const Uint8 *state);
 void			handle_input(t_data *data, const Uint8 *state);
+void			handle_menu_input(t_data *data, const Uint8 *state);
 void			game_loop(t_data *data);
 
 /*
@@ -238,5 +243,12 @@ Uint32			shaded_color(t_data *data, Uint32 color, double dist, t_object *o);
 
 void	hits_taken(t_data *data, t_object *obj);
 void state_machine(t_data *data);
+
+/*
+** Menu
+*/
+
+void	menu(t_data *data);
+void	menu_selection(t_data *data);
 
 #endif

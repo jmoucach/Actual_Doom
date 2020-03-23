@@ -54,10 +54,10 @@ void		walk(t_data *data, int walkdir, int sprint)
 	speed = sprint ? data->p.sprintspeed : data->p.walkspeed;
 	dx = walkdir * data->p.dir.x * speed * data->ftime;
 	dy = walkdir * data->p.dir.y * speed * data->ftime;
-	if (data->map[(int)(data->p.pos.x + dx)]
+	if (data->cur_map.map[(int)(data->p.pos.x + dx)]
 			[(int)data->p.pos.y] == 0)
 		data->p.pos.x += dx;
-	if (data->map[(int)(data->p.pos.x)]
+	if (data->cur_map.map[(int)(data->p.pos.x)]
 			[(int)(data->p.pos.y + dy)] == 0)
 		data->p.pos.y += dy;
 }
@@ -71,10 +71,10 @@ void		strafe(t_data *data, int strafe, int sprint)
 	speed = sprint ? data->p.sprintspeed : data->p.walkspeed;
 	dx = strafe * data->p.dir.y * speed * data->ftime * 0.7;
 	dy = -strafe * data->p.dir.x * speed * data->ftime * 0.7;
-	if (data->map[(int)(data->p.pos.x + dx)]
+	if (data->cur_map.map[(int)(data->p.pos.x + dx)]
 			[(int)data->p.pos.y] == 0)
 		data->p.pos.x += dx;
-	if (data->map[(int)(data->p.pos.x)]
+	if (data->cur_map.map[(int)(data->p.pos.x)]
 			[(int)(data->p.pos.y + dy)] == 0)
 		data->p.pos.y += dy;
 }

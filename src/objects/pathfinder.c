@@ -33,10 +33,10 @@ void			get_moving_sprite(t_data *data, t_object *obj)
 
 void			move_obj(t_data *data, t_d_point dir, t_object *obj)
 {
-	if (data->map[(int)(obj->pos.x + dir.x * obj->move_speed
+	if (data->cur_map.map[(int)(obj->pos.x + dir.x * obj->move_speed
 		* data->ftime)][(int)(obj->pos.y)] == 0)
 		obj->pos.x += dir.x * obj->move_speed * data->ftime;
-	if (data->map[(int)(obj->pos.x)][(int)(obj->pos.y + dir.y
+	if (data->cur_map.map[(int)(obj->pos.x)][(int)(obj->pos.y + dir.y
 		* obj->move_speed * data->ftime)] == 0)
 		obj->pos.y += dir.y * obj->move_speed * data->ftime;
 }

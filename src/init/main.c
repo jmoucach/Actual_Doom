@@ -25,37 +25,45 @@ short	name_parser(char *file_name)
 	return (1);
 }
 
-void	free_map(t_data *data)
+void	free_maps(t_data *data)
 {
 	int	i;
+	int	j;
 
-	i = data->msize.y - 1;
-	while (i >= 0)
+	j = -1;
+	while (++j < 4)
 	{
-		free(data->map[i]);
-		i--;
+		i = data->maps[j].height - 1;
+		while (i >= 0)
+		{
+			free(data->maps[j].map[i]);
+			i--;
+		}
+		free(data->maps[j].map);
 	}
-	free(data->map);
 }
 
 int		main(int ac, char **av)
 {
 	t_data	data;
 
-	if (ac == 2)
+	if (ac <= 2)
 	{
-		set_values(&data);
+		set_values(&data, ac);
 		init(&data);
 		loadmedia(&data);
 		prepare_hud(&data);
-		if (name_parser(av[1]))
+		load_story_maps(&data);
+		if (ac == 2)
 		{
-			new_map(&data, av[1]);
-			game_loop(&data);
-			free_map(&data);
+			if (name_parser(av[1]))
+				new_map(&data, av[1]);
+			else
+				clean_exit(&data, "");
 		}
-		else
-			clean_exit(&data, "");
+		game_loop(&data);
+		free_maps(&data);
+		delete_cur_map(&data);
 		clean_exit(&data, NULL);
 	}
 	return (0);

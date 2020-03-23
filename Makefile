@@ -28,7 +28,10 @@ SRC=	init/main.c\
 		draw/show_player.c\
 		map/new_map.c\
 		map/fill_map.c\
+		map/load_story_maps.c\
 		map/parsing.c\
+		menu/menu.c\
+		menu/menu_selection.c\
 		raycasting/raycasting.c\
 		raycasting/floorcaster.c\
 		raycasting/objectcasting.c\
@@ -40,6 +43,7 @@ SRC=	init/main.c\
 		game/event_loop.c\
 		game/flashing_screens.c\
 		game/movement.c\
+		game/menu_inputs.c\
 		game/weap_hits.c\
 		image/load_image.c\
 		image/load_media_hud.c\
@@ -72,7 +76,7 @@ OBJ= $(SRC:.c=.o)
 DPD= $(SRC:.c=.d)
 
 OBJ_SUBDIRS= init draw map raycasting game image skybox weapon \
-			 objects exit
+			 objects menu exit
 OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
 SUBDIRS= $(foreach dir, $(OBJ_SUBDIRS), $(OBJ_DIR)$(dir))
 LIB= `sdl2-config --libs` \

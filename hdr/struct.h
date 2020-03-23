@@ -183,6 +183,13 @@ typedef struct s_hud
 	SDL_Texture *ammo_text;
 } t_hud;
 
+typedef struct	s_map
+{
+	int			**map;
+	int			width;
+	int			height;
+}				t_map;
+
 typedef struct s_data
 {
 	SDL_Window		*window;
@@ -199,9 +206,9 @@ typedef struct s_data
 	int				yaw;
 	double			mouse_sens;
 	t_player		p;
-	int				**map;
+	t_map			cur_map;
+	t_map			maps[4];
 	int				surface_nb;
-	t_point			msize;
 	short			toggle_minimap;
 	short			quit;
 
@@ -214,6 +221,11 @@ typedef struct s_data
 	Uint32			p_dmgtime;
 	Uint32			p_healtime;
 	Uint32			p_armortime;
+
+	short			custom_map;
+	short			menu;
+	short			menu_sel;
+	short			has_menued;
 } t_data;
 
 #endif

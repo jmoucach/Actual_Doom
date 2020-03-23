@@ -19,16 +19,16 @@ void		draw_minimap(t_data *data)
 	int		colour;
 	t_point	l;
 
-	l.x = (0.2 * SCREEN_WIDTH) / data->msize.x;
-	l.y = (0.2 * SCREEN_HEIGHT) / data->msize.y;
+	l.x = (0.2 * SCREEN_WIDTH) / data->cur_map.width;
+	l.y = (0.2 * SCREEN_HEIGHT) / data->cur_map.height;
 	y = 0;
-	while (y < data->msize.y)
+	while (y < data->cur_map.height)
 	{
 		x = 0;
-		while (x < data->msize.x)
+		while (x < data->cur_map.width)
 		{
-			if (data->map[y][x] >= 1)
-				colour = data->map[y][x] == 7 ? 0x6b1ad6 : 0x8B;
+			if (data->cur_map.map[y][x] >= 1)
+				colour = data->cur_map.map[y][x] == 7 ? 0x6b1ad6 : 0x8B;
 			else
 				colour = 0xA9A9A9;
 			draw_rect_to_sdl((t_point){x * l.x, y * l.y},

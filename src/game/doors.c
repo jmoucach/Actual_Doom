@@ -20,17 +20,17 @@ void	check_doors(t_data *data)
 	pos.y = (int)(data->p.pos.y);
 	if (data->p.key > 0)
 	{
-		if (data->map[pos.x + 1][pos.y] == 7)
+		if (data->cur_map.map[pos.x + 1][pos.y] == 7)
 			pos.x++;
-		else if (data->map[pos.x - 1][pos.y] == 7)
+		else if (data->cur_map.map[pos.x - 1][pos.y] == 7)
 			pos.x--;
-		else if (data->map[pos.x][pos.y + 1] == 7)
+		else if (data->cur_map.map[pos.x][pos.y + 1] == 7)
 			pos.y++;
-		else if (data->map[pos.x][pos.y - 1] == 7)
+		else if (data->cur_map.map[pos.x][pos.y - 1] == 7)
 			pos.y--;
 		else
 			return ;
-		data->map[pos.x][pos.y] = 0;
+		data->cur_map.map[pos.x][pos.y] = 0;
 		data->p.key--;
 	}
 }

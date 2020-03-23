@@ -47,6 +47,18 @@ void			load_skybox(t_data *data)
 	if (!(data->surface[8] = loadimage("pics/skybox/skybox_3.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
 	data->surface_nb++;
+	if (!(data->surface[9] = loadimage("pics/menu/menu_titles.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
+	data->surface_nb++;
+	if (!(data->surface[10] = loadimage("pics/menu/menu_custom.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
+	data->surface_nb++;
+	if (!(data->surface[11] = loadimage("pics/menu/menu_background.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
+	data->surface_nb++;
+	if (!(data->surface[12] = loadimage("pics/menu/menu_arrow.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
+	data->surface_nb++;
 }
 
 void			loadmedia(t_data *data)

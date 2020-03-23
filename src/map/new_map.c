@@ -19,8 +19,8 @@ short			count_lines_and_col(t_data *data, char *str)
 	p.i = -1;
 	while (++p.i < (int)ft_strlen(str))
 	{
-		p.col = data->msize.x;
-		data->msize.x = 0;
+		p.col = data->maps[3].width;
+		data->maps[3].width = 0;
 		p.tmp = 0;
 		while (str[p.i] && str[p.i] != '\n')
 		{
@@ -29,14 +29,14 @@ short			count_lines_and_col(t_data *data, char *str)
 			if (p.tmp == 1 && str[p.i] == ',')
 				p.tmp = 0;
 			if (p.tmp == 0 && str[p.i] != ',')
-				data->msize.x++;
+				data->maps[3].width++;
 			if (p.tmp == 0 && str[p.i] != ',')
 				p.tmp = 1;
 			p.i++;
 		}
-		if (data->msize.x != p.col && p.col != 0)
+		if (data->maps[3].width != p.col && p.col != 0)
 			return (0);
-		data->msize.y++;
+		data->maps[3].height++;
 	}
 	return (1);
 }
@@ -75,17 +75,17 @@ char			*read_map(int fd)
 	return (str);
 }
 
-void			allocate_map(t_data *data)
+void			allocate_input_map(t_data *data)
 {
 	int			i;
 
 	i = 0;
-	if (!(data->map = (int**)malloc(sizeof(int*) * data->msize.y)))
+	if (!(data->maps[3].map = (int**)malloc(sizeof(int*) * data->maps[3].height)))
 		clean_exit(data, "Map malloc error");
-	nullify_tab((void**)data->map, data->msize.y);
-	while (i < data->msize.y)
+	nullify_tab((void**)data->maps[3].map, data->maps[3].height);
+	while (i < data->maps[3].height)
 	{
-		if (!(data->map[i] = (int*)malloc(sizeof(int) * data->msize.x)))
+		if (!(data->maps[3].map[i] = (int*)malloc(sizeof(int) * data->maps[3].width)))
 			clean_exit(data, "Map malloc error");
 		i++;
 	}
@@ -103,7 +103,9 @@ void			new_map(t_data *data, char *title)
 		clean_exit(data, "Map is not rectangular");
 	str = ft_replace(str, '\n', ',');
 	close(fd);
-	allocate_map(data);
-	fill_map(data, str);
+	//TODO split ici pour differentes maps
+	allocate_input_map(data);
+	fill_input_map(data, str);
+	parse_map(data, str);
 	free(str);
 }

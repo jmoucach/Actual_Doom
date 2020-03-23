@@ -40,7 +40,11 @@ void	nullify_mallocs(t_data *data)
 	data->sprites = NULL;
 	data->weapon_texture = NULL;
 	data->pixels = NULL;
-	data->map = NULL;
+	data->maps[0].map = NULL;
+	data->maps[1].map = NULL;
+	data->maps[2].map = NULL;
+	data->maps[3].map = NULL;
+	data->cur_map.map = NULL;
 	data->zBuffer = NULL;
 	data->obj = NULL;
 	data->hud.font = NULL;

@@ -15,9 +15,7 @@
 void			handle_input2(t_data *data, const Uint8 *state)
 {
 	if (state[SDL_SCANCODE_M])
-	{
 		data->toggle_minimap = !data->toggle_minimap;
-	}
 	if (state[SDL_SCANCODE_KP_PLUS])
 		if (data->mouse_sens < 2.0)
 			data->mouse_sens += 0.1;
@@ -77,30 +75,41 @@ void			game_loop(t_data *data)
 				if (e.button.button == SDL_BUTTON_LEFT)
 					data->p.is_firing = 0;
 		}
-		if (!SDL_GetKeyboardState(NULL)[SDL_SCANCODE_C])
-			print_skybox(data);
-		raycasting(data);
-		state_machine(data);
-		item_pickup(data);
-		combat(data);
-		if (data->toggle_minimap)
-			draw_minimap(data);
+		if (data->menu)
+			menu(data);
+		else
+		{
+			if (!SDL_GetKeyboardState(NULL)[SDL_SCANCODE_C])
+				print_skybox(data);
+			raycasting(data);
+			state_machine(data);
+			item_pickup(data);
+			combat(data);
+			if (data->toggle_minimap)
+				draw_minimap(data);
+		}
 		data->ftime = (SDL_GetTicks() - data->time) / 1000;
 		// printf("ftime :%f , fps:%f\n", data->ftime, 1/data->ftime);
 		SDL_PumpEvents();
 		state = SDL_GetKeyboardState(NULL);
-		handle_input(data, state);
+		if (data->menu)
+			handle_menu_input(data, state);
+		else
+			handle_input(data, state);
 		red_hit_screen(data);
 		green_hp_screen(data);
 		blue_hp_screen(data);
 		display_hud_keys(data);
 		SDL_UpdateTexture(data->texture, NULL, data->pixels,
-			width * 4);
+				width * 4);
 		SDL_RenderClear(data->renderer);
 		SDL_RenderCopy(data->renderer, data->texture, NULL, NULL);
-		display_hud(data);
-		display_health(data);
-		display_ammo_side(data);
+		if (!data->menu)
+		{
+			display_hud(data);
+			display_health(data);
+			display_ammo_side(data);
+		}
 		if (data->p.hp <= 0)
 			clean_exit(data, "You are dead");
 		SDL_RenderPresent(data->renderer);

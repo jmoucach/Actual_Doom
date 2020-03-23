@@ -50,7 +50,7 @@ void	get_texturing_values(t_raycast *r, t_data *data)
 				/ r->ray.dir.y);
 		r->wall = r->ray.pos.x + r->walldist * r->ray.dir.x;
 	}
-	r->texnum = data->map[r->m_pos.x][r->m_pos.y] - 1;
+	r->texnum = data->cur_map.map[r->m_pos.x][r->m_pos.y] - 1;
 	r->wall -= floor(r->wall);
 	r->texw = data->surface[r->texnum]->w;
 	r->texh = data->surface[r->texnum]->h;
@@ -74,7 +74,7 @@ void	hit_wall(t_raycast *r, t_data *data)
 			r->m_pos.y += r->step.y;
 			r->side = 1;
 		}
-		if (data->map[r->m_pos.x][r->m_pos.y] > 0)
+		if (data->cur_map.map[r->m_pos.x][r->m_pos.y] > 0)
 			r->hit = 1;
 	}
 }
