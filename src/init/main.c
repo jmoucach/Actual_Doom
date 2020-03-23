@@ -17,7 +17,7 @@ short	name_parser(char *file_name)
 	int	i;
 
 	i = ft_strlen(file_name);
-	if (!ft_strequ((file_name + i - 5), ".wolf"))
+	if (!ft_strequ((file_name + i - 5), ".doom"))
 	{
 		ft_putstr_fd("Invalid map_name", 2);
 		return (0);
