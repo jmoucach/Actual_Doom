@@ -2,4 +2,4 @@ doom-nukem
 **/**.o
 **/**.d
 **/obj/**
-**/**.a
+libft/libft.a
