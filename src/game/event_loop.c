@@ -17,6 +17,7 @@ void			handle_input2(t_data *data, const Uint8 *state)
 	if (state[SDL_SCANCODE_M])
 	{
 		data->menu = 1;
+		data->p.key = 0;
 		free_objects(data);
 	}
 	if (state[SDL_SCANCODE_KP_PLUS])
