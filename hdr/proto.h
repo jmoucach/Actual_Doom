@@ -50,11 +50,9 @@ void			free_maps(t_data *data);
 */
 
 char			*join_strings(char *s1, char *s2);
-short			count_lines_and_col(t_data *data, char *str);
-void			allocate_map(t_data *data);
+void			allocate_map(t_data *data, short id);
 char			*read_map(int fd);
-void			new_map(t_data *data, char *title);
-short			load_story_maps(t_data *data);
+void			new_map(t_data *data, char *title, short id);
 
 /*
 ** Fill map
@@ -63,7 +61,7 @@ short			load_story_maps(t_data *data);
 void			print_map(t_map map);
 int				copy_cur_map(t_data *data);
 void			delete_cur_map(t_data *data);
-void			fill_input_map(t_data *data, char *str);
+void			fill_raw_map(t_data *data, char *str, short id);
 void			fill_map(t_data *data, t_map map);
 
 /*
@@ -112,9 +110,9 @@ void			loadmedia(t_data *data);
 ** Parsing
 */
 
-short			count_lines_and_col(t_data *data, char *str);
-void			parse_boudaries(char *str, t_data *data);
-void			parse_map(t_data *data, char *str);
+short			count_lines_and_col(t_data *data, char *str, short id);
+void			parse_boudaries(char *str, t_data *data, short id);
+void			parse_map(t_data *data, char *str, short id);
 short			parse_char(char *str);
 
 /*

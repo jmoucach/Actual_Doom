@@ -39,34 +39,34 @@ short			parse_char(char *str)
 	return (p_num == 1 ? 1 : 0);
 }
 
-void			parse_boudaries(char *str, t_data *data)
+void			parse_boudaries(char *str, t_data *data, short id)
 {
 	int			x;
 	int			y;
 
 	y = 0;
-	while (y < data->maps[3].height)
+	while (y < data->maps[id].height)
 	{
-		if (str[2 * (y * data->maps[3].width)] < '1'
-			|| str[2 * (y * data->maps[3].width)] > '7'
-			|| str[2 * (y * data->maps[3].width + data->maps[3].width - 1)] < '1'
-			|| str[2 * (y * data->maps[3].width + data->maps[3].width - 1)] > '6')
+		if (str[2 * (y * data->maps[id].width)] < '1'
+			|| str[2 * (y * data->maps[id].width)] > '7'
+			|| str[2 * (y * data->maps[id].width + data->maps[id].width - 1)] < '1'
+			|| str[2 * (y * data->maps[id].width + data->maps[id].width - 1)] > '6')
 			clean_exit(data, "Incomplete boundaries");
 		y++;
 	}
 	x = -1;
-	while (++x < data->maps[3].width)
+	while (++x < data->maps[id].width)
 	{
 		if (str[2 * x] < '1' || str[2 * x] > '6'
-			|| str[2 * (x + (data->maps[3].height - 1) * data->maps[3].width)] < '1'
-			|| str[2 * (x + (data->maps[3].height - 1) * data->maps[3].width)] > '6')
+			|| str[2 * (x + (data->maps[id].height - 1) * data->maps[id].width)] < '1'
+			|| str[2 * (x + (data->maps[id].height - 1) * data->maps[id].width)] > '6')
 			clean_exit(data, "Incomplete boundaries");
 	}
 }
 
-void			parse_map(t_data *data, char *str)
+void			parse_map(t_data *data, char *str, short id)
 {
 	if (!(parse_char(str)))
 		clean_exit(data, "");
-	parse_boudaries(str, data);
+	parse_boudaries(str, data, id);
 }

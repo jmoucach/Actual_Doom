@@ -12,15 +12,15 @@
 
 #include "../../hdr/doom_nukem.h"
 
-short			count_lines_and_col(t_data *data, char *str)
+short			count_lines_and_col(t_data *data, char *str, short id)
 {
 	t_parse		p;
 
 	p.i = -1;
 	while (++p.i < (int)ft_strlen(str))
 	{
-		p.col = data->maps[3].width;
-		data->maps[3].width = 0;
+		p.col = data->maps[id].width;
+		data->maps[id].width = 0;
 		p.tmp = 0;
 		while (str[p.i] && str[p.i] != '\n')
 		{
@@ -29,14 +29,14 @@ short			count_lines_and_col(t_data *data, char *str)
 			if (p.tmp == 1 && str[p.i] == ',')
 				p.tmp = 0;
 			if (p.tmp == 0 && str[p.i] != ',')
-				data->maps[3].width++;
+				data->maps[id].width++;
 			if (p.tmp == 0 && str[p.i] != ',')
 				p.tmp = 1;
 			p.i++;
 		}
-		if (data->maps[3].width != p.col && p.col != 0)
+		if (data->maps[id].width != p.col && p.col != 0)
 			return (0);
-		data->maps[3].height++;
+		data->maps[id].height++;
 	}
 	return (1);
 }
@@ -75,23 +75,23 @@ char			*read_map(int fd)
 	return (str);
 }
 
-void			allocate_input_map(t_data *data)
+void			allocate_map(t_data *data, short id)
 {
 	int			i;
 
 	i = 0;
-	if (!(data->maps[3].map = (int**)malloc(sizeof(int*) * data->maps[3].height)))
+	if (!(data->maps[id].map = (int**)malloc(sizeof(int*) * data->maps[id].height)))
 		clean_exit(data, "Map malloc error");
-	nullify_tab((void**)data->maps[3].map, data->maps[3].height);
-	while (i < data->maps[3].height)
+	nullify_tab((void**)data->maps[id].map, data->maps[id].height);
+	while (i < data->maps[id].height)
 	{
-		if (!(data->maps[3].map[i] = (int*)malloc(sizeof(int) * data->maps[3].width)))
+		if (!(data->maps[id].map[i] = (int*)malloc(sizeof(int) * data->maps[id].width)))
 			clean_exit(data, "Map malloc error");
 		i++;
 	}
 }
 
-void			new_map(t_data *data, char *title)
+void			new_map(t_data *data, char *title, short id)
 {
 	int			fd;
 	char		*str;
@@ -99,13 +99,13 @@ void			new_map(t_data *data, char *title)
 	fd = open(title, O_NOCTTY | O_RDONLY | O_NOFOLLOW | O_NONBLOCK);
 	if (!(str = read_map(fd)))
 		clean_exit(data, "Read error");
-	if (!count_lines_and_col(data, str))
+	if (!count_lines_and_col(data, str, id))
 		clean_exit(data, "Map is not rectangular");
 	str = ft_replace(str, '\n', ',');
 	close(fd);
 	//TODO split ici pour differentes maps
-	allocate_input_map(data);
-	fill_input_map(data, str);
-	parse_map(data, str);
+	allocate_map(data, id);
+	fill_raw_map(data, str, id);
+	parse_map(data, str, id);
 	free(str);
 }

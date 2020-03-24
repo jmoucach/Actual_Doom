@@ -53,11 +53,13 @@ int		main(int ac, char **av)
 		init(&data);
 		loadmedia(&data);
 		prepare_hud(&data);
-		load_story_maps(&data);
+		new_map(&data, "maps/level_1.doom", 0);
+		new_map(&data, "maps/level_2.doom", 1);
+		new_map(&data, "maps/level_3.doom", 2);
 		if (ac == 2)
 		{
 			if (name_parser(av[1]))
-				new_map(&data, av[1]);
+				new_map(&data, av[1], 3);
 			else
 				clean_exit(&data, "");
 		}

@@ -117,17 +117,17 @@ static void		item_selection(t_data *data, t_point coords, char c, int *o_num)
 		add_one_item(data, coords, 1, o_num);
 }
 
-void			fill_input_map(t_data *data, char *str)
+void			fill_raw_map(t_data *data, char *str, short id)
 {
 	int			i;
 	int			j;
 
 	i = -1;
-	while (++i < data->maps[3].height)
+	while (++i < data->maps[id].height)
 	{
 		j = -1;
-		while (++j < data->maps[3].width)
-			data->maps[3].map[i][j] = str[j * 2 + i * 2 * data->maps[3].width];
+		while (++j < data->maps[id].width)
+			data->maps[id].map[i][j] = str[j * 2 + i * 2 * data->maps[id].width];
 	}
 }
 
