@@ -26,11 +26,6 @@ void			handle_input2(t_data *data, const Uint8 *state)
 	if (state[SDL_SCANCODE_KP_MINUS])
 		if (data->mouse_sens > 0.5)
 			data->mouse_sens -= 0.1;
-	if (state[SDL_SCANCODE_O])
-	{
-		data->shaded = data->shaded == 1 ? 0 : 1;
-		//TODO by default in parsing, remove when done
-	}
 	if (state[SDL_SCANCODE_E])
 		check_doors(data);
 }
@@ -83,7 +78,7 @@ void			game_loop(t_data *data)
 			menu(data);
 		else
 		{
-			if (!SDL_GetKeyboardState(NULL)[SDL_SCANCODE_C])
+			if (!data->ceiling)
 				print_skybox(data);
 			raycasting(data);
 			state_machine(data);

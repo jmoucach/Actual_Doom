@@ -3,6 +3,8 @@
 static void	get_map1_values(t_data *data)
 {
 	ft_bzero(&(data->p), sizeof(t_player));
+	data->ceiling = 1;
+	data->shaded = 0;
 	data->p.dir.x = 1;
 	data->p.plane.y = -0.66;
 	data->p.rspeed = 2;
@@ -20,6 +22,8 @@ static void	get_map1_values(t_data *data)
 static void	get_map2_values(t_data *data)
 {
 	ft_bzero(&(data->p), sizeof(t_player));
+	data->ceiling = 0;
+	data->shaded = 1;
 	data->p.dir.x = 1;
 	data->p.plane.y = -0.66;
 	data->p.rspeed = 2;
@@ -37,6 +41,8 @@ static void	get_map2_values(t_data *data)
 static void	get_map3_values(t_data *data)
 {
 	ft_bzero(&(data->p), sizeof(t_player));
+	data->ceiling = 0;
+	data->shaded = 0;
 	data->p.dir.x = 1;
 	data->p.plane.y = -0.66;
 	data->p.rspeed = 2;
@@ -54,6 +60,7 @@ static void	get_map3_values(t_data *data)
 static void	get_custom_map_values(t_data *data)
 {
 	ft_bzero(&(data->p), sizeof(t_player));
+	data->ceiling = 1;
 	data->p.dir.x = 1;
 	data->p.plane.y = -0.66;
 	data->p.rspeed = 2;
