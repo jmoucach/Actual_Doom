@@ -15,7 +15,10 @@
 void			handle_input2(t_data *data, const Uint8 *state)
 {
 	if (state[SDL_SCANCODE_M])
-		data->toggle_minimap = !data->toggle_minimap;
+	{
+		data->menu = 1;
+		free_objects(data);
+	}
 	if (state[SDL_SCANCODE_KP_PLUS])
 		if (data->mouse_sens < 2.0)
 			data->mouse_sens += 0.1;

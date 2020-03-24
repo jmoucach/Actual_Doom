@@ -12,6 +12,25 @@
 
 #include "../../hdr/doom_nukem.h"
 
+void		free_objects(t_data *data)
+{
+	t_object	*stock;
+
+	if (data->obj)
+	{
+		rollback_object(&data->obj);
+		while (data->obj)
+		{
+			stock = data->obj;
+			data->obj = data->obj->next;
+			free(stock);
+			if (data->obj)
+				data->obj->prev = NULL;
+		}
+		data->obj = NULL;
+	}
+}
+
 static void	free_surf_and_sprites(t_data *data)
 {
 	int	i;
@@ -69,6 +88,7 @@ void		clean_exit(t_data *data, char *err)
 		ft_putendl_fd(err, 2);
 	free_surf_and_sprites(data);
 	free_hud(data);
+	free_objects(data);
 	if (data->zBuffer)
 		free(data->zBuffer);
 	if (data->pixels)

@@ -54,7 +54,7 @@ short			count_lines_and_col(t_data *data, char *str);
 void			allocate_map(t_data *data);
 char			*read_map(int fd);
 void			new_map(t_data *data, char *title);
-void			load_story_maps(t_data *data);
+short			load_story_maps(t_data *data);
 
 /*
 ** Fill map
@@ -230,6 +230,7 @@ void nullify_sprites(t_sprite *sprites, int size);
 */
 
 void clean_exit(t_data *data, char *err);
+void	free_objects(t_data *data);
 
 /*
 ** Shading
