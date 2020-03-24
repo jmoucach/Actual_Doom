@@ -17,15 +17,21 @@
 */
 static void	create_sprites_3(t_data *data)
 {
-	data->obj_sprite[24] = create_sprites("sprites/pickups/cell.bmp",
+	data->obj_sprite[36] = create_sprites("pics/pillar.bmp",
 			(t_d_point){1, 1}, data);
-	data->obj_sprite[25] = create_sprites("sprites/pickups/health_pu.bmp",
+	data->obj_sprite[37] = create_sprites("sprites/pickups/bullets.bmp",
 			(t_d_point){1, 1}, data);
-	data->obj_sprite[26] = create_sprites("sprites/pickups/armor_pu.bmp",
+	data->obj_sprite[38] = create_sprites("sprites/pickups/shells.bmp",
 			(t_d_point){1, 1}, data);
-	data->obj_sprite[27] = create_sprites("sprites/pickups/key.bmp",
+	data->obj_sprite[39] = create_sprites("sprites/pickups/cell.bmp",
 			(t_d_point){1, 1}, data);
-	data->obj_sprite[28] = create_sprites("sprites/pickups/hud_key.bmp",
+	data->obj_sprite[40] = create_sprites("sprites/pickups/health_pu.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[41] = create_sprites("sprites/pickups/armor_pu.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[42] = create_sprites("sprites/pickups/key.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[43] = create_sprites("sprites/pickups/hud_key.bmp",
 			(t_d_point){1, 1}, data);
 }
 
@@ -49,11 +55,36 @@ static void	create_sprites_2(t_data *data)
 			(t_d_point){0.5, 0.5}, data);
 	data->obj_sprite[20] = create_sprites("sprites/enemies/soul_dead_5.bmp",
 			(t_d_point){1, 1}, data);
-	data->obj_sprite[21] = create_sprites("pics/pillar.bmp",
+			// BOSS
+	data->obj_sprite[21] = create_sprites("sprites/enemies/boss_walking_1.bmp",
 			(t_d_point){1, 1}, data);
-	data->obj_sprite[22] = create_sprites("sprites/pickups/bullets.bmp",
+	data->obj_sprite[22] = create_sprites("sprites/enemies/boss_walking_2.bmp",
 			(t_d_point){1, 1}, data);
-	data->obj_sprite[23] = create_sprites("sprites/pickups/shells.bmp",
+	data->obj_sprite[23] = create_sprites("sprites/enemies/boss_walking_3.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[24] = create_sprites("sprites/enemies/boss_walking_4.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[25] = create_sprites("sprites/enemies/boss_attacking_1.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[26] = create_sprites("sprites/enemies/boss_attacking_1.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[27] = create_sprites("sprites/enemies/boss_dead_1.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[28] = create_sprites("sprites/enemies/boss_dead_2.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[29] = create_sprites("sprites/enemies/boss_dead_3.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[30] = create_sprites("sprites/enemies/boss_dead_4.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[31] = create_sprites("sprites/enemies/boss_dead_5.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[32] = create_sprites("sprites/enemies/boss_dead_6.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[33] = create_sprites("sprites/enemies/boss_dead_7.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[34] = create_sprites("sprites/enemies/boss_dead_8.bmp",
+			(t_d_point){1, 1}, data);
+	data->obj_sprite[35] = create_sprites("sprites/enemies/boss_dead_9.bmp",
 			(t_d_point){1, 1}, data);
 }
 
@@ -101,7 +132,7 @@ void		set_values(t_data *data, int argc)
 {
 	ft_bzero(data, sizeof(t_data));
 	nullify_mallocs(data);
-	if (!(data->sprites = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 33)))
+	if (!(data->sprites = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 43)))
 		clean_exit(data, "Sprites malloc error");
 	nullify_tab((void**)data->sprites, 33);
 	data->custom_map = (argc == 1) ? 0 : 1;

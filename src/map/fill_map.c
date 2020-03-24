@@ -98,23 +98,25 @@ static void		add_one_item(t_data *data, t_point coords, int type, int *o_num)
 static void		item_selection(t_data *data, t_point coords, char c, int *o_num)
 {
 	if (c == 'O')
-		add_one_item(data, coords, 2, o_num);
-	else if (c == 'B')
 		add_one_item(data, coords, 3, o_num);
-	else if (c == 'S')
+	else if (c == 'B')
 		add_one_item(data, coords, 4, o_num);
-	else if (c == 'C')
+	else if (c == 'S')
 		add_one_item(data, coords, 5, o_num);
-	else if (c == 'H')
+	else if (c == 'C')
 		add_one_item(data, coords, 6, o_num);
-	else if (c == 'A')
+	else if (c == 'H')
 		add_one_item(data, coords, 7, o_num);
-	else if (c == 'K')
+	else if (c == 'A')
 		add_one_item(data, coords, 8, o_num);
+	else if (c == 'K')
+		add_one_item(data, coords, 9, o_num);
 	else if (c == 'E')
 		add_one_item(data, coords, 0, o_num);
 	else if (c == 'L')
 		add_one_item(data, coords, 1, o_num);
+	else if (c == 'D')
+		add_one_item(data, coords, 2, o_num);
 }
 
 void			fill_raw_map(t_data *data, char *str, short id)

@@ -48,3 +48,15 @@ void			get_obj_data_2(t_object **obj)
 	(*obj)->num_of_sprites_death = 5;
 	(*obj)->sprite_pos = FLOAT;
 }
+
+void			get_obj_data_3(t_object **obj)
+{
+	(*obj)->move_speed = 1;
+	(*obj)->first_sprite_walk = 22;
+	(*obj)->num_of_sprites_walk = 4;
+	(*obj)->first_sprite_attack = 25;
+	(*obj)->num_of_sprites_attack = 2;
+	(*obj)->first_sprite_death = 27;
+	(*obj)->num_of_sprites_death = 9;
+	(*obj)->sprite_pos = GROUND;
+}

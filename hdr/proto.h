@@ -214,6 +214,7 @@ void	check_doors(t_data *data);
 void			get_obj_data_0(t_object **obj);
 void			get_obj_data_1(t_object **obj);
 void			get_obj_data_2(t_object **obj);
+void			get_obj_data_3(t_object **obj);
 
 /*
 ** Nullify

@@ -14,8 +14,8 @@
 
 t_object		*new_object(int id, int type, t_d_point pos)
 {
-	static void	(*get_obj_data[3])(t_object **) = {get_obj_data_0,
-		get_obj_data_1, get_obj_data_2};
+	static void	(*get_obj_data[4])(t_object **) = {get_obj_data_0,
+		get_obj_data_1, get_obj_data_2, get_obj_data_3};
 	t_object	*new;
 
 	new = NULL;
@@ -26,8 +26,10 @@ t_object		*new_object(int id, int type, t_d_point pos)
 	new->obj_type = type;
 	new->hp = 10;
 	new->pos = pos;
-	if (type > 1)
+	if (type > 2)
 		get_obj_data[0](&new);
+	else if (type == 2)
+		get_obj_data[3](&new);
 	else
 		get_obj_data[type + 1](&new);
 	new->next = NULL;

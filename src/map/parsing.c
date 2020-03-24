@@ -28,7 +28,8 @@ short			parse_char(char *str)
 				&& str[i] != '6' && str[i] != '7' && str[i] != ','
 				&& str[i] != 'O' && str[i] != 'E' && str[i] != 'B'
 				&& str[i] != 'S' && str[i] != 'C' && str[i] != 'H'
-				&& str[i] != 'A' && str[i] != 'K' && str[i] != 'L')
+				&& str[i] != 'A' && str[i] != 'K' && str[i] != 'L'
+				&& str[i] != 'D')
 		{
 			ft_putstr_fd("Invalid map data", 2);
 			return (0);
