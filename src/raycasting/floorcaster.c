@@ -88,6 +88,6 @@ void			floorcaster(t_data *data, t_raycast *r, int x)
 														f.currentdist, NULL);
 		y++;
 	}
-	if (SDL_GetKeyboardState(NULL)[SDL_SCANCODE_C])
+	if (data->ceiling)
 		roofcaster(data, r, x);
 }

@@ -213,6 +213,7 @@ typedef struct s_data
 	short			quit;
 
 	short			shaded;
+	short			ceiling;
 	// Afficher des sprites
 	double *zBuffer;
 	t_object *obj;
