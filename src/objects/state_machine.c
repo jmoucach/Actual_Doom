@@ -12,15 +12,15 @@
 
 #include "../../hdr/doom_nukem.h"
 
-static short			get_dying_sprite(t_data *data, t_object *obj)
+static short get_dying_sprite(t_data *data, t_object *obj)
 {
-	short		removed;
+	short removed;
 
 	removed = 0;
 	obj->lastUpdate += data->ftime;
 	if (obj->current_sprite < obj->first_sprite_death
-			|| obj->current_sprite > obj->first_sprite_death
-			+ obj->num_of_sprites_death)
+		|| obj->current_sprite > obj->first_sprite_death 
+		+ obj->num_of_sprites_death)
 	{
 		obj->lastUpdate = 0;
 		obj->current_sprite = obj->first_sprite_death;
@@ -43,16 +43,16 @@ void get_stunned_sprite(t_data *data, t_object *obj)
 	obj->current_sprite = obj->first_sprite_walk;
 }
 
-static void			enemy_death(t_data *data, t_object *obj)
+static void enemy_death(t_data *data, t_object *obj)
 {
 	if (get_dying_sprite(data, obj) == 1)
 		remove_object(&(data->obj), obj->id_key);
 }
 
-void			soul_state_machine(t_data *data, t_object *obj)
+void soul_state_machine(t_data *data, t_object *obj)
 {
-	static void	(*action[4])(t_data*, t_object*) =\
-	{enemy_death, pathfind, hits_taken, get_stunned_sprite};
+	static void (*action[4])(t_data *, t_object *) =
+		{enemy_death, pathfind, hits_taken, get_stunned_sprite};
 
 	if (obj->hp <= 0)
 		obj->state = DYING;
@@ -63,10 +63,10 @@ void			soul_state_machine(t_data *data, t_object *obj)
 	action[obj->state](data, obj);
 }
 
-void			imp_state_machine(t_data *data, t_object *obj)
+void imp_state_machine(t_data *data, t_object *obj)
 {
-	static void	(*action[3])(t_data*, t_object*) =\
-	{enemy_death, pathfind, hits_taken};
+	static void (*action[3])(t_data *, t_object *) =
+		{enemy_death, pathfind, hits_taken};
 
 	if (obj->hp <= 0)
 		obj->state = DYING;
@@ -75,9 +75,9 @@ void			imp_state_machine(t_data *data, t_object *obj)
 	action[obj->state](data, obj);
 }
 
-void			state_machine(t_data *data)
+void state_machine(t_data *data)
 {
-	t_object	*iterator;
+	t_object *iterator;
 
 	iterator = data->obj;
 	if (data->obj)
@@ -87,7 +87,7 @@ void			state_machine(t_data *data)
 		sort_objects(data);
 		while (iterator)
 		{
-			if (iterator->obj_type == 0)
+			if (iterator->obj_type ==  0 || iterator->obj_type == 2)
 				imp_state_machine(data, iterator);
 			else if (iterator->obj_type == 1)
 				soul_state_machine(data, iterator);

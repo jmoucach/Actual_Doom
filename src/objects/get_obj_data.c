@@ -21,7 +21,7 @@ void			get_obj_data_0(t_object **obj)
 	(*obj)->num_of_sprites_attack = 1;
 	(*obj)->first_sprite_death = 1;
 	(*obj)->num_of_sprites_death = 1;
-	(*obj)->current_sprite = (*obj)->obj_type + 19;
+	(*obj)->current_sprite = (*obj)->obj_type + 33;
 	(*obj)->sprite_pos = GROUND;
 }
 
@@ -52,11 +52,12 @@ void			get_obj_data_2(t_object **obj)
 void			get_obj_data_3(t_object **obj)
 {
 	(*obj)->move_speed = 1;
-	(*obj)->first_sprite_walk = 22;
+	(*obj)->first_sprite_walk = 21;
 	(*obj)->num_of_sprites_walk = 4;
 	(*obj)->first_sprite_attack = 25;
 	(*obj)->num_of_sprites_attack = 2;
 	(*obj)->first_sprite_death = 27;
 	(*obj)->num_of_sprites_death = 9;
+	(*obj)->hp = 100;
 	(*obj)->sprite_pos = GROUND;
 }
