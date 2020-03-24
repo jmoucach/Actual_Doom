@@ -66,15 +66,9 @@ static void	print_menu_text(t_data *data)
 		print_menu_custom(data);
 }
 
-static void	print_menu(t_data *data)
+void		menu(t_data *data)
 {
 	print_menu_background(data, ((int)(data->time / 60) % 20) * 360);
 	print_menu_text(data);
-}
-
-void		menu(t_data *data)
-{
-	print_menu(data);
 	menu_selection(data);
-	//gerer actions ici
 }

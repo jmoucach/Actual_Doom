@@ -249,5 +249,6 @@ void state_machine(t_data *data);
 
 void	menu(t_data *data);
 void	menu_selection(t_data *data);
+void	get_map_values(t_data *data, short selected);
 
 #endif

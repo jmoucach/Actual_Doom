@@ -49,7 +49,7 @@ void			handle_menu_input(t_data *data, const Uint8 *state)
 	if (data->has_menued && !state[SDL_SCANCODE_W] && !state[SDL_SCANCODE_S]
 			&& !state[SDL_SCANCODE_A] && !state[SDL_SCANCODE_D])
 		data->has_menued = 0;
-	if (state[SDL_SCANCODE_RETURN])
+	if (state[SDL_SCANCODE_RETURN] || state[SDL_SCANCODE_KP_ENTER])
 	{
 		if (data->menu_sel == 4)
 			data->quit = 1;
@@ -58,6 +58,7 @@ void			handle_menu_input(t_data *data, const Uint8 *state)
 			delete_cur_map(data);
 			if (!copy_cur_map(data))
 				clean_exit(data, "cur map malloc error");
+			get_map_values(data, data->menu_sel);
 			fill_map(data, data->cur_map);
 			data->menu = 0;
 		}

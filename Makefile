@@ -28,6 +28,7 @@ SRC=	init/main.c\
 		draw/show_player.c\
 		map/new_map.c\
 		map/fill_map.c\
+		map/default_map_values.c\
 		map/parsing.c\
 		menu/menu.c\
 		menu/menu_selection.c\
