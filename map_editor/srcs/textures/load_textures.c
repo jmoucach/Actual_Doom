@@ -79,9 +79,9 @@ short			load_textures(t_fdf *img)
 	img->texture[9] = loadimage("../sprites/soul_button.bmp", img);
 	if (!img->texture[9])
 		return (0);
-	img->texture[10] = loadimage("../sprites/key_button.bmp", img);
-	if (!img->texture[10])
-		return (0);
+//	img->texture[10] = loadimage("../sprites/", img);//TO CHANGE WITH BOSS IMAGE
+//	if (!img->texture[10])
+//		return (0);
 	img->texture[11] = loadimage("../pics/keydoor.bmp", img);
 	if (!img->texture[11])
 		return (0);
@@ -106,7 +106,10 @@ short			load_objects(t_fdf *img)
 	img->texture[16] = loadimage("../sprites/health_button.bmp", img);
 	if (!img->texture[16])
 		return (0);
-	ft_putendl("Ok load_objects");
+	img->texture[17] = loadimage("../sprites/key_button.bmp", img);
+	if (!img->texture[17])
+		return (0);
+	ft_putendl("Ok load_objects");//DEBUG
 	return (1);
 }
 
@@ -114,7 +117,7 @@ short			loadmedia(t_fdf *img)
 {
 	if (load_textures(img) == 1 && load_objects(img) == 1)
 	{
-		ft_putendl("Ok loadmedia");
+		ft_putendl("Ok loadmedia");//DEBUG
 		return (1);
 	}
 	else
