@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+         #
+#    By: JP <JP@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/26 12:42:59 by acostaz           #+#    #+#              #
-#    Updated: 2020/03/11 18:06:09 by acostaz          ###   ########.fr        #
+#    Updated: 2020/03/25 16:07:41 by JP               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ SRC=	init/main.c\
 		objects/item_pickup.c\
 		objects/ammo_pickup.c\
 		objects/hud_keys.c\
+		objects/enemy_vision.c\
 		exit/clean_exit.c
 
 SRC_DIR = src/

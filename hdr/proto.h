@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proto.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JP <JP@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:03:28 by jmoucach          #+#    #+#             */
-/*   Updated: 2020/03/11 17:55:19 by acostaz          ###   ########.fr       */
+/*   Updated: 2020/03/25 16:06:58 by JP               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,5 +251,12 @@ void state_machine(t_data *data);
 void	menu(t_data *data);
 void	menu_selection(t_data *data);
 void	get_map_values(t_data *data, short selected);
+
+/*
+** Enemy Vision
+*/
+
+short   can_see_player(t_data *data, t_object *obj);
+
 
 #endif

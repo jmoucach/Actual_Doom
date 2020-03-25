@@ -152,6 +152,7 @@ typedef struct s_object
 	int		current_sprite;
 
 	int	pix_mid_x;
+	short is_aggro;
 	int	pix_mid_y;
 	short hp;
 	short visible;
