@@ -20,10 +20,10 @@ void			click_to_modify_map(t_map *map, t_mouse *mous, SDL_Event e)
 	SDL_GetMouseState(&(mous->click1[0]), &(mous->click1[1]));
 	x = mous->click1[0];
 	y = mous->click1[1];
-	if (x > (WIDTH - 300) && x < (WIDTH - 30)) //avoids to listen for click on menu
+	if (x > 1320 && x < WIDTH) //avoids to listen for click on menu
 		return ;
 	ft_fix_coords(map, &x, &y);
-	if ((y == 0 || x == 0 || y == map->y - 1 || x == map->x - 1) && mous->loop == 0)
+	if ((y == 0 || x == 0 || y == map->y - 1 || x == map->x - 1) && (mous->loop == 0 || mous->loop > 6))
 		return ;
 	if (y <= (map->y - 1) && x <= (map->x - 1))
 		map->map[y][x] = mous->loop;

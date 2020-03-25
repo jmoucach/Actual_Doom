@@ -25,7 +25,7 @@ void		write_objects(int i, int fd)
 		ft_putchar_fd('D', fd);
 	else if (i == 11)
 		ft_putchar_fd('7', fd);
-	else if (i == 12)			//this is wrong
+	else if (i == 12)
 		ft_putchar_fd('O', fd);
 	else if (i == 13)
 		ft_putchar_fd('S', fd);

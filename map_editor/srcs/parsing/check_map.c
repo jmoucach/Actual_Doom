@@ -30,7 +30,7 @@ int			ft_conform_char(char c)
 }
 
 /*
-** This function transforms every wrong value we have in the mp (cf function above) into ',' AND keeps only the last digit of numbers bove 10 (replaces the other digits with ',')
+** This function transforms every wrong value we have in the mp (cf function above) into ',' AND keeps only the last digit of numbers above 10 (replaces the other digits with ',')
 */
 char		*ft_conform_line(char *str)
 {
