@@ -42,6 +42,21 @@ void			print_button_add_and_substract(t_fdf *img)
 }
 void			draw_textures_squares(t_fdf *img)
 {
+	int			i;
+
+	SDL_SetRenderDrawColor(img->renderer, 215, 215, 215, 0);
+	i = 0;
+	while (++i <= 16)
+	{
+		ft_print_blocks(1320 + (((i - 1) % 3) * 80), 120 + (((i - 1) / 3) * 80), i, img, 70);
+		ft_print_rectangle(img->renderer, 1320 + (((i - 1) % 3) * 80), 120 + (((i  -1 ) / 3) * 80), 70, 70);
+	}/*
+	while (++i <= 16)
+	{
+		ft_print_blocks(1320 + ((i  % 3) * 80), 130 + ((i / 3) * 80), i, img, 70);
+		ft_print_rectangle(img->renderer, 1320 + ((i % 3) * 80), 130 + ((i / 3) * 80), 70, 70);
+	}*/
+		/*
 	SDL_SetRenderDrawColor(img->renderer, 215, 215, 215, 0);
 	ft_print_blocks(1320, 120, 1, img, 70);
 	ft_print_rectangle(img->renderer, 1320, 120, 70, 70);
@@ -57,25 +72,25 @@ void			draw_textures_squares(t_fdf *img)
 	ft_print_rectangle(img->renderer, 1480, 200, 70, 70);
 	ft_print_blocks(1320, 280, 7, img, 70);
 	ft_print_rectangle(img->renderer, 1320, 280, 70, 70);
-	ft_print_blocks(1320, 280, 7, img, 70);
-	ft_print_rectangle(img->renderer, 1320, 280, 70, 70);
 	ft_print_blocks(1400, 280, 8, img, 70);
 	ft_print_rectangle(img->renderer, 1400, 280, 70, 70);
-	ft_print_blocks(1480, 280, 14, img, 70);
+	ft_print_blocks(1480, 280, 9, img, 70);
 	ft_print_rectangle(img->renderer, 1480, 280, 70, 70);
-	ft_print_blocks(1320, 360, 15, img, 70);
+	ft_print_blocks(1320, 360, 10, img, 70);
 	ft_print_rectangle(img->renderer, 1320, 360, 70, 70);
-	ft_print_blocks(1400, 360, 16, img, 70);
+	ft_print_blocks(1400, 360, 11, img, 70);
 	ft_print_rectangle(img->renderer, 1400, 360, 70, 70);
 
-	ft_print_blocks(1320, 450, 9, img, 70);
+	ft_print_blocks(1320, 450, 12, img, 70);
 	ft_print_rectangle(img->renderer, 1320, 450, 70, 70);
-	ft_print_blocks(1400, 450, 10, img, 70);
+	ft_print_blocks(1400, 450, 13, img, 70);
 	ft_print_rectangle(img->renderer, 1400, 450, 70, 70);
-	ft_print_blocks(1480, 450, 11, img, 70);
+	ft_print_blocks(1480, 450, 14, img, 70);
 	ft_print_rectangle(img->renderer, 1480, 450, 70, 70);
-	ft_print_blocks(1320, 530, 12, img, 70);
+	ft_print_blocks(1320, 530, 15, img, 70);
 	ft_print_rectangle(img->renderer, 1320, 530, 70, 70);
+	ft_print_blocks(1320, 530, 167, img, 70);
+	ft_print_rectangle(img->renderer, 1320, 530, 70, 70);*/
 }
 
 void			ft_render_buttons(t_fdf *img)
@@ -103,6 +118,23 @@ void			ft_render_buttons(t_fdf *img)
 
 void			ft_print_pressed_button(t_fdf *img, int i)
 {
+	int			startx;
+	int			starty;
+
+	SDL_SetRenderDrawColor(img->renderer, 255, 0, 0, 0);
+	if (i == 0)
+	{
+		ft_print_rectangle(img->renderer, 1319, 279 + 500, 232, 62);
+		ft_print_rectangle(img->renderer, 1318, 278 + 500, 234, 64);
+	}
+	else
+	{
+		startx = 1320 + (((i - 1) % 3) * 80);
+		starty = 120 + (((i - 1) / 3) * 80);
+		ft_print_rectangle(img->renderer, startx - 1, starty, 72, 72);
+		ft_print_rectangle(img->renderer, startx - 2, starty - 1, 74, 74);
+	}
+	/*
 	SDL_SetRenderDrawColor(img->renderer, 255, 0, 0, 0);
 	if (i == 1)
 	{
@@ -183,5 +215,5 @@ void			ft_print_pressed_button(t_fdf *img, int i)
 	{
 		ft_print_rectangle(img->renderer, 1319, 279 + 500, 232, 62);
 		ft_print_rectangle(img->renderer, 1318, 278 + 500, 234, 64);
-	}
+	}*/
 }
