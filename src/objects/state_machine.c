@@ -6,7 +6,7 @@
 /*   By: JP <JP@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:39:53 by jmoucach          #+#    #+#             */
-/*   Updated: 2020/03/25 16:30:52 by JP               ###   ########.fr       */
+/*   Updated: 2020/03/25 16:52:32 by JP               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,18 @@ void soul_state_machine(t_data *data, t_object *obj)
 	static void (*action[4])(t_data *, t_object *) =
 		{enemy_death, pathfind, hits_taken, get_stunned_sprite};
 
-	if (obj->hp <= 0)
-		obj->state = DYING;
-	else if (data->time - obj->hl_time < 500)
-		obj->state = STUNNED;
-	else
-		obj->state = (obj->dist_to_player >= 1) ? WALKING : ATTACKING;
-	action[obj->state](data, obj);
+	if (!obj->is_aggro && can_see_player(data, obj) == 1)
+		obj->is_aggro = 1;
+	if (obj->is_aggro)
+	{
+		if (obj->hp <= 0)
+			obj->state = DYING;
+		else if (data->time - obj->hl_time < 500)
+			obj->state = STUNNED;
+		else
+			obj->state = (obj->dist_to_player >= 1) ? WALKING : ATTACKING;
+		action[obj->state](data, obj);
+	}
 }
 
 void imp_state_machine(t_data *data, t_object *obj)

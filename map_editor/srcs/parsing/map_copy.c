@@ -30,6 +30,8 @@ int				atoi_or_number(char *str)
 		return (12);
 	else if (str[0] == 'O')
 		return (13);
+	else if (str[0] == '7')
+		return (14);
 	return (0);
 }
 
