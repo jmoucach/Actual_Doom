@@ -20,18 +20,24 @@ int				atoi_or_number(char *str)
 		return (7);
 	else if (str[0] == 'E')
 		return (8);
-	else if (str[0] == 'S')
+	else if (str[0] == 'L')
 		return (9);
-	else if (str[0] == 'B')
+	else if (str[0] == 'D')
 		return (10);
-	else if (str[0] == 'C')
-		return (11);
-	else if (str[0] == 'H')
-		return (12);
-	else if (str[0] == 'O')
-		return (13);
 	else if (str[0] == '7')
+		return (11);
+	else if (str[0] == 'O')
+		return (12);
+	else if (str[0] == 'S')
+		return (13);
+	else if (str[0] == 'B')
 		return (14);
+	else if (str[0] == 'C')
+		return (15);
+	else if (str[0] == 'H')
+		return (16);
+	else if (str[0] == 'K')
+		return (17);
 	return (0);
 }
 

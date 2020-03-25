@@ -17,6 +17,9 @@ int			ft_conform_char(char c)
 	if (ft_isdigit(c) == 1
 			|| c == 'P'
 			|| c == 'E'
+			|| c == 'L'
+			|| c == 'D'
+			|| c == 'K'
 			|| c == 'S'
 			|| c == 'B'
 			|| c == 'C'
