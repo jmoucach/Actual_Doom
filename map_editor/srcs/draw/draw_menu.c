@@ -61,8 +61,12 @@ void			draw_textures_squares(t_fdf *img)
 	ft_print_rectangle(img->renderer, 1320, 280, 70, 70);
 	ft_print_blocks(1400, 280, 8, img, 70);
 	ft_print_rectangle(img->renderer, 1400, 280, 70, 70);
+	ft_print_blocks(1480, 280, 14, img, 70);
 	ft_print_rectangle(img->renderer, 1480, 280, 70, 70);
+	ft_print_blocks(1320, 360, 15, img, 70);
 	ft_print_rectangle(img->renderer, 1320, 360, 70, 70);
+	ft_print_blocks(1400, 360, 16, img, 70);
+	ft_print_rectangle(img->renderer, 1400, 360, 70, 70);
 
 	ft_print_blocks(1320, 450, 9, img, 70);
 	ft_print_rectangle(img->renderer, 1320, 450, 70, 70);
@@ -159,6 +163,21 @@ void			ft_print_pressed_button(t_fdf *img, int i)
 	{
 		ft_print_rectangle(img->renderer, 1320 - 1, 529, 72, 72);
 		ft_print_rectangle(img->renderer, 1320 - 2, 528, 74, 74);
+	}
+	if (i == 14)
+	{
+		ft_print_rectangle(img->renderer, 1480 - 1, 280 - 1, 72, 72);
+		ft_print_rectangle(img->renderer, 1480 - 2, 280 - 2, 74, 74);
+	}
+	if (i == 15)
+	{
+		ft_print_rectangle(img->renderer, 1320 - 1, 360 - 1, 72, 72);
+		ft_print_rectangle(img->renderer, 1320 - 2, 360 - 2, 74, 74);
+	}
+	if (i == 16)
+	{
+		ft_print_rectangle(img->renderer, 1400 - 1, 360 - 1, 72, 72);
+		ft_print_rectangle(img->renderer, 1400 - 2, 360 - 2, 74, 74);
 	}
 	if (i == 0)
 	{

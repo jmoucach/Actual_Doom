@@ -70,6 +70,15 @@ short			load_textures(t_fdf *img)
 	img->texture[6] = loadimage("../pics/redbrick.bmp", img);
 	if (!img->texture[6])
 		return (0);
+	img->texture[14] = loadimage("../sprites/soul_button.bmp", img);
+	if (!img->texture[14])
+		return (0);
+	img->texture[15] = loadimage("../sprites/key_button.bmp", img);
+	if (!img->texture[15])
+		return (0);
+	img->texture[16] = loadimage("../pics/keydoor.bmp", img);
+	if (!img->texture[16])
+		return (0);
 	ft_putendl("Ok load_textures");
 	return (1);
 }
@@ -82,16 +91,16 @@ short			load_objects(t_fdf *img)
 	img->texture[8] = loadimage("../sprites/enemy_face.bmp", img);
 	if (!img->texture[8])
 		return (0);
-	img->texture[9] = loadimage("../sprites/pickups/shells.bmp", img);
+	img->texture[9] = loadimage("../sprites/shells_button.bmp", img);
 	if (!img->texture[9])
 		return (0);
-	img->texture[10] = loadimage("../sprites/pickups/bullets.bmp", img);
+	img->texture[10] = loadimage("../sprites/bullets_button.bmp", img);
 	if (!img->texture[10])
 		return (0);
-	img->texture[11] = loadimage("../sprites/pickups/cell.bmp", img);
+	img->texture[11] = loadimage("../sprites/cell_button.bmp", img);
 	if (!img->texture[11])
 		return (0);
-	img->texture[12] = loadimage("../sprites/pickups/health_pu.bmp", img);
+	img->texture[12] = loadimage("../sprites/health_button.bmp", img);
 	if (!img->texture[12])
 		return (0);
 	img->texture[13] = loadimage("../pics/pillar.bmp", img);

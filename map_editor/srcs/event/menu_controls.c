@@ -45,6 +45,12 @@ void			ft_menu_event(t_map *map, t_mouse *mous, SDL_Event e)
 				set_mous_loop(mous, 7);
 			if (tmx >= 1400 && tmx <= (1400 + 70) && tmy >= 280 && tmy <= 280 + 70)
 				set_mous_loop(mous, 8);
+			if (tmx >= 1480 && tmx <= (1480 + 70) && tmy >= 280 && tmy <= 280 + 70)
+				set_mous_loop(mous, 14);
+			if (tmx >= 1320 && tmx <= (1320 + 70) && tmy >= 360 && tmy <= 360 + 70)
+				set_mous_loop(mous, 15);
+			if (tmx >= 1400 && tmx <= (1400 + 70) && tmy >= 360 && tmy <= 360 + 70)
+				set_mous_loop(mous, 16);
 
 			if (tmx >= 1320 && tmx <= (1320 + 70) && tmy >= 450 && tmy <= 450 + 70)
 				set_mous_loop(mous, 9);
