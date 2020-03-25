@@ -15,7 +15,7 @@
 void			set_mous_loop(t_mouse *mous, int i)
 {
 	mous->loop = i;
-	loop_til_release();
+//	loop_til_release();
 }
 
 void			ft_menu_event(t_map *map, t_mouse *mous, SDL_Event e)
