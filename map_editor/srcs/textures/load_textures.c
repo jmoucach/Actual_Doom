@@ -79,9 +79,9 @@ short			load_textures(t_fdf *img)
 	img->texture[9] = loadimage("../sprites/soul_button.bmp", img);
 	if (!img->texture[9])
 		return (0);
-//	img->texture[10] = loadimage("../sprites/", img);//TO CHANGE WITH BOSS IMAGE
-//	if (!img->texture[10])
-//		return (0);
+	img->texture[10] = loadimage("../sprites/boss_button.bmp", img);//TO CHANGE WITH BOSS IMAGE
+	if (!img->texture[10])
+		return (0);
 	img->texture[11] = loadimage("../pics/keydoor.bmp", img);
 	if (!img->texture[11])
 		return (0);
