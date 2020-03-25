@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   item_pickup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: JP <JP@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/10 14:38:25 by acostaz           #+#    #+#             */
-/*   Updated: 2020/03/11 17:57:07 by acostaz          ###   ########.fr       */
+/*   Updated: 2020/03/25 17:55:22 by JP               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ static short	picked_up_item(t_data *data, t_object **obj)
 {
 	if ((*obj)->dist_to_player < 1)
 	{
-		if ((*obj)->obj_type == 3 && data->p.bullets < 200)
+		if ((*obj)->obj_type == 4 && data->p.bullets < 200)
 			return (bullet_pickup(data, obj));
-		else if ((*obj)->obj_type == 4 && data->p.shells < 16)
+		else if ((*obj)->obj_type == 5 && data->p.shells < 16)
 			return (shell_pickup(data, obj));
-		else if ((*obj)->obj_type == 5 && data->p.cells < 100)
+		else if ((*obj)->obj_type == 6 && data->p.cells < 100)
 			return (cell_pickup(data, obj));
-		else if ((*obj)->obj_type == 6 && data->p.hp < 100)
+		else if ((*obj)->obj_type == 7 && data->p.hp < 100)
 			return (health_pickup(data, obj));
-		else if ((*obj)->obj_type == 7 && data->p.armor < 100)
+		else if ((*obj)->obj_type == 8 && data->p.armor < 100)
 			return (armor_pickup(data, obj));
-		else if ((*obj)->obj_type == 8 && data->p.key < 10)
+		else if ((*obj)->obj_type == 9 && data->p.key < 10)
 			return (key_pickup(data, obj));
 	}
 	return (0);

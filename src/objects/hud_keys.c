@@ -12,7 +12,7 @@ static void	print_one_key(t_data *data, int x, int y)
 		j = -1;
 		while (++j < 60)
 		{
-			color = get_pixel(data->obj_sprite[28].surf, i, j);
+			color = get_pixel(data->obj_sprite[43].surf, i, j);
 			if (color != 0)
 				data->pixels[(i + x) + (j + y) * SCREEN_WIDTH] = color;
 		}
