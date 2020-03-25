@@ -61,6 +61,8 @@ int		ft_create_map(char *map_name, char *width, char *height)
 
 	w = ft_atoi(width);
 	h = ft_atoi(height);
+	if (ft_strcmp(&map_name[ft_strlen(map_name) - 5], ".doom") != 0)
+		return (ft_error("map name must end with '.doom'", 2));
 	if ((fd = open(map_name, O_RDONLY | O_NOFOLLOW)) > 0)
 		return (ft_error("Map already exists, remove the size parameters", 2));
 	if ((h <= 0 || w <= 0 || h >= 100 || w >= 100))
@@ -77,6 +79,8 @@ int		ft_check_file(char *file)
 	int	fd;
 
 	fd = 0;
+	if (ft_strcmp(&file[ft_strlen(file) - 5], ".doom") != 0)
+		return (ft_error("map name must end with '.doom'", 2));
 	if ((fd = open(file, O_DIRECTORY) > 0))
 	{
 		close(fd);
