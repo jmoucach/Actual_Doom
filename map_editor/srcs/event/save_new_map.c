@@ -20,23 +20,23 @@ void		write_objects(int i, int fd)
 	else if (i == 8)
 		ft_putchar_fd('E', fd);
 	else if (i == 9)
-		ft_putchar_fd('S', fd);
-	else if (i == 10)
-		ft_putchar_fd('B', fd);
-	else if (i == 11)
-		ft_putchar_fd('C', fd);
-	else if (i == 12)			//this is wrong
-		ft_putchar_fd('H', fd);
-	else if (i == 12)
-		ft_putchar_fd('O', fd);
-	else if (i == 14)
 		ft_putchar_fd('L', fd);
-	else if (i == 15)
-		ft_putchar_fd('K', fd);
-	else if (i == 15)
-		ft_putchar_fd('K', fd);
-	else if (i == 16)
+	else if (i == 10)
+		ft_putchar_fd('D', fd);
+	else if (i == 11)
 		ft_putchar_fd('7', fd);
+	else if (i == 12)			//this is wrong
+		ft_putchar_fd('O', fd);
+	else if (i == 13)
+		ft_putchar_fd('S', fd);
+	else if (i == 14)
+		ft_putchar_fd('B', fd);
+	else if (i == 15)
+		ft_putchar_fd('C', fd);
+	else if (i == 16)
+		ft_putchar_fd('H', fd);
+	else if (i == 17)
+		ft_putchar_fd('K', fd);
 }
 
 void		write_tab(int **tab, int width, int height, int fd)
