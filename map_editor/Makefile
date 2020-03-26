@@ -32,7 +32,6 @@ SRC = main.c \
 	   parsing/parsing.c \
 	   tools/cart_to_iso.c \
 	   tools/colorize.c \
-	   tools/color_negative_positive.c \
 	   tools/fix_coords.c \
 	   tools/free_functions.c \
 	   tools/GNL_incoming_map.c \
