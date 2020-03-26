@@ -47,9 +47,7 @@ int		ft_open_existing_map(char *map_name)
 		fd = 0;
 	}
 	else
-		fd = open(map_name, O_RDWR | O_NOFOLLOW /*| O_APPEND*/);
-	/*	if (ft_check_first_line(fd) == 0)
-			return (0);*/
+		fd = open(map_name, O_RDWR | O_NOFOLLOW);
 	return (fd);
 }
 

@@ -16,11 +16,11 @@
 # include "../libft/libft.h"
 //# include "/usr/local/include/SDL2/SDL.h"
 //# include "/usr/local/include/SDL2/SDL_TTF.h"
-# include "/usr/include/SDL2/SDL.h"
-# include "/usr/include/SDL2/SDL_ttf.h"
+//# include "/usr/include/SDL2/SDL.h"
+//# include "/usr/include/SDL2/SDL_ttf.h"
 
-//# include <SDL.h>
-//# include <SDL_ttf.h>
+# include <SDL.h>
+# include <SDL_ttf.h>
 # include "../libft/get_next_line.h"
 # include <fcntl.h>
 # include <stdio.h>//DEBUG
@@ -189,10 +189,10 @@ void				ft_free_fdf(t_fdf *fdf);
 **			EVENT
 */
 void				loop_til_release();
-void				ft_menu_event(/*t_map *map, */t_mouse *mous, SDL_Event e);
+void				ft_menu_event(t_mouse *mous, SDL_Event e);
 void				ft_keys_event(t_map *map, SDL_Event e, t_key *key);
 void				ft_mouse_event(t_fdf *img, t_mouse *mous, SDL_Event e);
-void				click_to_modify_map(t_map *map, t_mouse *mous);//, SDL_Event e);
+void				click_to_modify_map(t_map *map, t_mouse *mous);
 void				ft_save_map(t_fdf *img);
 /*
 **			DRAW
