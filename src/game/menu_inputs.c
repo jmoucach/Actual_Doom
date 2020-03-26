@@ -59,7 +59,7 @@ void			handle_menu_input(t_data *data, const Uint8 *state)
 			if (!copy_cur_map(data))
 				clean_exit(data, "cur map malloc error");
 			get_map_values(data, data->menu_sel);
-			fill_map(data, data->cur_map);
+			fill_map(data, data->maps[data->menu_sel]);
 			data->menu = 0;
 			data->enter_screen = data->menu_sel + 1;
 			if (data->menu_sel == 3)

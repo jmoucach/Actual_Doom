@@ -67,8 +67,6 @@ int				alloc_cur_map(t_data *data, t_map map)
 
 int				copy_cur_map(t_data *data)
 {
-	int			i;
-	int			j;
 	int			m;
 
 	m = data->menu_sel;
@@ -76,13 +74,6 @@ int				copy_cur_map(t_data *data)
 		return (0);
 	data->cur_map.width = data->maps[m].width;
 	data->cur_map.height = data->maps[m].height;
-	i = -1;
-	while (++i < data->maps[m].height)
-	{
-		j = -1;
-		while (++j < data->maps[m].width)
-			data->cur_map.map[i][j] = data->maps[m].map[i][j];
-	}
 	return (1);
 }
 
