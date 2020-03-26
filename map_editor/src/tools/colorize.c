@@ -22,7 +22,7 @@ SDL_Color		ft_hexa_to_SDL(int color)
 	col.a = 255;
 	return (col);
 }
-
+/*
 int				ft_height_to_color(int height)
 {
 	int			color;
@@ -39,7 +39,7 @@ int				ft_height_to_color(int height)
 		color = GREEN;
 	return (color);
 }
-/*
+
 void			ft_attribute_color_to_points(t_map *map)
 {
 	int			x;
