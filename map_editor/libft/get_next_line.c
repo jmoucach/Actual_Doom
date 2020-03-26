@@ -3,82 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpoulvel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/14 12:08:33 by jpoulvel          #+#    #+#             */
-/*   Updated: 2019/03/08 14:26:27 by jpoulvel         ###   ########.fr       */
+/*   Created: 2019/01/16 10:42:04 by acostaz           #+#    #+#             */
+/*   Updated: 2019/06/19 14:23:01 by acostaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "libft.h"
 
-char			*ft_strjoin_free(char *s1, char *s2)
+int				rotate_left(char *buf)
 {
-	int			i;
-	char		*dest;
+	int			endl;
 
-	if ((!s1 && !s2) || !(dest = (char *)malloc(sizeof(char) *
-					((ft_strlen(s1) + ft_strlen(s2)) + 1))))
-		return (NULL);
-	i = -1;
-	ft_strcpy(dest, s1);
-	ft_strcpy(dest + ft_strlen(s1), s2);
-	ft_strdel(&s1);
-	return (dest);
-}
-
-int				fill_line(char **line, char **stock)
-{
-	int			i;
-	char		*to_free;
-
-	i = -1;
-	if (ft_strlen(*stock) == 0)
+	if (!buf)
 		return (0);
-	if (ft_strchr(*stock, '\n') == NULL)
+	endl = 0;
+	while (buf[endl] != '\0' && buf[endl] != '\n')
+		endl++;
+	if (buf[endl] != '\0')
 	{
-		if (!(*line = ft_strdup(*stock)))
-			return (-1);
-		*stock ? ft_strdel(stock) : 1;
-		return (1);
+		endl++;
+		ft_strncpy(buf, buf + endl, ft_strlen(buf + endl) + 1);
 	}
-	if (!(to_free = ft_strdup(ft_strchr(*stock, '\n'))))
-		return (-1);
-	if (!(*line = ft_strsub(*stock, 0, (ft_strchr(*stock, '\n') - *stock))))
-		return (-1);
-	ft_strdel(stock);
-	if (ft_strlen(to_free) > 1)
-	{
-		if (!(*stock = ft_strdup(to_free + 1)))
-			return (-1);
-	}
-	ft_strlen(to_free) > 0 ? ft_strdel(&to_free) : 1;
-	return (1);
+	else
+		ft_strclr(buf);
+	return (0);
 }
 
-int				get_next_line(int fd, char **line)
+int				get_next_line(int const fd, char **line)
 {
-	static char	*stock[OPEN_MAX + 1];
 	int			ret;
-	char		buf[BUFF_SIZE + 1];
-	int			line_sent;
+	int			i;
+	char		*buf;
+	static char	*reads;
+	char		*tmp;
 
-	if (fd < 0 || fd > OPEN_MAX || !line || BUFF_SIZE <= 0)
+	if (read(fd, reads, 0) || !line || !(buf = ft_strnew(BUFF_SIZE + 1)))
 		return (-1);
-	if (stock[fd] == NULL && !(stock[fd] = ft_strnew(0)))
-		return (-1);
-	while (ft_strchr(stock[fd], '\n') == NULL &&
-			(ret = read(fd, buf, BUFF_SIZE)) > 0)
+	reads = reads ? reads : ft_strnew(0);
+	i = rotate_left(reads);
+	ret = -1;
+	while (!ft_strchr(reads, '\n') && (ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		buf[ret] = '\0';
-		if (!(stock[fd] = ft_strjoin_free(stock[fd], buf)))
-			return (-1);
+		buf[ret] = 0;
+		tmp = reads;
+		reads = ft_strjoin(tmp, buf);
+		ft_strdel(&tmp);
 	}
-	if (ret < 0)
-		return (-1);
-	line_sent = fill_line(line, &stock[fd]);
-	if (line_sent == 0 && ret == 0)
-		return (0);
-	return (line_sent);
+	while (reads[i] != '\0' && reads[i] != '\n')
+		i++;
+	*line = ft_strncpy(ft_strnew(i), reads, i);
+	if (reads && !ret)
+		ft_strdel(&reads);
+	ft_strdel(&buf);
+	return (ret || **line);
 }

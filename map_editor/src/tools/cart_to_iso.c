@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   cart_to_iso.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoulvel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 15:51:08 by jpoulvel          #+#    #+#             */
-/*   Updated: 2018/12/12 11:59:04 by jpoulvel         ###   ########.fr       */
+/*   Created: 2020/03/03 19:22:31 by jpoulvel          #+#    #+#             */
+/*   Updated: 2020/03/04 19:44:23 by jpoulvel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putendl_fd(char const *s, int fd)
+#include "../../hdr/map_editor.h"
+/*
+void		ft_cart_to_iso(t_map *map)
 {
-	if (!s)
-		return ;
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
-}
+	t_point	cart;
+	int		i;
+	int		j;
+
+	i = -1;
+	map->zmax = 0;
+	while (++i < map->y)
+	{
+		j = -1;
+		while (++j < map->x)
+		{
+			cart = map->map[i][j];
+			map->map[i][j].x = cart.x - cart.y;
+			map->map[i][j].y = (cart.x + cart.y) / 2;
+			if (map->map[i][j].z > map->zmax)
+				map->zmax = map->map[i][j].z;
+		}
+	}
+	map->proj = 'I';
+}*/

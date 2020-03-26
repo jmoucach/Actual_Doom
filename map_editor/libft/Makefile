@@ -92,7 +92,7 @@ OBJ = $(SRCS:.c=.o)
 
 INCL = libft.h
 
-FLAGS = -Wall -Wextra -Werror -I $(INCL)
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 

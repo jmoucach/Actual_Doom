@@ -1,4 +1,5 @@
 doom-nukem
+map_editor/**/**.o
 **/**.o
 **/**.d
 **/obj/**

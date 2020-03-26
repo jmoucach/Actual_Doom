@@ -10,86 +10,90 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = map_editor
+CFLAGS = -Wall -Werror -Wextra -MMD `sdl2-config --cflags` 
 
-SRCS = srcs/main.c \
-		srcs/draw/draw_menu.c \
-		srcs/draw/draw_blocks.c \
-		srcs/draw/print_grid.c \
-		srcs/draw/render.c \
-		srcs/event/infinite_loop.c \
-		srcs/event/keys_controls.c \
-		srcs/event/menu_controls.c \
-		srcs/event/modify_map.c \
-		srcs/event/mouse_controls.c \
-		srcs/event/save_new_map.c \
-		srcs/parsing/check_map.c \
-		srcs/parsing/map_copy.c \
-		srcs/parsing/parsing.c \
-		srcs/tools/cart_to_iso.c \
-		srcs/tools/colorize.c \
-		srcs/tools/color_negative_positive.c \
-		srcs/tools/fix_coords.c \
-		srcs/tools/free_functions.c \
-		srcs/tools/GNL_incoming_map.c \
-		srcs/tools/change_appearance.c \
-		srcs/init/center_map.c \
-		srcs/init/mouse_and_key_init.c \
-		srcs/init/surfaces_init.c \
-		srcs/init/structures_init.c \
-		srcs/init/text_init.c \
-		srcs/textures/load_textures.c
+NAME = mapeditor
 
-OBJ = $(SRCS:.c=.o)
+LIBFT = libft/libft.a
 
-LIB_DIR = libft
+SRC = main.c \
+	   draw/draw_menu.c \
+	   draw/draw_blocks.c \
+	   draw/print_grid.c \
+	   draw/render.c \
+	   event/infinite_loop.c \
+	   event/keys_controls.c \
+	   event/menu_controls.c \
+	   event/modify_map.c \
+	   event/mouse_controls.c \
+	   event/save_new_map.c \
+	   parsing/check_map.c \
+	   parsing/map_copy.c \
+	   parsing/parsing.c \
+	   tools/cart_to_iso.c \
+	   tools/colorize.c \
+	   tools/color_negative_positive.c \
+	   tools/fix_coords.c \
+	   tools/free_functions.c \
+	   tools/GNL_incoming_map.c \
+	   tools/change_appearance.c \
+	   init/center_map.c \
+	   init/mouse_and_key_init.c \
+	   init/surfaces_init.c \
+	   init/structures_init.c \
+	   init/text_init.c \
+	   textures/load_textures.c
 
-INCL = map_editor.h \
-	   $(LIB_DIR)/libft.a \
-	   	#-I./frameworks/SDL2.framework/Versions/A/Headers \
-	   -I./frameworks/SDL2_ttf.framework/Versions/A/Headers \
-	   -I./frameworks/SDL2_image.framework/Versions/A/Headers \
-	   -I./frameworks/SDL2_mixer.framework/Headers \
-	   -I./frameworks/SDL2_net.framework/Headers \
-	   -F./frameworks
+SRC_DIR = src/
+OBJ_DIR = obj/
+INC_DIR = hdr/
 
-FLAGS = -Wall -Wextra -Werror -I $(INCL) $(MLXFLAGS)
+SRCS= $(addprefix $(SRC_DIR),$(SRC))
+OBJ= $(SRC:.c=.o)
+DPD= $(SRC:.c=.d)
 
-SDLFLAGS = -lSDL2-2.0.0  -lSDL2_ttf-2.0.0 `sdl2-config --cflags --libs`
+OBJ_SUBDIRS= draw event parsing tools init textures
+OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
+SUBDIRS= $(foreach dir, $(OBJ_SUBDIRS), $(OBJ_DIR)$(dir))
+LIB= `sdl2-config --libs` \
+	 `sdl2-config --libs`_ttf\
+	 -L libft -lft
+INCLUDES= hdr/map_editor.h
 
-FRAMEWORKS = -F./frameworks \
-			 -rpath ./frameworks \
-			 -framework OpenGL -framework AppKit -framework OpenCl \
-			 -framework SDL2 -framework SDL2_ttf -framework SDL2_image \
-			 -framework SDL2_mixer -framework SDL2_net
+all: $(SUBDIRS)
+	@$(MAKE) all -C libft
+	@$(MAKE) -j $(NAME)
 
-CC = clang -g
+$(NAME): $(OBJS) $(INCLUDES)
+	@echo "\033[2K \033[A"
+	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(LIB) $(LIBFT) -lm
+	@echo "\033[32m[$(NAME)]: compiled\033[0m"
 
-all: Makefile $(NAME)
+$(SUBDIRS):
+	@ mkdir -p $(SUBDIRS)
 
-$(NAME): FORCE LIB $(OBJ)
-	@gcc -o $(NAME) $(FLAGS) $(OBJ) $(SDLFLAGS)
-
-%.o: %.c
-	@$(CC) -o $@ -c $< $(CFLAGS) $(SDLFLAGS)
-	@echo $<
-
-LIB:
-	@$(MAKE) -C $(LIB_DIR)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT)
+	@ mkdir -p $(OBJ_DIR)
+	@ mkdir -p $(SUBDIRS)
+	@echo "\033[2K [$(NAME)]: Compilation of $< \033[A"
+	@gcc $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 
 clean:
-	@rm -f $(OBJ)
-	@$(MAKE) clean -C $(LIB_DIR)
+	@$(MAKE) clean -C libft
+	@rm -rf $(OBJ_DIR)
+	@echo "\033[33m[$(NAME)]: OBJ deleted\033[0m"
 
 fclean: clean
-	rm -f $(NAME)
-	@$(MAKE) fclean -C $(LIB_DIR)
+	@rm -f $(LIBFT)
+	@echo "\033[31m[$(LIBFT)]: deleted\033[0m"
+	@rm -f $(NAME)
+	@echo "\033[31m[$(NAME)]: deleted\033[0m"
 
-re: fclean $(NAME)
+instalSDL:
+	brew install SDL2
 
-san : FORCE LIB $(OBJ)
-	@gcc -o $(NAME) -fsanitize=address $(FLAGS) $(OBJ) $(SDLFLAGS)
+re : fclean all
 
-FORCE:
+.PHONY: all, clean, fclean, re
 
-.PHONY: all clean fclean re FORCE
+-include $(DPD)

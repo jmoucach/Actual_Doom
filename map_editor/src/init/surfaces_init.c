@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   surfaces_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoulvel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 15:51:08 by jpoulvel          #+#    #+#             */
-/*   Updated: 2018/12/12 11:59:04 by jpoulvel         ###   ########.fr       */
+/*   Created: 2020/03/04 18:38:08 by jpoulvel          #+#    #+#             */
+/*   Updated: 2020/03/04 18:50:12 by jpoulvel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../hdr/map_editor.h"
 
-void	ft_putendl_fd(char const *s, int fd)
+void			nullify_textures(t_fdf *img)
 {
-	if (!s)
-		return ;
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	int			i;
+
+	i = -1;
+	while (++i < 6)
+		img->texture[i] = NULL;
 }
