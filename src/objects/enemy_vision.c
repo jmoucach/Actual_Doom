@@ -20,6 +20,8 @@ short   can_see_player(t_data *data, t_object *obj)
     t_d_point sidedist;
     t_point step;
 
+	if (obj->dist_to_player > 10)
+		return (0);
     ray.pos.x = obj->pos.x;
     ray.pos.y = obj->pos.y;
     ray.dir.x = data->p.pos.x - obj->pos.x;

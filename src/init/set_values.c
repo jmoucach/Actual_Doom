@@ -66,7 +66,7 @@ static void	create_sprites_2(t_data *data)
 			(t_d_point){1, 1}, data);
 	data->obj_sprite[25] = create_sprites("sprites/enemies/boss_attacking_1.bmp",
 			(t_d_point){1, 1}, data);
-	data->obj_sprite[26] = create_sprites("sprites/enemies/boss_attacking_1.bmp",
+	data->obj_sprite[26] = create_sprites("sprites/enemies/boss_attacking_2.bmp",
 			(t_d_point){1, 1}, data);
 	data->obj_sprite[27] = create_sprites("sprites/enemies/boss_dead_1.bmp",
 			(t_d_point){1, 1}, data);
@@ -121,9 +121,9 @@ static void	alloc_data_structs(t_data *data)
 	if (!(data->surface = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 13)))
 		clean_exit(data, "Surface malloc error");
 	nullify_tab((void**)data->surface, 13);
-	if (!(data->obj_sprite = (t_sprite*)malloc(sizeof(t_sprite) * 43)))
+	if (!(data->obj_sprite = (t_sprite*)malloc(sizeof(t_sprite) * 44)))
 		clean_exit(data, "Object sprite malloc error");
-	nullify_sprites(data->obj_sprite, 20);
+	nullify_sprites(data->obj_sprite, 44);
 	if (!(data->zBuffer = (double *)malloc(sizeof(double) * SCREEN_WIDTH)))
 		clean_exit(data, "ZBuffer malloc error");
 }
