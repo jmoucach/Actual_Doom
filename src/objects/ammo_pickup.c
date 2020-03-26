@@ -16,7 +16,7 @@ short	cell_pickup(t_data *data, t_object **obj)
 {
 	int		id_stock;
 
-	data->p.cells += 25;
+	data->p.cells += 50;
 	if (data->p.cells > 100)
 		data->p.cells = 100;
 	id_stock = (*obj)->id_key;
@@ -29,9 +29,9 @@ short	shell_pickup(t_data *data, t_object **obj)
 {
 	int		id_stock;
 
-	data->p.shells += 4;
-	if (data->p.shells > 16)
-		data->p.shells = 16;
+	data->p.shells += 10;
+	if (data->p.shells > 20)
+		data->p.shells = 20;
 	id_stock = (*obj)->id_key;
 	*obj = (*obj)->next;
 	remove_object(&(data->obj), id_stock);
