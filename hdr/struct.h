@@ -209,7 +209,6 @@ typedef struct s_data
 	t_player		p;
 	t_map			cur_map;
 	t_map			maps[4];
-	int				surface_nb;
 	short			toggle_minimap;
 	short			quit;
 
@@ -228,6 +227,9 @@ typedef struct s_data
 	short			menu;
 	short			menu_sel;
 	short			has_menued;
+	short			enter_screen;
+	short			exit_screen;
+	short			death_screen;
 } t_data;
 
 #endif

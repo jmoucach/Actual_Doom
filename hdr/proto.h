@@ -181,6 +181,7 @@ void swap_objects(t_object **head, t_object *obj1, t_object *obj2);
 
 //
 void pathfind(t_data *data, t_object *obj);
+short	count_enemies(t_data *data);
 
 /*
 ** Object caster
@@ -257,6 +258,13 @@ void	get_map_values(t_data *data, short selected);
 */
 
 short   can_see_player(t_data *data, t_object *obj);
+
+/*
+** Story
+*/
+
+void	handle_text_screen_input(t_data *data, const Uint8 *state);
+void	display_story_screen(t_data *data);
 
 
 #endif

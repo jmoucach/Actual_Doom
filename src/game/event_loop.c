@@ -14,9 +14,12 @@
 
 void			handle_input2(t_data *data, const Uint8 *state)
 {
-	if (state[SDL_SCANCODE_M])
+	if (state[SDL_SCANCODE_M] || data->p.hp <= 0)
 	{
-		data->menu = 1;
+		if (data->p.hp > 0)
+			data->menu = 1;
+		else
+			data->death_screen = 1;
 		data->p.key = 0;
 		free_objects(data);
 	}
@@ -76,6 +79,8 @@ void			game_loop(t_data *data)
 		}
 		if (data->menu)
 			menu(data);
+		else if (data->enter_screen || data->exit_screen || data->death_screen)
+			display_story_screen(data);
 		else
 		{
 			if (!data->ceiling)
@@ -93,6 +98,8 @@ void			game_loop(t_data *data)
 		state = SDL_GetKeyboardState(NULL);
 		if (data->menu)
 			handle_menu_input(data, state);
+		else if (data->enter_screen || data->exit_screen)
+			handle_text_screen_input(data, state);
 		else
 			handle_input(data, state);
 		red_hit_screen(data);
@@ -103,14 +110,14 @@ void			game_loop(t_data *data)
 				width * 4);
 		SDL_RenderClear(data->renderer);
 		SDL_RenderCopy(data->renderer, data->texture, NULL, NULL);
-		if (!data->menu)
+		if (!data->menu && !data->enter_screen && !data->exit_screen)
 		{
 			display_hud(data);
 			display_health(data);
 			display_ammo_side(data);
 		}
-		if (data->p.hp <= 0)
-			clean_exit(data, "You are dead");
+		if (data->menu == 0 && count_enemies(data) == 0)
+			data->exit_screen = 1;
 		SDL_RenderPresent(data->renderer);
 		ft_bzero(data->pixels, (SCREEN_WIDTH * SCREEN_HEIGHT + 1) * 4);
 		// SDL_Delay(5000);

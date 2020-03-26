@@ -36,6 +36,8 @@ SRC=	init/main.c\
 		raycasting/floorcaster.c\
 		raycasting/objectcasting.c\
 		raycasting/set_objcast_values.c\
+		story/display_story_screen.c\
+		story/text_screen_inputs.c\
 		game/health.c\
 		game/ammo.c\
 		game/combat.c\
@@ -57,6 +59,7 @@ SRC=	init/main.c\
 		weapon/use_bfg.c\
 		weapon/use_handgun.c\
 		weapon/use_minigun.c\
+		objects/count_enemies.c\
 		objects/pathfinder.c\
 		objects/obj_list.c\
 		objects/swap_obj.c\
@@ -77,7 +80,7 @@ OBJ= $(SRC:.c=.o)
 DPD= $(SRC:.c=.d)
 
 OBJ_SUBDIRS= init draw map raycasting game image skybox weapon \
-			 objects menu exit
+			 objects menu story exit
 OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
 SUBDIRS= $(foreach dir, $(OBJ_SUBDIRS), $(OBJ_DIR)$(dir))
 LIB= `sdl2-config --libs` \

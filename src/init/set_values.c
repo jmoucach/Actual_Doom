@@ -118,9 +118,9 @@ static void	create_sprites_1(t_data *data)
 
 static void	alloc_data_structs(t_data *data)
 {
-	if (!(data->surface = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 13)))
+	if (!(data->surface = (SDL_Surface **)malloc(sizeof(SDL_Surface *) * 20)))
 		clean_exit(data, "Surface malloc error");
-	nullify_tab((void**)data->surface, 13);
+	nullify_tab((void**)data->surface, 20);
 	if (!(data->obj_sprite = (t_sprite*)malloc(sizeof(t_sprite) * 44)))
 		clean_exit(data, "Object sprite malloc error");
 	nullify_sprites(data->obj_sprite, 44);

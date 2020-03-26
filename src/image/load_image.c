@@ -39,51 +39,53 @@ SDL_Surface		*loadimage(char *path)
 	return (loadedsurface);
 }
 
-void			load_skybox(t_data *data)
+void			load_skybox_and_menu(t_data *data)
 {
 	if (!(data->surface[7] = loadimage("pics/skybox/skybox_2.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
 	if (!(data->surface[8] = loadimage("pics/skybox/skybox_3.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
 	if (!(data->surface[9] = loadimage("pics/menu/menu_titles.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
 	if (!(data->surface[10] = loadimage("pics/menu/menu_custom.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
 	if (!(data->surface[11] = loadimage("pics/menu/menu_background.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
 	if (!(data->surface[12] = loadimage("pics/menu/menu_arrow.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
+
+	if (!(data->surface[13] = loadimage("pics/story/dead.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
+	if (!(data->surface[14] = loadimage("pics/story/start1.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
+	if (!(data->surface[15] = loadimage("pics/story/start2.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
+	if (!(data->surface[16] = loadimage("pics/story/start3.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
+	if (!(data->surface[17] = loadimage("pics/story/end1.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
+	if (!(data->surface[18] = loadimage("pics/story/end2.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
+	if (!(data->surface[19] = loadimage("pics/story/end3.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
 }
 
 void			loadmedia(t_data *data)
 {
 	if (!(data->surface[0] = loadimage("pics/bluestone.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
 	if (!(data->surface[1] = loadimage("pics/greystone.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
 	if (!(data->surface[2] = loadimage("pics/mossy.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
 	if (!(data->surface[3] = loadimage("pics/tile2.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
 	if (!(data->surface[4] = loadimage("pics/wood.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
 	if (!(data->surface[5] = loadimage("pics/redbrick.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
 	if (!(data->surface[6] = loadimage("pics/keydoor.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	data->surface_nb++;
-	load_skybox(data);
+	load_skybox_and_menu(data);
 	load_media_hud_1(data);
 }
