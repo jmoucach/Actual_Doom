@@ -62,6 +62,8 @@ void			handle_menu_input(t_data *data, const Uint8 *state)
 			fill_map(data, data->cur_map);
 			data->menu = 0;
 			data->enter_screen = data->menu_sel + 1;
+			if (data->menu_sel == 3)
+				data->enter_screen = 0;
 		}
 	}
 }

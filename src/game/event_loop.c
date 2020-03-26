@@ -116,7 +116,7 @@ void			game_loop(t_data *data)
 			display_health(data);
 			display_ammo_side(data);
 		}
-		if (data->menu == 0 && count_enemies(data) == 0 && !data->death_screen)
+		if (data->menu == 0 && count_enemies(data) == 0 && !data->death_screen && data->menu_sel != 3)
 			data->exit_screen = 1;
 		SDL_RenderPresent(data->renderer);
 		ft_bzero(data->pixels, (SCREEN_WIDTH * SCREEN_HEIGHT + 1) * 4);
