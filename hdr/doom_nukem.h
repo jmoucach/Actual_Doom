@@ -31,7 +31,7 @@
 # define SCREEN_HEIGHT 720
 
 # define MAX_BULLETS 200
-# define MAX_SHELLS 16
+# define MAX_SHELLS 20
 # define MAX_CELLS 100
 # define MAX_ROCKETS 8
 

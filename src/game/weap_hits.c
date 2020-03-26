@@ -33,7 +33,7 @@ static void		deal_damage(t_object *obj, short weapon)
 	if (weapon == 2 || weapon == 4)
 		damage = 3;
 	if (weapon == 1)
-		damage = 5;
+		damage = 10;
 	if (weapon == 5)
 		damage = 100;
 	if (obj->obj_type == 0 || weapon == 5 || obj->obj_type == 2)

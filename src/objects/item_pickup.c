@@ -57,7 +57,7 @@ static short	picked_up_item(t_data *data, t_object **obj)
 	{
 		if ((*obj)->obj_type == 4 && data->p.bullets < 200)
 			return (bullet_pickup(data, obj));
-		else if ((*obj)->obj_type == 5 && data->p.shells < 16)
+		else if ((*obj)->obj_type == 5 && data->p.shells < 20)
 			return (shell_pickup(data, obj));
 		else if ((*obj)->obj_type == 6 && data->p.cells < 100)
 			return (cell_pickup(data, obj));
