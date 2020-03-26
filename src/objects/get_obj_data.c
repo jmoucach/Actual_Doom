@@ -34,6 +34,7 @@ void			get_obj_data_1(t_object **obj)
 	(*obj)->num_of_sprites_attack = 3;
 	(*obj)->first_sprite_death = 7;
 	(*obj)->num_of_sprites_death = 5;
+	(*obj)->current_sprite = (*obj)->first_sprite_walk + 1;
 	(*obj)->sprite_pos = GROUND;
 }
 
@@ -46,6 +47,7 @@ void			get_obj_data_2(t_object **obj)
 	(*obj)->num_of_sprites_attack = 2;
 	(*obj)->first_sprite_death = 16;
 	(*obj)->num_of_sprites_death = 5;
+	(*obj)->current_sprite = (*obj)->first_sprite_walk + 1;
 	(*obj)->sprite_pos = FLOAT;
 }
 
@@ -58,6 +60,7 @@ void			get_obj_data_3(t_object **obj)
 	(*obj)->num_of_sprites_attack = 2;
 	(*obj)->first_sprite_death = 27;
 	(*obj)->num_of_sprites_death = 9;
+	(*obj)->current_sprite = (*obj)->first_sprite_walk + 1;
 	(*obj)->hp = 100;
 	(*obj)->sprite_pos = GROUND;
 }
