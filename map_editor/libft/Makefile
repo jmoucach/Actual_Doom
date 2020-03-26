@@ -98,16 +98,18 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
-
+	@ranlib $(NAME)
+	@echo "\033[32m[$(NAME)]: compiled\033[0m"
 %.o: %.c
 	@gcc -c $(FLAGS) $< -o $@
 
 clean: 
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
+	@echo "\033[33m[$(NAME)]: OBJ deleted\033[0m"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "\033[31m[$(NAME)]: deleted\033[0m"
 
 re: fclean all
 
