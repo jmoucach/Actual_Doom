@@ -90,7 +90,11 @@ short			loadmedia(t_fdf *img)
 	{
 		img->texture[i] = loadimage(path_tab[i], img);
 		if (!img->texture[i])
-		return (0);
+		{
+			free_tab(path_tab);
+			return (0);
+		}
 	}
+	free_tab(path_tab);
 	return (1);
 }
