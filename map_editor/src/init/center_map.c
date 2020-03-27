@@ -38,8 +38,8 @@ int			ft_gap(t_map *map)
 	int		gap_H;
 	int		gap_W;
 
-	gap_H = (HEIGHT * 0.9) / map->y/*height*/;
-	gap_W = (WIDTH * 0.9) / map->x/*width*/;
+	gap_H = (HEIGHT * 0.9) / map->y;
+	gap_W = (WIDTH * 0.9) / map->x;
 	if (gap_H > gap_W)
 		return (gap_W);
 	else

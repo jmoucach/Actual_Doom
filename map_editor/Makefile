@@ -16,7 +16,7 @@ NAME = map_editor
 
 LIBFT = libft/libft.a
 
-SRC = main.c \
+SRC = init/main.c \
 	   draw/draw_menu.c \
 	   draw/draw_blocks.c \
 	   draw/print_grid.c \

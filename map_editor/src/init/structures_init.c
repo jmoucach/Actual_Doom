@@ -23,9 +23,6 @@ int			ft_sdl_init(t_fdf *ptr, char *name)
 		ft_error((char *)SDL_GetError(), 2);
 	if (!(ptr->renderer = SDL_CreateRenderer(ptr->window, -1, 0)))
 		ft_error((char *)SDL_GetError(), 2);
-//		ptr->texture = SDL_CreateTexture(ptr->renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 500, 300);
-	//}
-	ft_putendl("ok sdl_init");//DEBUG
 	return (1);
 }
 
@@ -51,7 +48,6 @@ t_fdf			*ft_ptr_init(char *name)
 	ptr->color = ft_hexa_to_SDL(LIGHT_BLUE);//MAKE THE COLOR CHANGEABLE
 	ptr->pixels = (Uint8*)malloc(sizeof(Uint8) * (WIDTH * HEIGHT));
 	ft_bzero(ptr->pixels, (WIDTH * HEIGHT * sizeof(Uint8)));
-	ft_putendl("ok ptr_init");//DEBUG
 	return (ptr);
 }
 
@@ -63,7 +59,6 @@ t_point		*ft_init_coord(int x, int y)
 		return (NULL);
 	p->x = x;
 	p->y = y;
-	ft_putendl("ok init_coord");//DEBUG
 	return (p);
 }
 
@@ -79,6 +74,5 @@ t_map			*ft_map_init(t_line *list)
 	ft_origin(map);
 	map->endx = map->ox + ((map->x - 1) * map->base_gap);
 	map->endy = map->oy + ((map->y - 1) * map->base_gap);
-	ft_putendl("ok map_init");//DEBUG
 	return (map);
 }

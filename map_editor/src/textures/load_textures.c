@@ -11,23 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../hdr/map_editor.h"
-/*
-Uint32			get_pixel(SDL_Surface *s, int x, int y)
-{
-	int			bpp;
-	Uint8		*p;
-
-	bpp = s->format->BytesPerPixel;
-	p = s->pixels + y * s->pitch + x * bpp;
-	if (bpp == 1)
-		return (*p);
-	else if (bpp == 2)
-		return (*(Uint16*)p);
-	else if (bpp == 3)
-		return ((p[0]) | (p[1] << 8) | (p[2] << 16));
-	else
-		return (*(Uint32*)p);
-}*/
 
 SDL_Texture		*loadimage(char *path, t_fdf *img)
 {
@@ -52,7 +35,7 @@ SDL_Texture		*loadimage(char *path, t_fdf *img)
 char			**path_to_textures(void)
 {
 	char		**path_tab;
-	
+
 	if (!(path_tab = malloc(sizeof(char *) * 19)))
 		return (NULL);
 	path_tab[0] = NULL;

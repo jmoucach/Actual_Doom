@@ -26,7 +26,7 @@ void			ft_infinite_loop(t_fdf *img, t_mouse *mous, t_key *key)
 //		{
 			if (event.type == SDL_QUIT)
 				exit (0);
-			ft_menu_event(/*img->map,*/ mous, event);
+			ft_menu_event( mous, event);
 			//ft_print_pressed_button(img, mous->loop);
 			ft_clear_and_render(img, mous->loop);
 			ft_keys_event(img->map, event, key);
@@ -47,13 +47,5 @@ void		ft_fdf(t_map *map, char *map_name)
 		return ;
 	img->map = map;
 	ft_clear_and_render(img, mous.loop);
-	ft_putendl("apres clear_and_render");//DEBUG
 	ft_infinite_loop(img, &mous, &key);
-	ft_putendl("apres infinite_loop");//DEBUG
-	//	ft_cart_to_iso(map);
-/*	ft_fill_image(img, map);
-	mlx_put_image_to_window(img->mlx_ptr, img->win_ptr, img->img_ptr, 0, 0);
-	ft_print_menu(img->mlx_ptr, img->win_ptr);
-	ft_get_controls(img);
-	mlx_loop(img->mlx_ptr);*/
 }

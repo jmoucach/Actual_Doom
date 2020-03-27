@@ -11,32 +11,12 @@
 /* ************************************************************************** */
 
 #include "../../hdr/map_editor.h"
-/*
-int				ft_object_to_texture(int object)
-{
-	if (object == 'P')
-		return (7);
-	if (object == 'E')
-		return (8);
-	if (object == 'S')
-		return (9);
-	if (object == 'B')
-		return (10);
-	if (object == 'C')
-		return (11);
-	if (object == 'H')
-		return (12);
-	if (object == 'O')
-		return (13);
-	else
-		return (0);
-}
-*/
+
 void			ft_print_blocks(int x, int y, int map_value, t_fdf *img, int size)
 {
 	SDL_Rect	rect;
 	SDL_Texture	*texture;
-	
+
 	rect = (SDL_Rect){x, y, size, size};
 	texture = img->texture[map_value];
 	SDL_RenderCopy(img->renderer, texture, NULL, &rect);
