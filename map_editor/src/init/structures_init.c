@@ -39,7 +39,7 @@ t_fdf			*ft_ptr_init(char *name)
 		return (NULL);
 	if (!(ptr->txt = ft_txt_init(ptr)))
 		return (NULL);
-	if (!(ptr->texture = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 18)))
+	if (!(ptr->texture = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 19)))
 		exit(EXIT_FAILURE);
 	nullify_textures(ptr);
 	loadmedia(ptr);

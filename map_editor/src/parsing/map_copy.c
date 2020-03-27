@@ -37,7 +37,9 @@ int				atoi_or_number(char *str)
 	else if (str[0] == 'H')
 		return (16);
 	else if (str[0] == 'K')
-		return (17);
+        return (17);
+	else if (str[0] == 'A')
+        return (18);
 	return (0);
 }
 

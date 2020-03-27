@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../hdr/map_editor.h"
-
+/*
 int				ft_object_to_texture(int object)
 {
 	if (object == 'P')
@@ -31,7 +31,7 @@ int				ft_object_to_texture(int object)
 	else
 		return (0);
 }
-
+*/
 void			ft_print_blocks(int x, int y, int map_value, t_fdf *img, int size)
 {
 	SDL_Rect	rect;

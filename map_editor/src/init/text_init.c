@@ -27,7 +27,7 @@ t_item			*ft_sub_init(TTF_Font *font, SDL_Color color, SDL_Renderer *renderer)
 					sub->surface)))
 		ft_error((char *)SDL_GetError(), 2);
 	SDL_FreeSurface(sub->surface);
-	ft_putendl("ok sub_init");//DEBUG
+	//ft_putendl("ok sub_init");//DEBUG
 	return (sub);
 }
 
@@ -46,7 +46,7 @@ t_item			*ft_menu_init(TTF_Font *font, SDL_Color color, SDL_Renderer *renderer)
 					menu->surface)))
 		ft_error((char *)SDL_GetError(), 2);
 	SDL_FreeSurface(menu->surface);
-	ft_putendl("ok menu_init");//DEBUG
+	//ft_putendl("ok menu_init");//DEBUG
 	return (menu);
 }
 
@@ -61,10 +61,6 @@ t_txt			*ft_txt_init(t_fdf *img)
 	txt_ptr->color = ft_hexa_to_SDL(SAND);
 	if (!(txt_ptr->menu = ft_menu_init(txt_ptr->font, txt_ptr->color, img->renderer)))
 		return (NULL);
-/*	if (!(txt_ptr->item = ft_sub_init(txt_ptr->font, txt_ptr->color, img->renderer)))
-		return (NULL);*///Needed ony if we write sub_menu
-	ft_putendl("ok txt_init");//DEBUG
+	//ft_putendl("ok txt_init");//DEBUG
 	return (txt_ptr);
-//	if (!(ft_through_init(txt->font, txt->through))
-	//	return (NULL);
 }

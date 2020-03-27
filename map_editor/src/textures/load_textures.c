@@ -48,6 +48,17 @@ SDL_Texture		*loadimage(char *path, t_fdf *img)
 	SDL_FreeSurface(loadedsurface);
 	return (texture);
 }
+/*
+char			**path_to_textures(void)
+{
+	char		**texture_tab;
+	int			i;
+	
+	i = -1;
+	if (!(texture_tab = malloc(sizeof(char *) * 19)))
+		return (NULL);
+	while (++i < 19)
+}*/
 
 short			load_textures(t_fdf *img)
 {
@@ -79,7 +90,7 @@ short			load_textures(t_fdf *img)
 	img->texture[9] = loadimage("../sprites/soul_button.bmp", img);
 	if (!img->texture[9])
 		return (0);
-	img->texture[10] = loadimage("../sprites/boss_button.bmp", img);//TO CHANGE WITH BOSS IMAGE
+	img->texture[10] = loadimage("../sprites/boss_button.bmp", img);
 	if (!img->texture[10])
 		return (0);
 	img->texture[11] = loadimage("../pics/keydoor.bmp", img);
@@ -108,6 +119,9 @@ short			load_objects(t_fdf *img)
 		return (0);
 	img->texture[17] = loadimage("../sprites/key_button.bmp", img);
 	if (!img->texture[17])
+		return (0);
+	img->texture[18] = loadimage("../sprites/pickups/armor_pu.bmp", img);
+	if (!img->texture[18])
 		return (0);
 	ft_putendl("Ok load_objects");//DEBUG
 	return (1);

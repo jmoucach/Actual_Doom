@@ -23,6 +23,7 @@ int			ft_conform_char(char c)
 			|| c == 'S'
 			|| c == 'B'
 			|| c == 'C'
+			|| c == 'A'
 			|| c == 'H'
 			|| c == 'O')
 		return (1);
