@@ -48,92 +48,49 @@ SDL_Texture		*loadimage(char *path, t_fdf *img)
 	SDL_FreeSurface(loadedsurface);
 	return (texture);
 }
-/*
+
 char			**path_to_textures(void)
 {
-	char		**texture_tab;
-	int			i;
+	char		**path_tab;
 	
-	i = -1;
-	if (!(texture_tab = malloc(sizeof(char *) * 19)))
+	if (!(path_tab = malloc(sizeof(char *) * 19)))
 		return (NULL);
-	while (++i < 19)
-}*/
-
-short			load_textures(t_fdf *img)
-{
-	img->texture[0] = NULL;
-	img->texture[1] = loadimage("../pics/bluestone.bmp", img);
-	if (!img->texture[1])
-		return (0);
-	img->texture[2] = loadimage("../pics/greystone.bmp", img);
-	if (!img->texture[2])
-		return (0);
-	img->texture[3] = loadimage("../pics/mossy.bmp", img);
-	if (!img->texture[3])
-		return (0);
-	img->texture[4] = loadimage("../pics/tile2.bmp", img);
-	if (!img->texture[4])
-		return (0);
-	img->texture[5] = loadimage("../pics/wood.bmp", img);
-	if (!img->texture[5])
-		return (0);
-	img->texture[6] = loadimage("../pics/redbrick.bmp", img);
-	if (!img->texture[6])
-		return (0);
-	img->texture[7] = loadimage("../sprites/doom_guy_face.bmp", img);
-	if (!img->texture[7])
-		return (0);
-	img->texture[8] = loadimage("../sprites/enemy_face.bmp", img);
-	if (!img->texture[8])
-		return (0);
-	img->texture[9] = loadimage("../sprites/soul_button.bmp", img);
-	if (!img->texture[9])
-		return (0);
-	img->texture[10] = loadimage("../sprites/boss_button.bmp", img);
-	if (!img->texture[10])
-		return (0);
-	img->texture[11] = loadimage("../pics/keydoor.bmp", img);
-	if (!img->texture[11])
-		return (0);
-	img->texture[12] = loadimage("../pics/pillar.bmp", img);
-	if (!img->texture[12])
-		return (0);
-	ft_putendl("Ok load_textures");
-	return (1);
-}
-
-short			load_objects(t_fdf *img)
-{
-	img->texture[13] = loadimage("../sprites/shells_button.bmp", img);
-	if (!img->texture[13])
-		return (0);
-	img->texture[14] = loadimage("../sprites/bullets_button.bmp", img);
-	if (!img->texture[14])
-		return (0);
-	img->texture[15] = loadimage("../sprites/cell_button.bmp", img);
-	if (!img->texture[15])
-		return (0);
-	img->texture[16] = loadimage("../sprites/health_button.bmp", img);
-	if (!img->texture[16])
-		return (0);
-	img->texture[17] = loadimage("../sprites/key_button.bmp", img);
-	if (!img->texture[17])
-		return (0);
-	img->texture[18] = loadimage("../sprites/pickups/armor_pu.bmp", img);
-	if (!img->texture[18])
-		return (0);
-	ft_putendl("Ok load_objects");//DEBUG
-	return (1);
+	path_tab[0] = NULL;
+	path_tab[1] = ft_strdup("../pics/bluestone.bmp");
+	path_tab[2] = ft_strdup("../pics/greystone.bmp");
+	path_tab[3] = ft_strdup("../pics/mossy.bmp");
+	path_tab[4] = ft_strdup("../pics/tile2.bmp");
+	path_tab[5] = ft_strdup("../pics/wood.bmp");
+	path_tab[6] = ft_strdup("../pics/redbrick.bmp");
+	path_tab[7] = ft_strdup("../sprites/doom_guy_face.bmp");
+	path_tab[8] = ft_strdup("../sprites/enemy_face.bmp");
+	path_tab[9] = ft_strdup("../sprites/soul_button.bmp");
+	path_tab[10] = ft_strdup("../sprites/boss_button.bmp");
+	path_tab[11] = ft_strdup("../pics/keydoor.bmp");
+	path_tab[12]= ft_strdup("../pics/pillar.bmp");
+	path_tab[13] = ft_strdup("../sprites/shells_button.bmp");
+	path_tab[14] = ft_strdup("../sprites/bullets_button.bmp");
+	path_tab[15] = ft_strdup("../sprites/cell_button.bmp");
+	path_tab[16] = ft_strdup("../sprites/health_button.bmp");
+	path_tab[17] = ft_strdup("../sprites/key_button.bmp");
+	path_tab[18] = ft_strdup("../sprites/pickups/armor_pu.bmp");
+	path_tab[19] = NULL;
+	return (path_tab);
 }
 
 short			loadmedia(t_fdf *img)
 {
-	if (load_textures(img) == 1 && load_objects(img) == 1)
+	int			i;
+	char		**path_tab;
+
+	i = 0;
+	path_tab = path_to_textures();
+	img->texture[0] = NULL;
+	while (++i <= 18)
 	{
-		ft_putendl("Ok loadmedia");//DEBUG
-		return (1);
-	}
-	else
+		img->texture[i] = loadimage(path_tab[i], img);
+		if (!img->texture[i])
 		return (0);
+	}
+	return (1);
 }

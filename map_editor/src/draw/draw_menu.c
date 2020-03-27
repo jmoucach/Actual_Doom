@@ -46,7 +46,7 @@ void			draw_textures_squares(t_fdf *img)
 
 	SDL_SetRenderDrawColor(img->renderer, 215, 215, 215, 0);
 	i = 0;
-	while (++i <= 19)
+	while (++i <= 18)
 	{
 		ft_print_blocks(1320 + (((i - 1) % 3) * 80), 120 + (((i - 1) / 3) * 80), i, img, 70);
 		ft_print_rectangle(img->renderer, 1320 + (((i - 1) % 3) * 80), 120 + (((i  -1 ) / 3) * 80), 70, 70);

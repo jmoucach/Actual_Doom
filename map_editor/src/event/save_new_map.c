@@ -37,6 +37,8 @@ void		write_objects(int i, int fd)
 		ft_putchar_fd('H', fd);
 	else if (i == 17)
 		ft_putchar_fd('K', fd);
+	else if (i == 18)
+		ft_putchar_fd('A', fd);
 }
 
 void		write_tab(int **tab, int width, int height, int fd)
@@ -81,6 +83,6 @@ void		ft_save_map(t_fdf *img)
 	}
 	write_tab(int_tab, width, height, fd);
 	//free_tab(img->map->map);
-	ft_putstr("Map updated succesfully\n");
+	ft_putstr("Map updated succesfully\n");//DEBUG
 	exit (0);
 }
