@@ -26,8 +26,8 @@ int				atoi_or_number(char *str)
 		return (10);
 	else if (str[0] == '7')
 		return (11);
-	else if (str[0] == 'O')
-		return (12);
+	/*else if (str[0] == 'O')
+		return (12);removing pillar*/
 	else if (str[0] == 'S')
 		return (13);
 	else if (str[0] == 'B')
@@ -61,7 +61,6 @@ int				*ft_str_to_int(char *charline, int len)
 			while (charline[j] == ',')
 				j++;
 			intline[i] = atoi_or_number(charline + j);
-//			ft_putnbr(intline[i]);//DEBUG
 			i++;
 			while (ft_conform_char(charline[j]) == 1)
 				j++;
@@ -85,9 +84,6 @@ int				*ft_fill_map(char *charline, int *len)
 			(*len)++;
 			i++;
 		}
-//		while (ft_conform_char(charline[i]) == 1)
-		//while (ft_isdigit(charline[i]) == 1)
-//			i++;
 		while (charline[i] == ',')
 			i++;
 	}
@@ -109,7 +105,6 @@ t_map			*ft_map_copy(t_line *list)
 	tmp = list;
 	while (tmp->next)
 		tmp = tmp->next;
-	//ft_putnbr(tmp->y);//DEBUG
 	map->y = tmp->y + 1;
 	if (!(map->map = malloc(sizeof(int *) * (map->y + 1))))
 		return (0);

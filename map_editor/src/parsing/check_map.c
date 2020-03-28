@@ -25,7 +25,7 @@ int			ft_conform_char(char c)
 			|| c == 'C'
 			|| c == 'A'
 			|| c == 'H'
-			|| c == 'O')
+			/*|| c == 'O'removing pillar*/)
 		return (1);
 	return (0);
 }

@@ -50,7 +50,7 @@ char			**path_to_textures(void)
 	path_tab[9] = ft_strdup("../sprites/soul_button.bmp");
 	path_tab[10] = ft_strdup("../sprites/boss_button.bmp");
 	path_tab[11] = ft_strdup("../pics/keydoor.bmp");
-	path_tab[12]= ft_strdup("../pics/pillar.bmp");
+	path_tab[12]= ft_strdup("../pics/pillar.bmp");//could also not load anything, but then it will return NULL and will cause trouble
 	path_tab[13] = ft_strdup("../sprites/shells_button.bmp");
 	path_tab[14] = ft_strdup("../sprites/bullets_button.bmp");
 	path_tab[15] = ft_strdup("../sprites/cell_button.bmp");
