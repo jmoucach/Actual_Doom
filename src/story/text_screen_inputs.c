@@ -10,6 +10,7 @@ void	handle_text_screen_input(t_data *data, const Uint8 *state)
 			data->enter_screen = 0;
 		if (data->exit_screen || data->death_screen)
 		{
+			free_objects(data);
 			data->exit_screen = 0;
 			data->death_screen = 0;
 			data->menu = 1;
