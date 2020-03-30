@@ -113,7 +113,9 @@ SRC_NAME = ft_abs.c	\
 		   ft_replace.c\
 		   ft_strlen_chr.c\
 		   ft_strrev.c\
-		   ft_strtrimc.c
+		   ft_strtrimc.c\
+		   free_tab.c\
+	   	   ft_error_fd.c
 
 SRC_DIR = src
 BUILD_DIR = obj

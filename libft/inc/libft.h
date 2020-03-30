@@ -105,5 +105,7 @@ char				*ft_replace(char *str, char find, char replace);
 int					ft_strlen_chr(char const *s, char c);
 char				*ft_strrev(char *str);
 char				*ft_strtrimc(char *s, char c);
+int					ft_error_fd(char *str, int fd);
+void				free_tab(char **tab);
 
 #endif

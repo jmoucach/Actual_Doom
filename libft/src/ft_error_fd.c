@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_error_fd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jpoulvel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/19 11:40:11 by acostaz           #+#    #+#             */
-/*   Updated: 2019/08/19 11:41:08 by acostaz          ###   ########.fr       */
+/*   Created: 2019/04/01 13:32:48 by jpoulvel          #+#    #+#             */
+/*   Updated: 2019/04/02 14:55:37 by jpoulvel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
-void	ft_error(char *str)
+int		ft_error_fd(char *str, int fd)
 {
-	ft_putendl(str);
-	exit(EXIT_FAILURE);
+	ft_putendl_fd(str, fd);
+	return (0);
 }

@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   free_tab.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jpoulvel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/19 11:40:11 by acostaz           #+#    #+#             */
-/*   Updated: 2019/08/19 11:41:08 by acostaz          ###   ########.fr       */
+/*   Created: 2019/04/03 13:00:33 by jpoulvel          #+#    #+#             */
+/*   Updated: 2019/04/03 13:02:05 by jpoulvel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
-void	ft_error(char *str)
+void	free_tab(char **tab)
 {
-	ft_putendl(str);
-	exit(EXIT_FAILURE);
+	int		i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
+	}
+	free(tab);
+	tab = NULL;
 }
