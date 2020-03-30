@@ -15,12 +15,15 @@
 int				ft_check_equal_length(t_line *line)
 {
 	int			tmp;
+	int			i;
 
+	i = 0;
 	while (line->next)
 	{
+		i++;
 		tmp = line->x;
 		line = line->next;
-		if (tmp != line->x)
+		if (tmp != line->x || tmp >= 100 || i >= 99)
 			return (0);
 	}
 	return (1);
