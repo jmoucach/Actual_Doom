@@ -18,7 +18,7 @@ t_line			*ft_newline(void const *content)
 	t_line		*new;
 
 	if (!(new = (t_line *)malloc(sizeof(t_line))))
-		return (0);
+		return (NULL);
 	new->str = ft_strdup(content);
 	new->x = 0;
 	new->next = NULL;

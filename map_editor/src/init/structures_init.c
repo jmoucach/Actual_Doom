@@ -15,14 +15,14 @@
 int			ft_sdl_init(t_fdf *ptr, char *name)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-		ft_error((char *)SDL_GetError(), 2);
+		ft_error_fd((char *)SDL_GetError(), 2);
 	if (TTF_Init() < 0)
-		ft_error((char *)TTF_GetError(), 2);
+		ft_error_fd((char *)TTF_GetError(), 2);
 	if (!(ptr->window = SDL_CreateWindow(name, SDL_WINDOWPOS_CENTERED, 
 					SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, 0)))
-		ft_error((char *)SDL_GetError(), 2);
+		ft_error_fd((char *)SDL_GetError(), 2);
 	if (!(ptr->renderer = SDL_CreateRenderer(ptr->window, -1, 0)))
-		ft_error((char *)SDL_GetError(), 2);
+		ft_error_fd((char *)SDL_GetError(), 2);
 	return (1);
 }
 

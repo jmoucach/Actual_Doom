@@ -60,13 +60,13 @@ int		ft_create_map(char *map_name, char *width, char *height)
 	w = ft_atoi(width);
 	h = ft_atoi(height);
 	if (ft_strcmp(&map_name[ft_strlen(map_name) - 5], ".doom") != 0)
-		return (ft_error("map name must end with '.doom'", 2));
+		return (ft_error_fd("map name must end with '.doom'", 2));
 	if ((fd = open(map_name, O_RDONLY | O_NOFOLLOW)) > 0)
-		return (ft_error("Map already exists, remove the size parameters", 2));
+		return (ft_error_fd("Map already exists, remove the size parameters", 2));
 	if ((h <= 0 || w <= 0 || h >= 100 || w >= 100))
-		return (ft_error("Dimensions should be greater than 0 and lesser than 100", 2));
+		return (ft_error_fd("Dimensions should be greater than 0 and lesser than 100", 2));
 	if ((fd = open(map_name, O_CREAT | O_NOFOLLOW | O_WRONLY, 0666)) <= 0)
-			return (ft_error("Unable to create file", 2));
+			return (ft_error_fd("Unable to create file", 2));
 	ft_draw_empty_map(w, h, fd);
 	ft_putendl("Map created successfully");
 	return (fd);
@@ -78,7 +78,7 @@ int		ft_check_file(char *file)
 
 	fd = 0;
 	if (ft_strcmp(&file[ft_strlen(file) - 5], ".doom") != 0)
-		return (ft_error("map name must end with '.doom'", 2));
+		return (ft_error_fd("map name must end with '.doom'", 2));
 	if ((fd = open(file, O_DIRECTORY) > 0))
 	{
 		close(fd);
@@ -103,14 +103,14 @@ int			main(int argc, char **argv)
 	else if (argc == 2)
 	{
 		if ((fd = ft_check_file(argv[1])) <= 0)
-			return (ft_error("Invalid file format", 2));
+			return (ft_error_fd("Invalid file format", 2));
 	}
 	else
-		return (ft_error("usage for existing map: ./fdf existing_map\nusage for new map: ./fdf new_map width height", 2));
+		return (ft_error_fd("usage for existing map: ./fdf existing_map\nusage for new map: ./fdf new_map width height", 2));
 	if (!(map = ft_parser(fd)))
 	{
 		map != NULL ? ft_free_map(map) : 0;
-		return (ft_error("Invalid map", 2));
+		return (ft_error_fd("Invalid map", 2));
 	}
 	else
 		ft_fdf(map, argv[1]);

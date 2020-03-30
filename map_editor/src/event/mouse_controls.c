@@ -56,5 +56,5 @@ void			ft_mouse_event(t_fdf *img, t_mouse *mous, SDL_Event e)
 				/*error = */click_to_modify_map(img->map, mous);//, e);
 		}
 	}
-//	return (ft_error(error));
+//	return (ft_error_fd(error));
 }

@@ -16,7 +16,7 @@ SRCS = ft_atoi.c \
 	   free_list.c \
 	   free_tab.c \
 	   ft_bzero.c \
-	   ft_error.c \
+	   ft_error_fd.c \
 	   ft_isalnum.c \
 	   ft_isalpha.c \
 	   ft_sqrt.c \

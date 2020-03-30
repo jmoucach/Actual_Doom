@@ -79,7 +79,7 @@ void		ft_save_map(t_fdf *img)
 	if ((fd = open(img->map_name, O_RDWR | O_TRUNC, 0666)) <= 0)
 	{
 		ft_putendl(ft_itoa(fd));
-		ft_error("Unable to write in the map file", 2);
+		ft_error_fd("Unable to write in the map file", 2);
 	}
 	write_tab(int_tab, width, height, fd);
 	//free_tab(img->map->map);

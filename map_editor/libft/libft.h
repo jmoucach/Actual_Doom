@@ -100,7 +100,7 @@ char				**ft_tabrev(char **s);
 char				*ft_strjoin_free(char *s1, char *s2);
 int					fill_line(char **line, char **stock);
 int					get_next_line(int fd, char **line);
-int					ft_error(char *str, int fd);
+int					ft_error_fd(char *str, int fd);
 void				free_tab(char **tab);
 void				print_tab(char **tab);
 void				free_list(t_list *list);
