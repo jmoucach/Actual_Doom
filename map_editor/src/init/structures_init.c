@@ -46,8 +46,8 @@ t_fdf			*ft_ptr_init(char *name)
 	ptr->height = HEIGHT;
 	ptr->endian = 0;
 	ptr->color = ft_hexa_to_SDL(LIGHT_BLUE);//MAKE THE COLOR CHANGEABLE
-	ptr->pixels = (Uint8*)malloc(sizeof(Uint8) * (WIDTH * HEIGHT));
-	ft_bzero(ptr->pixels, (WIDTH * HEIGHT * sizeof(Uint8)));
+	ptr->pixels = (Uint32*)malloc(sizeof(Uint32) * (WIDTH * HEIGHT));
+	ft_bzero(ptr->pixels, (WIDTH * HEIGHT * sizeof(Uint32)));
 	return (ptr);
 }
 

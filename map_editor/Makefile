@@ -21,6 +21,7 @@ SRC = init/main.c \
 	   draw/draw_blocks.c \
 	   draw/print_grid.c \
 	   draw/render.c \
+	   draw/draw_line.c \
 	   event/infinite_loop.c \
 	   event/keys_controls.c \
 	   event/menu_controls.c \

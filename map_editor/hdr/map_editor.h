@@ -49,6 +49,12 @@ typedef struct		s_point
 	SDL_Color		color;
 }					t_point;
 
+typedef struct		s_pt
+{
+	int				x;
+	int				y;
+} 					t_pt;
+
 typedef struct		s_mouse
 {
 	int				posx;
@@ -79,13 +85,7 @@ typedef struct		s_txt
 {
 	t_item			*menu;
 	t_item			*item;
-	//SDL_Surface		*txt_menu;
-	//SDL_Surface		*txt_sub;
 	TTF_Font		*font;
-	//SDL_Texture		*txt_tex_menu;
-	//SDL_Texture		*txt_tex_sub;
-	//SDL_Rect		txt_rect_menu;
-	//SDL_Rect		txt_rect_sub;
 	SDL_Rect		txt_through;
 	SDL_Color		color;
 }					t_txt;
@@ -116,7 +116,7 @@ typedef struct		s_fdf
 	t_txt			*txt;
 	t_map			*map;
 	int				height;
-	Uint8			*pixels;
+	Uint32			*pixels;
 	int				bpp;
 	int				s_l;
 	int				endian;
@@ -132,6 +132,14 @@ typedef	struct		s_line
 	struct s_line	*next;
 	struct s_line	*prev;
 }					t_line;
+
+typedef struct		s_line_param
+{
+	t_point			diff;
+	t_point			inc;
+	int				error;
+	int				off;
+}					t_line_param;
 
 typedef	struct		s_bres
 {
@@ -205,6 +213,7 @@ void				ft_print_pressed_button(t_fdf *img, int i);
 void				ft_print_blocks(int x, int y, int map_value,
 		t_fdf *img, int size);
 void				ft_parse_and_print_textures(t_fdf *img);
+void				draw_line(t_pt pt_one, t_pt pt_two, Uint32 *pixels, int colour);
 /*
 **			COLORS
 */

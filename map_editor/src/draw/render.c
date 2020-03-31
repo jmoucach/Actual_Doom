@@ -46,7 +46,7 @@ void			ft_clear_and_render(t_fdf *img, int	loop)
 	ft_print_pressed_button(img, loop);
 //	ft_render_text(img);
 	SDL_RenderPresent(img->renderer);
-	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint8));
+	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
 	SDL_SetRenderDrawColor(img->renderer, 0, 0, 0, 0);
 	SDL_RenderClear(img->renderer);
 }
@@ -59,7 +59,7 @@ void			ft_clear_and_render_menu(t_fdf *img)
 	ft_parse_and_print_textures(img);
 //	ft_render_text(img);
 	SDL_RenderPresent(img->renderer);
-	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint8));
+	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
 	SDL_SetRenderDrawColor(img->renderer, 0, 0, 0, 0);
 	SDL_RenderClear(img->renderer);
 }
