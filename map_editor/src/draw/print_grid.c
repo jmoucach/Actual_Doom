@@ -14,17 +14,13 @@
 
 void			ft_trace_line(t_point a, t_point b, t_fdf *img, int col)
 {
-	//int			gap;
-	//int			ox;
-	//int			oy;
-	//SDL_Color	color;
 	t_pt			pt_one;
 	t_pt			pt_two;
 
-	pt_one.x = /*img->map->ox + a.x * img->map->base_gap;*/a.x;
-	pt_one.y = /*img->map->oy + a.y * img->map->base_gap;*/a.y;
-	pt_two.x = /*img->map->ox + b.x * img->map->base_gap;*/b.x;
-	pt_two.y = /*img->map->oy + b.y * img->map->base_gap;*/b.y;
+	pt_one.x = img->map->ox + a.x * img->map->base_gap;/*a.x*/;
+	pt_one.y = img->map->oy + a.y * img->map->base_gap;/*a.y*/;
+	pt_two.x = img->map->ox + b.x * img->map->base_gap;/*b.x*/;
+	pt_two.y = img->map->oy + b.y * img->map->base_gap;/*b.y*/;
 	draw_line(pt_one, pt_two, img->pixels, col);
 	//draw_line(a, b, *img->pixels, col);
 	/*gap = img->map->base_gap;

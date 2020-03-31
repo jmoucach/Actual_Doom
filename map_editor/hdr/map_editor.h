@@ -206,7 +206,6 @@ void				ft_save_map(t_fdf *img);
 **			DRAW
 */
 void				ft_clear_and_render(t_fdf *img, int	loop);
-void				ft_clear_and_render_menu(t_fdf *img);
 void				ft_print_grid(t_fdf *img, t_map *map);
 void				ft_render_buttons(t_fdf *img);
 void				ft_print_pressed_button(t_fdf *img, int i);
