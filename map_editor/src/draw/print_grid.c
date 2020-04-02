@@ -17,13 +17,14 @@ void			ft_trace_line(t_point a, t_point b, t_fdf *img, int col)
 	t_pt			pt_one;
 	t_pt			pt_two;
 
-	pt_one.x = /*img->map->ox + a.x * img->map->base_gap;*/a.x;
-	pt_one.y = /*img->map->oy + a.y * img->map->base_gap;*/a.y;
-	pt_two.x = /*img->map->ox + b.x * img->map->base_gap;*/b.x;
-	pt_two.y = /*img->map->oy + b.y * img->map->base_gap;*/b.y;
+	pt_one.x = img->map->ox + a.x * img->map->base_gap;/*a.x*/;
+	pt_one.y = img->map->oy + a.y * img->map->base_gap;/*a.y*/;
+	pt_two.x = img->map->ox + b.x * img->map->base_gap;/*b.x*/;
+	pt_two.y = img->map->oy + b.y * img->map->base_gap;/*b.y*/;
 	draw_line(pt_one, pt_two, img->pixels, col);
 	//draw_line(a, b, *img->pixels, col);
-	/*gap = img->map->base_gap;
+	/*Function as it was with SDL_Render...
+	gap = img->map->base_gap;
 	ox = img->map->ox;
 	oy = img->map->oy;
 	color = ft_color_of_lower_element(a, b);
@@ -35,14 +36,15 @@ void			ft_trace_line(t_point a, t_point b, t_fdf *img, int col)
 			*/
 }
 
-void			ft_print_grid(t_fdf *img, t_map *map)
+void			ft_print_grid(t_fdf *img)
 {
 	int			x;
 	int			y;
 	t_pt		start;
 	t_pt		end;
 
-	/*y = -1;
+	/* Function as it was before
+	y = -1;
 	while (++y <= map->y)
 	{
 		x = -1;
@@ -65,21 +67,27 @@ void			ft_print_grid(t_fdf *img, t_map *map)
 		}
 	}*/
 	y = -1;
-	while (++y <= map->y)
+	/*DEBUG
+	ft_putendl("img->map->x");
+	ft_putnbr(img->map->x);
+	ft_putendl("img->map->y");
+	ft_putnbr(img->map->y);
+	ft_putendl("okAA");*/
+	while (++y < img->map->y)
 	{
 		start.x = 0;
 		start.y = y;
-		end.x = map->x;
+		end.x = img->map->x;
 		end.y = y;
 		draw_line(start, end, img->pixels, LIGHT_BLUE);
 	}
 	x = -1;
-	while (++x <= map->x)
+	while (++x <= img->map->x)
 	{
 		start.x = x;
 		start.y = 0;
 		end.x = x;
-		end.y = map->y;
+		end.y = img->map->y;
 		draw_line(start, end, img->pixels, LIGHT_BLUE);
 	}
 }

@@ -23,6 +23,10 @@ int			ft_sdl_init(t_fdf *ptr, char *name)
 		ft_error_fd((char *)SDL_GetError(), 2);
 	if (!(ptr->renderer = SDL_CreateRenderer(ptr->window, -1, 0)))
 		ft_error_fd((char *)SDL_GetError(), 2);
+	if (!(ptr->texture = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 19)))
+		exit(EXIT_FAILURE);
+	if (!(ptr->grid = SDL_CreateTexture(ptr->renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT)))
+		exit(EXIT_FAILURE);//FOR THE GRID
 	return (1);
 }
 
@@ -34,12 +38,8 @@ t_fdf			*ft_ptr_init(char *name)
 		return (NULL);
 	if (!(ft_sdl_init(ptr, NAME)))
 		return (NULL);
-	if (!(ptr->txt = ft_txt_init(ptr)))
-		return (NULL);
-	if (!(ptr->texture = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 19)))
-		exit(EXIT_FAILURE);
-	if (!(ptr->grid = malloc(sizeof(SDL_Texture *))))
-		exit(EXIT_FAILURE);
+	//if (!(ptr->txt = ft_txt_init(ptr)))
+		//return (NULL);::DO we use ptr->txt? not sure
 	nullify_textures(ptr);
 	loadmedia(ptr);
 	ptr->map_name = name;
@@ -48,7 +48,7 @@ t_fdf			*ft_ptr_init(char *name)
 	ptr->height = HEIGHT;
 	ptr->endian = 0;
 	ptr->color = ft_hexa_to_SDL(LIGHT_BLUE);//MAKE THE COLOR CHANGEABLE
-	ptr->pixels = (Uint32*)malloc(sizeof(Uint32) * (WIDTH * HEIGHT));//FOR THE GRID
+	ptr->pixels = (Uint32*)malloc(sizeof(Uint32) * (WIDTH * HEIGHT));
 	ft_bzero(ptr->pixels, (WIDTH * HEIGHT * sizeof(Uint32)));
 	return (ptr);
 }

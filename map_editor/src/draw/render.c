@@ -25,21 +25,15 @@ void			ft_print_menu_background(t_fdf *img)
 		SDL_RenderDrawLine(img->renderer, (WIDTH - 300) + i, 0, (WIDTH - 300) + i, HEIGHT);
 }
 
-
 void			ft_clear_and_render(t_fdf *img, int	loop)
 {
 	ft_render_buttons(img);
 	ft_parse_and_print_textures(img);
-	ft_putendl("ok0");
-	ft_print_grid(img, img->map);
+	ft_print_grid(img);
 	//try for the grid
-	ft_putendl("ok1");
 	SDL_UpdateTexture(img->grid, NULL, img->pixels, WIDTH * 4);
-	ft_putendl("ok2");
 	SDL_RenderClear(img->renderer);
-	ft_putendl("ok3");
 	SDL_RenderCopy(img->renderer, img->grid, NULL, NULL);
-	ft_putendl("ok4");
 	//
 	ft_print_menu_background(img);
 	ft_render_buttons(img);
