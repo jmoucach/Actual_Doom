@@ -112,6 +112,7 @@ typedef struct		s_fdf
 	SDL_Renderer	*renderer;
 	SDL_Texture		*map_texture;
 	SDL_Texture		**texture;
+	SDL_Texture		*grid;//essai
 	SDL_Texture		*text_texture;
 	t_txt			*txt;
 	t_map			*map;

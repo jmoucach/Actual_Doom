@@ -38,6 +38,8 @@ t_fdf			*ft_ptr_init(char *name)
 		return (NULL);
 	if (!(ptr->texture = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 19)))
 		exit(EXIT_FAILURE);
+	if (!(ptr->grid = malloc(sizeof(SDL_Texture *))))
+		exit(EXIT_FAILURE);
 	nullify_textures(ptr);
 	loadmedia(ptr);
 	ptr->map_name = name;
@@ -46,7 +48,7 @@ t_fdf			*ft_ptr_init(char *name)
 	ptr->height = HEIGHT;
 	ptr->endian = 0;
 	ptr->color = ft_hexa_to_SDL(LIGHT_BLUE);//MAKE THE COLOR CHANGEABLE
-	ptr->pixels = (Uint32*)malloc(sizeof(Uint32) * (WIDTH * HEIGHT));
+	ptr->pixels = (Uint32*)malloc(sizeof(Uint32) * (WIDTH * HEIGHT));//FOR THE GRID
 	ft_bzero(ptr->pixels, (WIDTH * HEIGHT * sizeof(Uint32)));
 	return (ptr);
 }
