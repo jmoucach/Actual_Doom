@@ -49,6 +49,7 @@
 # define WALKING 1
 # define ATTACKING 2
 # define STUNNED 3
+# define IDLE 4
 
 # define GROUND 0
 # define FLOAT 1

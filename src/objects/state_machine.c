@@ -54,7 +54,7 @@ void soul_state_machine(t_data *data, t_object *obj)
 	static void (*action[4])(t_data *, t_object *) =
 		{enemy_death, pathfind, hits_taken, get_stunned_sprite};
 
-	if (!obj->is_aggro && can_see_player(data, obj) == 1)
+	if ((!obj->is_aggro && can_see_player(data, obj) == 1) || obj->hp <= 0)
 		obj->is_aggro = 1;
 	if (obj->is_aggro)
 	{
@@ -75,7 +75,7 @@ void imp_state_machine(t_data *data, t_object *obj)
 	int			dist;
 
 	dist = obj->obj_type == 0 ? 1 : 4;
-	if (!obj->is_aggro && can_see_player(data, obj) == 1)
+	if ((!obj->is_aggro && can_see_player(data, obj) == 1) || obj->hp <= 0)
 		obj->is_aggro = 1;
 	if (obj->is_aggro)
 	{
