@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Werror -Wextra -MMD `sdl2-config --cflags` 
+CFLAGS = -Wall -Werror -Wextra -MMD `sdl2-config --cflags`
 
 NAME = doom-nukem
 

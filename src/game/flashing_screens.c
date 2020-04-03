@@ -62,6 +62,8 @@ void	red_hit_screen(t_data *data)
 	t_color	tmp;
 	int		i;
 
+	if (data->death_screen)
+		return ;
 	if (data->time - data->p_dmgtime < 300 && data->p_dmgtime != 0)
 	{
 		lbd = 0.5;

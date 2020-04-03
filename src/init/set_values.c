@@ -146,7 +146,7 @@ void		set_values(t_data *data, int argc)
 	data->p.armor = 25;
 	data->p.bullets = MAX_BULLETS;
 	data->p.shells = MAX_SHELLS;
-	data->p.rockets = MAX_ROCKETS;
+	data->p.rockets = 0;
 	data->p.cells = MAX_CELLS;
 	data->p.has_fired = 1;
 	data->mouse_sens = 1;

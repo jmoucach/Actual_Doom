@@ -43,30 +43,35 @@ void	free_maps(t_data *data)
 	}
 }
 
+int		print_usage(void)
+{
+	ft_putendl("Usage :\t./doom_nukem\n\t./doom_nukem map.doom");
+	return (0);
+}
+
 int		main(int ac, char **av)
 {
 	t_data	data;
 
-	if (ac <= 2)
+	if (ac > 2)
+		return (print_usage());
+	set_values(&data, ac);
+	init(&data);
+	loadmedia(&data);
+	prepare_hud(&data);
+	new_map(&data, "maps/level_1.doom", 0);
+	new_map(&data, "maps/level_2.doom", 1);
+	new_map(&data, "maps/level_3.doom", 2);
+	if (ac == 2)
 	{
-		set_values(&data, ac);
-		init(&data);
-		loadmedia(&data);
-		prepare_hud(&data);
-		new_map(&data, "maps/level_1.doom", 0);
-		new_map(&data, "maps/level_2.doom", 1);
-		new_map(&data, "maps/level_3.doom", 2);
-		if (ac == 2)
-		{
-			if (name_parser(av[1]))
-				new_map(&data, av[1], 3);
-			else
-				clean_exit(&data, "");
-		}
-		game_loop(&data);
-		free_maps(&data);
-		delete_cur_map(&data);
-		clean_exit(&data, NULL);
+		if (name_parser(av[1]))
+			new_map(&data, av[1], 3);
+		else
+			clean_exit(&data, "");
 	}
+	game_loop(&data);
+	free_maps(&data);
+	delete_cur_map(&data);
+	clean_exit(&data, NULL);
 	return (0);
 }
