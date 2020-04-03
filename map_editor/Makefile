@@ -14,7 +14,7 @@ CFLAGS = -Wall -Werror -Wextra -MMD `sdl2-config --cflags`
 
 NAME = map_editor
 
-LIBFT = libft/libft.a
+LIBFT = ../libft/libft.a
 
 SRC = init/main.c \
 	   draw/draw_menu.c \
@@ -44,7 +44,7 @@ SRC = init/main.c \
 	   init/text_init.c \
 	   textures/load_textures.c
 
-SRC_DIR = src/
+SRC_DIR = ./
 OBJ_DIR = obj/
 INC_DIR = hdr/
 
@@ -57,11 +57,10 @@ OBJS= $(addprefix $(OBJ_DIR), $(OBJ))
 SUBDIRS= $(foreach dir, $(OBJ_SUBDIRS), $(OBJ_DIR)$(dir))
 LIB= `sdl2-config --libs` \
 	 `sdl2-config --libs`_ttf\
-	 -L libft -lft
-INCLUDES= hdr/map_editor.h
+	 -L ../libft -lft
+INCLUDES= ../hdr/map_editor.h
 
 all: $(SUBDIRS)
-	@$(MAKE) all -C libft
 	@$(MAKE) -j $(NAME)
 
 $(NAME): $(OBJS) $(INCLUDES)
@@ -79,13 +78,10 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT)
 	@gcc $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 
 clean:
-	@$(MAKE) clean -C libft
 	@rm -rf $(OBJ_DIR)
 	@echo "\033[33m[$(NAME)]: OBJ deleted\033[0m"
 
 fclean: clean
-	@rm -f $(LIBFT)
-	@echo "\033[31m[$(LIBFT)]: deleted\033[0m"
 	@rm -f $(NAME)
 	@echo "\033[31m[$(NAME)]: deleted\033[0m"
 

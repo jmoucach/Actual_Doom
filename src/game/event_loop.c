@@ -94,7 +94,7 @@ void			game_loop(t_data *data)
 		}
 		data->ftime = (SDL_GetTicks() - data->time) / 1000;
 		// printf("ftime :%f , fps:%f\n", data->ftime, 1/data->ftime);
-		ft_putnbrendl((int)(1.0 / data->ftime));
+		//ft_putnbrendl((int)(1.0 / data->ftime));
 		SDL_PumpEvents();
 		state = SDL_GetKeyboardState(NULL);
 		if (data->menu)

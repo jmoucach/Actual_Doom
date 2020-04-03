@@ -15,61 +15,62 @@ CFLAGS = -Wall -Werror -Wextra -MMD `sdl2-config --cflags`
 NAME = doom-nukem
 
 LIBFT = libft/libft.a
+MAP_EDITOR = map_editor/map_editor
 
-SRC=	init/main.c\
-		init/init.c\
-		init/set_values.c\
-		init/get_hud_text.c\
-		init/nullify.c\
+SRC =	draw/display_hud.c\
 		draw/drawline.c\
-		draw/display_hud.c\
-		draw/draw_rect_to_sdl.c\
 		draw/draw_minimap.c\
+		draw/draw_rect_to_sdl.c\
 		draw/show_player.c\
-		map/new_map.c\
-		map/fill_map.c\
-		map/default_map_values.c\
-		map/parsing.c\
-		menu/menu.c\
-		menu/menu_selection.c\
-		raycasting/raycasting.c\
-		raycasting/floorcaster.c\
-		raycasting/objectcasting.c\
-		raycasting/set_objcast_values.c\
-		story/display_story_screen.c\
-		story/text_screen_inputs.c\
-		game/health.c\
+		exit/clean_exit.c\
 		game/ammo.c\
 		game/combat.c\
 		game/doors.c\
 		game/event_loop.c\
 		game/flashing_screens.c\
-		game/movement.c\
+		game/health.c\
 		game/menu_inputs.c\
+		game/movement.c\
 		game/weap_hits.c\
 		image/load_image.c\
 		image/load_media_hud.c\
 		image/shading.c\
-		skybox/skybox.c\
-		weapon/use_weapon.c\
-		weapon/use_knuckle.c\
-		weapon/use_chainsaw.c\
-		weapon/use_shotgun.c\
-		weapon/use_plasma.c\
-		weapon/use_bfg.c\
-		weapon/use_handgun.c\
-		weapon/use_minigun.c\
-		objects/count_enemies.c\
-		objects/pathfinder.c\
-		objects/obj_list.c\
-		objects/swap_obj.c\
-		objects/get_obj_data.c\
-		objects/state_machine.c\
-		objects/item_pickup.c\
+		init/get_hud_text.c\
+		init/init.c\
+		init/main.c\
+		init/nullify.c\
+		init/set_values.c\
+		map/default_map_values.c\
+		map/fill_map.c\
+		map/new_map.c\
+		map/parsing.c\
+		menu/menu.c\
+		menu/menu_selection.c\
 		objects/ammo_pickup.c\
-		objects/hud_keys.c\
+		objects/count_enemies.c\
 		objects/enemy_vision.c\
-		exit/clean_exit.c
+		objects/get_obj_data.c\
+		objects/hud_keys.c\
+		objects/item_pickup.c\
+		objects/obj_list.c\
+		objects/pathfinder.c\
+		objects/state_machine.c\
+		objects/swap_obj.c\
+		raycasting/floorcaster.c\
+		raycasting/objectcasting.c\
+		raycasting/raycasting.c\
+		raycasting/set_objcast_values.c\
+		skybox/skybox.c\
+		story/display_story_screen.c\
+		story/text_screen_inputs.c\
+		weapon/use_bfg.c\
+		weapon/use_chainsaw.c\
+		weapon/use_handgun.c\
+		weapon/use_knuckle.c\
+		weapon/use_minigun.c\
+		weapon/use_plasma.c\
+		weapon/use_shotgun.c\
+		weapon/use_weapon.c
 
 SRC_DIR = src/
 OBJ_DIR = obj/
@@ -92,6 +93,7 @@ INCLUDES=	hdr/doom_nukem.h\
 
 all: $(SUBDIRS)
 	@$(MAKE) all -C libft
+	@$(MAKE) all -C map_editor
 	@$(MAKE) -j $(NAME)
 
 $(NAME): $(OBJS) $(INCLUDES)
@@ -110,12 +112,15 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT)
 
 clean:
 	@$(MAKE) clean -C libft
+	@$(MAKE) clean -C map_editor
 	@rm -rf $(OBJ_DIR)
 	@echo "\033[33m[$(NAME)]: OBJ deleted\033[0m"
 
 fclean: clean
 	@rm -f $(LIBFT)
 	@echo "\033[31m[$(LIBFT)]: deleted\033[0m"
+	@rm -f $(MAP_EDITOR)
+	@echo "\033[31m[$(MAP_EDITOR)]: deleted\033[0m"
 	@rm -f $(NAME)
 	@echo "\033[31m[$(NAME)]: deleted\033[0m"
 

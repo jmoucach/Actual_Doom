@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hdr/map_editor.h"
+#include "../../hdr/map_editor.h"
 
 void	ft_draw_empty_map(int width, int height, int fd)
 {

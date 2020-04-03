@@ -124,6 +124,8 @@ INC_DIR = inc
 OBJ = $(addprefix $(BUILD_DIR)/,$(SRC_NAME:.c=.o))
 DPD = $(addprefix $(BUILD_DIR)/,$(SRC_NAME:.c=.d))
 
+INCLUDES = $(INC_DIR)/libft.h $(INC_DIR)/get_next_line.h $(INC_DIR)/ft_printf.h
+
 opti:
 	@$(MAKE) -j all
 
@@ -132,7 +134,7 @@ debug:
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(INC_DIR)/libft.h $(INC_DIR)/get_next_line.h $(INC_DIR)/ft_printf.h
+$(NAME): $(OBJ) $(INCLUDES)
 	@echo "\033[2K \033[A"
 	@ar rc $(NAME) $(OBJ)
 	@echo "\033[32m[$(NAME)]: compiled\033[0m"
