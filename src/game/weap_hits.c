@@ -43,6 +43,8 @@ static void		deal_damage(t_object *obj, short weapon)
 		else
 			obj->hp = 0;
 	}
+	if (obj->is_aggro == 0)
+		obj->is_aggro = 1;
 	obj->hl_time = SDL_GetTicks();
 }
 
