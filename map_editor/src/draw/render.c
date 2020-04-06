@@ -27,14 +27,14 @@ void			ft_print_menu_background(t_fdf *img)
 
 void			ft_clear_and_render(t_fdf *img, int	loop)
 {
-	ft_render_buttons(img);
-	ft_parse_and_print_textures(img);
-	ft_print_grid(img);
 	//try for the grid
 	SDL_UpdateTexture(img->grid, NULL, img->pixels, WIDTH * 4);
 	SDL_RenderClear(img->renderer);
 	SDL_RenderCopy(img->renderer, img->grid, NULL, NULL);
 	//
+	ft_print_grid(img);
+	ft_render_buttons(img);
+	ft_parse_and_print_textures(img);
 	ft_print_menu_background(img);
 	ft_render_buttons(img);
 	ft_print_pressed_button(img, loop);
