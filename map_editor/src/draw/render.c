@@ -29,7 +29,7 @@ void			ft_clear_and_render(t_fdf *img, int	loop)
 {
 	ft_print_grid(img);
 	//try for the grid
-	SDL_UpdateTexture(img->grid, NULL, img->pixels, WIDTH * 4);
+	SDL_UpdateTexture(img->grid, NULL, img->pixels, HEIGHT * WIDTH * 4);
 	SDL_RenderClear(img->renderer);
 	SDL_RenderCopy(img->renderer, img->grid, NULL, NULL);
 	//
@@ -38,6 +38,8 @@ void			ft_clear_and_render(t_fdf *img, int	loop)
 	ft_print_menu_background(img);
 	ft_render_buttons(img);
 	ft_print_pressed_button(img, loop);
+	//SDL_UpdateTexture(img->grid, NULL, img->pixels, HEIGHT * WIDTH * 4);//ESSAI
+	//SDL_RenderCopy(img->renderer, img->grid, NULL, NULL);//ESSAI
 	SDL_RenderPresent(img->renderer);
 	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
 	SDL_SetRenderDrawColor(img->renderer, 0, 0, 0, 0);

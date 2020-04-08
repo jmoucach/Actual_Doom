@@ -75,19 +75,23 @@ void			ft_print_grid(t_fdf *img)
 	ft_putendl("okAA");*/
 	while (++y < img->map->y)
 	{
-		start.x = 0;
-		start.y = y;
-		end.x = img->map->x;
-		end.y = y;
-		draw_line(start, end, img->pixels, LIGHT_BLUE);
+		start.x = img->map->ox;
+		start.y = img->map->oy + (y * img->map->base_gap);
+		end.x = img->map->ox + (img->map->x * img->map->base_gap);
+		end.y = img->map->oy + (y * img->map->base_gap);
+		check_and_draw_line(start, end, img);
+		/*if (end.x >= 0 && end.y >= 0 && start.x >= 0 && start.y >= 0)
+			draw_line(start, end, img->pixels, LIGHT_BLUE);*/
 	}
 	x = -1;
 	while (++x <= img->map->x)
 	{
-		start.x = x;
-		start.y = 0;
-		end.x = x;
-		end.y = img->map->y;
-		draw_line(start, end, img->pixels, LIGHT_BLUE);
+		start.x = img->map->ox + (x * img->map->base_gap);
+		start.y = img->map->oy;
+		end.x = img->map->ox + (x * img->map->base_gap);
+		end.y = img->map->oy + (img->map->y * img->map->base_gap);
+		check_and_draw_line(start, end, img);
+		/*if (end.x >= 0 && end.y >= 0 && start.x >= 0 && start.y >= 0)
+			draw_line(start, end, img->pixels, LIGHT_BLUE);*/
 	}
 }

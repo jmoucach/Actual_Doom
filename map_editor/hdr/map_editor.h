@@ -214,6 +214,8 @@ void				ft_print_blocks(int x, int y, int map_value,
 		t_fdf *img, int size);
 void				ft_parse_and_print_textures(t_fdf *img);
 void				draw_line(t_pt pt_one, t_pt pt_two, Uint32 *pixels, int colour);
+void				check_and_draw_line(t_pt start, t_pt end, t_fdf *img);
+
 /*
 **			COLORS
 */
