@@ -49,7 +49,7 @@ void				draw_line(t_pt pt_one, t_pt pt_two,
 	pix[pt.x + pt.y * WIDTH] = colour;
 }
 
-void	check_and_draw_line(t_pt start, t_pt end, t_fdf *img)
+void	check_and_draw_line(t_pt start, t_pt end, t_fdf *img, int col)
 {
 	if (start.x < 0)
 		start.x = 0;
@@ -67,5 +67,5 @@ void	check_and_draw_line(t_pt start, t_pt end, t_fdf *img)
 		end.x = WIDTH;
 	if (end.y > HEIGHT)
 		end.y = HEIGHT;
-	draw_line(start, end, img->pixels, LIGHT_BLUE);
+	draw_line(start, end, img->pixels, col);
 }

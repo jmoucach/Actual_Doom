@@ -12,16 +12,16 @@
 
 #include "../../hdr/map_editor.h"
 
-void			ft_trace_line(t_point a, t_point b, t_fdf *img, int col)
+void			ft_trace_line(t_pt a, t_pt b, t_fdf *img, int col)
 {
 	t_pt			pt_one;
 	t_pt			pt_two;
 
-	pt_one.x = img->map->ox + a.x * img->map->base_gap;/*a.x*/;
-	pt_one.y = img->map->oy + a.y * img->map->base_gap;/*a.y*/;
-	pt_two.x = img->map->ox + b.x * img->map->base_gap;/*b.x*/;
-	pt_two.y = img->map->oy + b.y * img->map->base_gap;/*b.y*/;
-	draw_line(pt_one, pt_two, img->pixels, col);
+	pt_one.x = img->map->ox + a.x * img->map->base_gap;
+	pt_one.y = img->map->oy + a.y * img->map->base_gap;
+	pt_two.x = img->map->ox + b.x * img->map->base_gap;
+	pt_two.y = img->map->oy + b.y * img->map->base_gap;
+	check_and_draw_line(pt_one, pt_two, img, col);
 	//draw_line(a, b, *img->pixels, col);
 	/*Function as it was with SDL_Render...
 	gap = img->map->base_gap;
@@ -75,22 +75,24 @@ void			ft_print_grid(t_fdf *img)
 	ft_putendl("okAA");*/
 	while (++y < img->map->y)
 	{
-		start.x = img->map->ox;
-		start.y = img->map->oy + (y * img->map->base_gap);
-		end.x = img->map->ox + (img->map->x * img->map->base_gap);
-		end.y = img->map->oy + (y * img->map->base_gap);
-		check_and_draw_line(start, end, img);
+		start.x = 0;
+		start.y = y;
+		end.x = img->map->x;
+		end.y = y;
+		ft_trace_line(start, end, img, LIGHT_BLUE);
+		//check_and_draw_line(start, end, img);
 		/*if (end.x >= 0 && end.y >= 0 && start.x >= 0 && start.y >= 0)
 			draw_line(start, end, img->pixels, LIGHT_BLUE);*/
 	}
 	x = -1;
 	while (++x <= img->map->x)
 	{
-		start.x = img->map->ox + (x * img->map->base_gap);
-		start.y = img->map->oy;
-		end.x = img->map->ox + (x * img->map->base_gap);
-		end.y = img->map->oy + (img->map->y * img->map->base_gap);
-		check_and_draw_line(start, end, img);
+		start.x = x;
+		start.y = 0;
+		end.x = x;
+		end.y = img->map->y;
+		ft_trace_line(start, end, img, LIGHT_BLUE);
+		//check_and_draw_line(start, end, img);
 		/*if (end.x >= 0 && end.y >= 0 && start.x >= 0 && start.y >= 0)
 			draw_line(start, end, img->pixels, LIGHT_BLUE);*/
 	}
