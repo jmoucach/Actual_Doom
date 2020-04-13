@@ -200,7 +200,7 @@ void				ft_clean_exit(t_fdf *img, char *err);
 */
 void				loop_til_release();
 void				ft_menu_event(t_mouse *mous, SDL_Event e);
-void				ft_keys_event(t_map *map, SDL_Event e, t_key *key);
+void				ft_keys_event(t_fdf *img, SDL_Event e, t_key *key);
 void				ft_mouse_event(t_fdf *img, t_mouse *mous, SDL_Event e);
 void				click_to_modify_map(t_map *map, t_mouse *mous);
 void				ft_save_map(t_fdf *img);

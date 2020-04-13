@@ -29,7 +29,7 @@ void			ft_infinite_loop(t_fdf *img, t_mouse *mous, t_key *key)
 			ft_menu_event( mous, event);
 			//ft_print_pressed_button(img, mous->loop);
 			ft_clear_and_render(img, mous->loop);
-			ft_keys_event(img->map, event, key);
+			ft_keys_event(img, event, key);
 			ft_mouse_event(img, mous, event);
 //		}
 	}

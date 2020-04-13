@@ -12,7 +12,7 @@
 
 #include "../../hdr/map_editor.h"
 
-void		key_press(t_key *key, SDL_Event e)
+void		key_press(t_fdf *img, t_key *key, SDL_Event e)
 {
 	if (e.type == SDL_KEYDOWN)
 	{ 
@@ -29,7 +29,8 @@ void		key_press(t_key *key, SDL_Event e)
 		if (e.key.keysym.sym == ZOOM_OUT)
 			key->zoom_out = 1;
 		if (e.key.keysym.sym == 27)
-			exit(0);
+			//exit(0);//replaced by clean_exit
+			ft_clean_exit(img, "You pushed esc");
 	}
 }
 
@@ -52,16 +53,16 @@ void		key_release(t_key *key, SDL_Event e)
 	}
 }
 
-void		ft_keys_event(t_map *map, SDL_Event e, t_key *key)
+void		ft_keys_event(t_fdf *img, SDL_Event e, t_key *key)
 {
-	key_press(key, e);
+	key_press(img, key, e);
 	key_release(key, e);
-	ft_move(key, map);
-	ft_zoom(key, map);
+	ft_move(key, img->map);
+	ft_zoom(key, img->map);
 
 	if (e.type == SDL_KEYDOWN)
 	{
-		map->endx = map->ox + ((map->x - 1) * map->base_gap);
-		map->endy = map->oy + ((map->y - 1) * map->base_gap);
+		img->map->endx = img->map->ox + ((img->map->x - 1) * img->map->base_gap);
+		img->map->endy = img->map->oy + ((img->map->y - 1) * img->map->base_gap);
 	}
 }
