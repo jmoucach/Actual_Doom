@@ -84,5 +84,7 @@ void		ft_save_map(t_fdf *img)
 	write_tab(int_tab, width, height, fd);
 	//free_tab(img->map->map);
 	ft_putstr("Map updated succesfully\n");//DEBUG
-	exit (0);
+	//exit (0);replaced by clean_exit
+	ft_clean_exit(img, NULL);
+
 }
