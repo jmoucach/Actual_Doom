@@ -193,7 +193,8 @@ short				loadmedia(t_fdf *img);
 void				ft_free_map(t_map *map);
 void				ft_free_line(t_line *list);
 void				ft_free_fdf(t_fdf *fdf);
-
+void				ft_clean_exit(t_fdf *img, char *err);
+//static void			ft_free_textures(t_fdf *img);
 /*
 **			EVENT
 */
@@ -203,6 +204,7 @@ void				ft_keys_event(t_map *map, SDL_Event e, t_key *key);
 void				ft_mouse_event(t_fdf *img, t_mouse *mous, SDL_Event e);
 void				click_to_modify_map(t_map *map, t_mouse *mous);
 void				ft_save_map(t_fdf *img);
+
 /*
 **			DRAW
 */

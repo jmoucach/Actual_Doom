@@ -19,6 +19,8 @@ void			ft_print_blocks(int x, int y, int map_value, t_fdf *img, int size)
 
 	rect = (SDL_Rect){x, y, size, size};
 	texture = img->texture[map_value];
+	/*if (rect == NULL || texture == NULL)
+		ft_clean_exit(img, "Could not print blocks");*/
 	SDL_RenderCopy(img->renderer, texture, NULL, &rect);
 }
 
