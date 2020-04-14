@@ -217,7 +217,7 @@ void				ft_print_blocks(int x, int y, int map_value,
 void				ft_parse_and_print_textures(t_fdf *img);
 void				draw_line(t_pt pt_one, t_pt pt_two, Uint32 *pixels, int colour);
 void				check_and_draw_line(t_pt start, t_pt end, t_fdf *img, int col);
-
+void				ft_trace_line(t_pt a, t_pt b, t_fdf *img, int col);
 /*
 **			COLORS
 */
@@ -236,5 +236,7 @@ int					ft_gap(t_map *map);
 void				ft_origin(t_map *map);
 float				ft_height(t_map *map);
 void				ft_fix_coords(t_map *map, int *x, int *y);
+t_pt				coord_to_pt(int x, int y);
+void				mk_point_and_trace_line(int x1, int y1, int x2, int y2, t_fdf *img);
 
 #endif

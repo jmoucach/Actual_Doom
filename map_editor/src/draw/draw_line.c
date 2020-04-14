@@ -67,5 +67,39 @@ void	check_and_draw_line(t_pt start, t_pt end, t_fdf *img, int col)
 		end.x = WIDTH;
 	if (end.y > HEIGHT)
 		end.y = HEIGHT;
+	ft_putendl("start.x");
+	ft_putnbr(start.x);
+	ft_putendl("start.y");
+	ft_putnbr(start.y);
+	ft_putendl("end.x");
+	ft_putnbr(end.x);
+	ft_putendl("end.y");
+	ft_putnbr(end.y);
+	ft_putendl("avan draw_line");
 	draw_line(start, end, img->pixels, col);
+	ft_putendl("après draw_line");
+}
+
+void			ft_trace_line(t_pt a, t_pt b, t_fdf *img, int col)
+{
+	t_pt			pt_one;
+	t_pt			pt_two;
+
+	pt_one.x = img->map->ox + a.x * img->map->base_gap;
+	pt_one.y = img->map->oy + a.y * img->map->base_gap;
+	pt_two.x = img->map->ox + b.x * img->map->base_gap;
+	pt_two.y = img->map->oy + b.y * img->map->base_gap;
+	check_and_draw_line(pt_one, pt_two, img, col);
+	//draw_line(a, b, *img->pixels, col);
+	/*Function as it was with SDL_Render...
+	gap = img->map->base_gap;
+	ox = img->map->ox;
+	oy = img->map->oy;
+	color = ft_color_of_lower_element(a, b);
+	color = ft_hexa_to_SDL(col);//fixed color until we adjust it
+	SDL_SetRenderDrawColor(img->renderer, color.r, color.g, color.b,
+			color.a);
+	SDL_RenderDrawLine(img->renderer, ox + a.x * gap,
+			oy + a.y * gap, ox + b.x * gap, oy + b.y * gap);
+			*/
 }
