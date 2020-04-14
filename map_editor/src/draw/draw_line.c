@@ -89,7 +89,6 @@ void			ft_trace_line(t_pt a, t_pt b, t_fdf *img, int col)
 	pt_two.x = img->map->ox + b.x * img->map->base_gap;
 	pt_two.y = img->map->oy + b.y * img->map->base_gap;
 	check_and_draw_line(pt_one, pt_two, img, col);*/
-	//draw_line(a, b, *img->pixels, col);
 	
 	//Function as it was with SDL_Render... not to be used but working
 	int			gap;

@@ -86,12 +86,12 @@ void			ft_print_pressed_button(t_fdf *img, int i)
 	{
 		ft_print_rectangle(img, 1319, 279 + 500, 232, 62);
 		ft_print_rectangle(img, 1318, 278 + 500, 234, 64);
-	}
+	}*/
 	else
 	{
 		startx = 1320 + (((i - 1) % 3) * 80);
 		starty = 120 + (((i - 1) / 3) * 80);
 		ft_print_rectangle(img, startx - 1, starty - 1, 72, 72);
 		ft_print_rectangle(img, startx - 2, starty - 2, 74, 74);
-	}*/
+	}
 }
