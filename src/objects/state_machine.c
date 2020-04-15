@@ -3,56 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   state_machine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: JP <JP@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:39:53 by jmoucach          #+#    #+#             */
-/*   Updated: 2020/03/25 16:52:32 by JP               ###   ########.fr       */
+/*   Updated: 2020/03/25 16:52:32 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/doom_nukem.h"
 
-static short get_dying_sprite(t_data *data, t_object *obj)
-{
-	short removed;
-
-	removed = 0;
-	obj->lastUpdate += data->ftime;
-	if (obj->current_sprite < obj->first_sprite_death
-		|| obj->current_sprite > obj->first_sprite_death 
-		+ obj->num_of_sprites_death)
-	{
-		obj->lastUpdate = 0;
-		obj->current_sprite = obj->first_sprite_death;
-	}
-	else if (obj->lastFrame == obj->num_of_sprites_death - 1)
-		removed = 1;
-	else if (obj->lastUpdate >= 0.5 / obj->num_of_sprites_death)
-	{
-		obj->lastFrame++;
-		obj->lastFrame %= obj->num_of_sprites_death;
-		obj->lastUpdate = 0;
-		obj->current_sprite = obj->first_sprite_death + obj->lastFrame;
-	}
-	return (removed);
-}
-
-void get_stunned_sprite(t_data *data, t_object *obj)
+void			get_stunned_sprite(t_data *data, t_object *obj)
 {
 	(void)data;
 	obj->current_sprite = obj->first_sprite_walk;
 }
 
-static void enemy_death(t_data *data, t_object *obj)
-{
-	if (get_dying_sprite(data, obj) == 1)
-		remove_object(&(data->obj), obj->id_key);
-}
-
-void soul_state_machine(t_data *data, t_object *obj)
+void			soul_state_machine(t_data *data, t_object *obj)
 {
 	static void (*action[4])(t_data *, t_object *) =
-		{enemy_death, pathfind, hits_taken, get_stunned_sprite};
+	{enemy_death, pathfind, hits_taken, get_stunned_sprite};
 
 	if ((!obj->is_aggro && can_see_player(data, obj) == 1) || obj->hp <= 0)
 		obj->is_aggro = 1;
@@ -68,10 +37,10 @@ void soul_state_machine(t_data *data, t_object *obj)
 	}
 }
 
-void imp_state_machine(t_data *data, t_object *obj)
+void			imp_state_machine(t_data *data, t_object *obj)
 {
 	static void (*action[3])(t_data *, t_object *) =
-		{enemy_death, pathfind, hits_taken};
+	{enemy_death, pathfind, hits_taken};
 	int			dist;
 
 	dist = obj->obj_type == 0 ? 1 : 4;
@@ -87,9 +56,9 @@ void imp_state_machine(t_data *data, t_object *obj)
 	}
 }
 
-void state_machine(t_data *data)
+void			state_machine(t_data *data)
 {
-	t_object *iterator;
+	t_object	*iterator;
 
 	iterator = data->obj;
 	if (data->obj)
@@ -99,7 +68,7 @@ void state_machine(t_data *data)
 		sort_objects(data);
 		while (iterator)
 		{
-			if (iterator->obj_type ==  0 || iterator->obj_type == 2)
+			if (iterator->obj_type == 0 || iterator->obj_type == 2)
 				imp_state_machine(data, iterator);
 			else if (iterator->obj_type == 1)
 				soul_state_machine(data, iterator);
@@ -107,5 +76,4 @@ void state_machine(t_data *data)
 			iterator = iterator->next;
 		}
 	}
-	// SDL_Delay(1000);
 }

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   menu_selection.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/03 14:17:04 by acostaz           #+#    #+#             */
+/*   Updated: 2020/03/11 16:41:29 by acostaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../hdr/doom_nukem.h"
 
-static void	print_menu_arrow(t_data *data, t_point offset)
+static void		print_menu_arrow(t_data *data, t_point offset)
 {
 	int		i;
 	int		j;
@@ -14,8 +26,8 @@ static void	print_menu_arrow(t_data *data, t_point offset)
 		{
 			color = get_pixel(data->surface[12], i, j);
 			if (color != 0)
-				data->pixels[i + offset.x + (j + offset.y) * SCREEN_WIDTH]
-					= color;
+				data->pixels[i + offset.x
+					+ (j + offset.y) * SCREEN_WIDTH] = color;
 		}
 	}
 }
@@ -45,7 +57,7 @@ static t_point	get_arrow_coords(t_data *data)
 	return (coords);
 }
 
-void		menu_selection(t_data *data)
+void			menu_selection(t_data *data)
 {
 	print_menu_arrow(data, get_arrow_coords(data));
 }

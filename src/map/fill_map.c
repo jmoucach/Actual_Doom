@@ -32,51 +32,6 @@ void			print_map(t_map map)
 	}
 }
 
-void			delete_cur_map(t_data *data)
-{
-	int			i;
-
-	i = -1;
-	if (data->cur_map.map)
-	{
-		while (++i < data->cur_map.height)
-			if (data->cur_map.map[i])
-				free(data->cur_map.map[i]);
-		free(data->cur_map.map);
-		data->cur_map.map = NULL;
-	}
-}
-
-int				alloc_cur_map(t_data *data, t_map map)
-{
-	int			i;
-
-	if (!(data->cur_map.map = (int**)malloc(sizeof(int*) * map.height)))
-		return (0);
-	i = -1;
-	while (++i < map.height)
-		if (!(data->cur_map.map[i] = (int*)malloc(sizeof(int) * map.width)))
-		{
-			while (--i >= 0)
-				free(data->cur_map.map[i]);
-			free(data->cur_map.map);
-			return (0);
-		}
-	return (1);
-}
-
-int				copy_cur_map(t_data *data)
-{
-	int			m;
-
-	m = data->menu_sel;
-	if (!alloc_cur_map(data, data->maps[m]))
-		return (0);
-	data->cur_map.width = data->maps[m].width;
-	data->cur_map.height = data->maps[m].height;
-	return (1);
-}
-
 static void		add_one_item(t_data *data, t_point coords, int type, int *o_num)
 {
 	addback_object(&(data->obj), new_object(*o_num, type,
@@ -120,7 +75,8 @@ void			fill_raw_map(t_data *data, char *str, short id)
 	{
 		j = -1;
 		while (++j < data->maps[id].width)
-			data->maps[id].map[i][j] = str[j * 2 + i * 2 * data->maps[id].width];
+			data->maps[id].map[i][j] =
+				str[j * 2 + i * 2 * data->maps[id].width];
 	}
 }
 
@@ -132,7 +88,6 @@ void			fill_map(t_data *data, t_map map)
 
 	i = -1;
 	o_num = 0;
-	// on lit map et on remplit data->cur_map
 	while (++i < map.height)
 	{
 		j = -1;

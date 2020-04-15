@@ -28,6 +28,7 @@ SRC =	draw/display_hud.c\
 		game/doors.c\
 		game/event_loop.c\
 		game/flashing_screens.c\
+		game/game_inputs.c\
 		game/health.c\
 		game/menu_inputs.c\
 		game/movement.c\
@@ -35,11 +36,13 @@ SRC =	draw/display_hud.c\
 		image/load_image.c\
 		image/load_media_hud.c\
 		image/shading.c\
+		init/create_sprites.c\
 		init/get_hud_text.c\
 		init/init.c\
 		init/main.c\
 		init/nullify.c\
 		init/set_values.c\
+		map/current_map.c\
 		map/default_map_values.c\
 		map/fill_map.c\
 		map/new_map.c\
@@ -48,6 +51,7 @@ SRC =	draw/display_hud.c\
 		menu/menu_selection.c\
 		objects/ammo_pickup.c\
 		objects/count_enemies.c\
+		objects/enemy_death.c\
 		objects/enemy_vision.c\
 		objects/get_obj_data.c\
 		objects/hud_keys.c\

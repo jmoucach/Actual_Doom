@@ -80,12 +80,14 @@ void			allocate_map(t_data *data, short id)
 	int			i;
 
 	i = 0;
-	if (!(data->maps[id].map = (int**)malloc(sizeof(int*) * data->maps[id].height)))
+	if (!(data->maps[id].map =
+				(int**)malloc(sizeof(int*) * data->maps[id].height)))
 		clean_exit(data, "Map malloc error");
 	nullify_tab((void**)data->maps[id].map, data->maps[id].height);
 	while (i < data->maps[id].height)
 	{
-		if (!(data->maps[id].map[i] = (int*)malloc(sizeof(int) * data->maps[id].width)))
+		if (!(data->maps[id].map[i] =
+					(int*)malloc(sizeof(int) * data->maps[id].width)))
 			clean_exit(data, "Map malloc error");
 		i++;
 	}
@@ -103,7 +105,6 @@ void			new_map(t_data *data, char *title, short id)
 		clean_exit(data, "Map is not rectangular");
 	str = ft_replace(str, '\n', ',');
 	close(fd);
-	//TODO split ici pour differentes maps
 	allocate_map(data, id);
 	fill_raw_map(data, str, id);
 	parse_map(data, str, id);

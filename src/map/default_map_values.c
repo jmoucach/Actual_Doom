@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   default_map_values.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/01 14:51:49 by acostaz           #+#    #+#             */
+/*   Updated: 2020/03/11 17:39:51 by acostaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../hdr/doom_nukem.h"
 
 static void	get_map1_values(t_data *data)
@@ -57,7 +69,7 @@ static void	get_custom_map_values(t_data *data)
 	data->p.cells = MAX_CELLS;
 }
 
-void	get_map_values(t_data *data, short selected)
+void		get_map_values(t_data *data, short selected)
 {
 	ft_bzero(&(data->p), sizeof(t_player));
 	data->yaw = 0;

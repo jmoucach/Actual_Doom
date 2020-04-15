@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display_story_screen.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/05 14:39:53 by acostaz           #+#    #+#             */
+/*   Updated: 2020/03/25 16:52:32 by acostaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../hdr/doom_nukem.h"
 
 static void	display_one_screen(t_data *data, short screen)
-{	
+{
 	int		i;
 	int		j;
 
@@ -17,7 +29,7 @@ static void	display_one_screen(t_data *data, short screen)
 	}
 }
 
-void	display_story_screen(t_data *data)
+void		display_story_screen(t_data *data)
 {
 	if (data->death_screen)
 		display_one_screen(data, 13);

@@ -26,10 +26,9 @@ short			parse_char(char *str)
 		else if (str[i] != '0' && str[i] != '1' && str[i] != '2'
 				&& str[i] != '3' && str[i] != '4' && str[i] != '5'
 				&& str[i] != '6' && str[i] != '7' && str[i] != ','
-				/*&& str[i] != 'O' removing pillar*/&& str[i] != 'E' && str[i] != 'B'
-				&& str[i] != 'S' && str[i] != 'C' && str[i] != 'H'
-				&& str[i] != 'A' && str[i] != 'K' && str[i] != 'L'
-				&& str[i] != 'D')
+				&& str[i] != 'E' && str[i] != 'B' && str[i] != 'S'
+				&& str[i] != 'C' && str[i] != 'H' && str[i] != 'A'
+				&& str[i] != 'K' && str[i] != 'L' && str[i] != 'D')
 		{
 			ft_putstr_fd("Invalid map data", 2);
 			return (0);
@@ -44,23 +43,25 @@ void			parse_boudaries(char *str, t_data *data, short id)
 {
 	int			x;
 	int			y;
+	int			bot_loc;
 
 	y = 0;
 	while (y < data->maps[id].height)
 	{
 		if (str[2 * (y * data->maps[id].width)] < '1'
 			|| str[2 * (y * data->maps[id].width)] > '7'
-			|| str[2 * (y * data->maps[id].width + data->maps[id].width - 1)] < '1'
-			|| str[2 * (y * data->maps[id].width + data->maps[id].width - 1)] > '6')
+			|| str[2 * ((y + 1) * data->maps[id].width - 1)] < '1'
+			|| str[2 * ((y + 1) * data->maps[id].width - 1)] > '6')
 			clean_exit(data, "Incomplete boundaries");
 		y++;
 	}
 	x = -1;
 	while (++x < data->maps[id].width)
 	{
+		bot_loc = 2 * (x + (data->maps[id].height - 1) * data->maps[id].width);
 		if (str[2 * x] < '1' || str[2 * x] > '6'
-			|| str[2 * (x + (data->maps[id].height - 1) * data->maps[id].width)] < '1'
-			|| str[2 * (x + (data->maps[id].height - 1) * data->maps[id].width)] > '6')
+			|| str[bot_loc] < '1'
+			|| str[bot_loc] > '6')
 			clean_exit(data, "Incomplete boundaries");
 	}
 }

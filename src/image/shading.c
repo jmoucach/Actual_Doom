@@ -26,13 +26,14 @@ static Uint32	highlighted_color(Uint32 color)
 }
 
 Uint32			shaded_color(t_data *data, Uint32 color, double dist,
-																t_object *obj)
+								t_object *obj)
 {
 	t_color	tmp;
 	double	lbd;
 
 	if (obj)
-		if (data->time - obj->hl_time < 90 && obj->hl_time != 0 && obj->state != DYING)
+		if (data->time - obj->hl_time < 90 && obj->hl_time != 0
+							&& obj->state != DYING)
 			color = highlighted_color(color);
 	if (!data->shaded)
 		return (color);

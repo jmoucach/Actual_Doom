@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   menu_inputs.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/05 14:39:53 by acostaz           #+#    #+#             */
+/*   Updated: 2020/03/25 16:52:32 by acostaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../hdr/doom_nukem.h"
 
 static void		move_arrow_2(t_data *data, const Uint8 *state)
@@ -67,4 +79,3 @@ void			handle_menu_input(t_data *data, const Uint8 *state)
 		}
 	}
 }
-

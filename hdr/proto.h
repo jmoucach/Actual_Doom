@@ -26,6 +26,7 @@ void			set_values(t_data *data, int argc);
 void			get_hud_text_1(t_data *data);
 void			set_raycast_values(t_raycast *value, t_player player, int x);
 t_sprite		create_sprites(char *path, t_d_point scale, t_data *data);
+void			create_sprites_1(t_data *data);
 
 /*
 ** Draw
@@ -74,7 +75,6 @@ void			draw_minimap(t_data *data);
 ** Event loop
 */
 
-void			handle_input2(t_data *data, const Uint8 *state);
 void			handle_input(t_data *data, const Uint8 *state);
 void			handle_menu_input(t_data *data, const Uint8 *state);
 void			game_loop(t_data *data);
@@ -244,6 +244,8 @@ Uint32			shaded_color(t_data *data, Uint32 color, double dist, t_object *o);
 
 void	hits_taken(t_data *data, t_object *obj);
 void state_machine(t_data *data);
+void	enemy_death(t_data *data, t_object *obj);
+short	get_dying_sprite(t_data *data, t_object *obj);
 
 /*
 ** Menu

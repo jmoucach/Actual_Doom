@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hud_keys.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/05 14:39:53 by acostaz           #+#    #+#             */
+/*   Updated: 2020/03/25 16:52:32 by acostaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../hdr/doom_nukem.h"
 
 static void	print_one_key(t_data *data, int x, int y)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	Uint32	color;
 
 	i = -1;
@@ -19,7 +31,7 @@ static void	print_one_key(t_data *data, int x, int y)
 	}
 }
 
-void	display_hud_keys(t_data *data)
+void		display_hud_keys(t_data *data)
 {
 	int	i;
 

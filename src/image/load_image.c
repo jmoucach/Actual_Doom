@@ -39,12 +39,8 @@ SDL_Surface		*loadimage(char *path)
 	return (loadedsurface);
 }
 
-void			load_skybox_and_menu(t_data *data)
+void			load_menu(t_data *data)
 {
-	if (!(data->surface[7] = loadimage("pics/skybox/skybox_2.bmp")))
-		clean_exit(data, (char*)SDL_GetError());
-	if (!(data->surface[8] = loadimage("pics/skybox/skybox_3.bmp")))
-		clean_exit(data, (char*)SDL_GetError());
 	if (!(data->surface[9] = loadimage("pics/menu/menu_titles.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
 	if (!(data->surface[10] = loadimage("pics/menu/menu_custom.bmp")))
@@ -53,7 +49,6 @@ void			load_skybox_and_menu(t_data *data)
 		clean_exit(data, (char*)SDL_GetError());
 	if (!(data->surface[12] = loadimage("pics/menu/menu_arrow.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-
 	if (!(data->surface[13] = loadimage("pics/story/dead.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
 	if (!(data->surface[14] = loadimage("pics/story/start1.bmp")))
@@ -67,6 +62,14 @@ void			load_skybox_and_menu(t_data *data)
 	if (!(data->surface[18] = loadimage("pics/story/end2.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
 	if (!(data->surface[19] = loadimage("pics/story/end3.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
+}
+
+void			load_skybox(t_data *data)
+{
+	if (!(data->surface[7] = loadimage("pics/skybox/skybox_2.bmp")))
+		clean_exit(data, (char*)SDL_GetError());
+	if (!(data->surface[8] = loadimage("pics/skybox/skybox_3.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
 }
 
@@ -86,6 +89,7 @@ void			loadmedia(t_data *data)
 		clean_exit(data, (char*)SDL_GetError());
 	if (!(data->surface[6] = loadimage("pics/keydoor.bmp")))
 		clean_exit(data, (char*)SDL_GetError());
-	load_skybox_and_menu(data);
+	load_skybox(data);
+	load_menu(data);
 	load_media_hud_1(data);
 }

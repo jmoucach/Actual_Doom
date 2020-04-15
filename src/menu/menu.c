@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   menu.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/03 14:17:04 by acostaz           #+#    #+#             */
+/*   Updated: 2020/03/11 16:41:29 by acostaz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../hdr/doom_nukem.h"
 
 static void	print_menu_background(t_data *data, int y_offset)
@@ -38,7 +50,6 @@ static void	print_menu_custom(t_data *data)
 				data->pixels[(i + 728) + (j + 300) * SCREEN_WIDTH] = color;
 		}
 	}
-
 }
 
 static void	print_menu_text(t_data *data)
