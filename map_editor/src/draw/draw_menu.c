@@ -14,7 +14,7 @@
 
 void			ft_print_rectangle(t_fdf *img, int x, int y, int w, int h)
 {
-	/*t_pt			pt_a;
+	t_pt			pt_a;
 	t_pt			pt_b;
 	t_pt			pt_c;
 	t_pt			pt_d;
@@ -26,15 +26,15 @@ void			ft_print_rectangle(t_fdf *img, int x, int y, int w, int h)
 	check_and_draw_line(pt_a, pt_b, img, WHITE);
 	check_and_draw_line(pt_b, pt_c, img, WHITE);
 	check_and_draw_line(pt_c, pt_d, img, WHITE);
-	check_and_draw_line(pt_d, pt_a, img, WHITE);*/
+	check_and_draw_line(pt_d, pt_a, img, WHITE);
 	
 	//WE NEED TO USE PREVIOUS FUNCTION BUT IT DOES NOT WORK ATM, SO TO BE FIXED
-	SDL_SetRenderDrawColor(img->renderer, 255, 255, 255, 0);
+/*	SDL_SetRenderDrawColor(img->renderer, 255, 255, 255, 0);
 	SDL_RenderDrawLine(img->renderer, x, y, x + w, y);
 	SDL_RenderDrawLine(img->renderer, x, y + h, x + w, y + h);
 	SDL_RenderDrawLine(img->renderer, x, y, x, y + h);
 	SDL_RenderDrawLine(img->renderer, x + w, y, x + w, y + h);
-	
+	*/
 }
 
 void			print_button_add_and_substract(t_fdf *img)

@@ -81,17 +81,17 @@ void	check_and_draw_line(t_pt start, t_pt end, t_fdf *img, int col)
 void			ft_trace_line(t_pt a, t_pt b, t_fdf *img, int col)
 {
 	//FUNCTION THAT WE SOULD USE BUT NOT WORKING
-	/*t_pt			pt_one;
+	t_pt			pt_one;
 	t_pt			pt_two;
 
 	pt_one.x = img->map->ox + a.x * img->map->base_gap;
 	pt_one.y = img->map->oy + a.y * img->map->base_gap;
 	pt_two.x = img->map->ox + b.x * img->map->base_gap;
 	pt_two.y = img->map->oy + b.y * img->map->base_gap;
-	check_and_draw_line(pt_one, pt_two, img, col);*/
+	check_and_draw_line(pt_one, pt_two, img, col);
 	
 	//Function as it was with SDL_Render... not to be used but working
-	int			gap;
+/*	int			gap;
 	int			ox;
 	int			oy;
 	SDL_Color 	color;
@@ -104,6 +104,5 @@ void			ft_trace_line(t_pt a, t_pt b, t_fdf *img, int col)
 	SDL_SetRenderDrawColor(img->renderer, color.r, color.g, color.b,
 			color.a);
 	SDL_RenderDrawLine(img->renderer, ox + a.x * gap,
-			oy + a.y * gap, ox + b.x * gap, oy + b.y * gap);
-			
+			oy + a.y * gap, ox + b.x * gap, oy + b.y * gap);*/
 }
