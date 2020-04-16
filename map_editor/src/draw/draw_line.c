@@ -67,14 +67,14 @@ void	check_and_draw_line(t_pt start, t_pt end, t_fdf *img, int col)
 		end.x = WIDTH;
 	if (end.y > HEIGHT)
 		end.y = HEIGHT;
-	ft_putendl("\nstart.x");//DEBUG
+	/*ft_putendl("\nstart.x");//DEBUG
 	ft_putnbr(start.x);//DEBUG
 	ft_putendl("\nstart.y");//DEBUG
 	ft_putnbr(start.y);//DEBUG
 	ft_putendl("\nend.x");//DEBUG
 	ft_putnbr(end.x);//DEBUG
 	ft_putendl("\nend.y");//DEBUG
-	ft_putnbr(end.y);//DEBUG
+	ft_putnbr(end.y);//DEBUG*/
 	draw_line(start, end, img->pixels, col);
 }
 

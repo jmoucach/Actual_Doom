@@ -36,20 +36,23 @@ void			ft_print_menu_background(t_fdf *img)
 
 void			ft_clear_and_render(t_fdf *img, int	loop)
 {
-	//ft_parse_and_print_textures(img);
+	//IN THIS FIRST PART WE PRINT LINES
 	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
 	ft_print_grid(img);
-	ft_print_menu_background(img);
-	ft_render_buttons(img);
-	ft_print_pressed_button(img, loop);
-	//try for the grid
-	img->grid = SDL_CreateTexture(img->renderer,
+	if (!(img->grid = SDL_CreateTexture(img->renderer,
 		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH,
-		HEIGHT);
+		HEIGHT)))
+		ft_clean_exit(img, (char *)SDL_GetError());
+	draw_menu_squares(img);
+	ft_print_pressed_button(img, loop);
 	SDL_UpdateTexture(img->grid, NULL, img->pixels, WIDTH * 4);
-//	SDL_RenderClear(img->renderer);//whole screen is red if uncommented
-
 	SDL_RenderCopy(img->renderer, img->grid, NULL, NULL);
+
+	//IN THIS SECOND PART WE PRINT TEXTURES
+	ft_parse_and_print_textures(img);
+	draw_menu_textures(img);
+	//ft_print_menu_background(img);
+//	SDL_RenderClear(img->renderer);//whole screen is red if uncommented
 	SDL_SetRenderDrawColor(img->renderer, 0, 0, 0, 0);
 	SDL_RenderPresent(img->renderer);
 	SDL_RenderClear(img->renderer);
