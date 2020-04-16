@@ -34,7 +34,8 @@ void				drawline(t_point pt_one, t_point pt_two,
 	pt = pt_one;
 	while (pt.x != pt_two.x || pt.y != pt_two.y)
 	{
-		pix[pt.x + pt.y * SCREEN_WIDTH] = colour;
+		if (is_in_frame(pt))
+			pix[pt.x + pt.y * SCREEN_WIDTH] = colour;
 		if ((line_param.error = line_param.off * 2) > -line_param.diff.y)
 		{
 			line_param.off -= line_param.diff.y;
@@ -46,5 +47,6 @@ void				drawline(t_point pt_one, t_point pt_two,
 			pt.y += line_param.inc.y;
 		}
 	}
-	pix[pt.x + pt.y * SCREEN_WIDTH] = colour;
+	if (is_in_frame(pt))
+		pix[pt.x + pt.y * SCREEN_WIDTH] = colour;
 }

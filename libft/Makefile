@@ -12,7 +12,6 @@
 
 CFLAGS = -Wall -Werror -Wextra -MMD
 
-
 NAME = libft.a
 
 SRC_NAME = ft_abs.c	\

@@ -45,7 +45,7 @@ void			roofcaster(t_data *data, t_raycast *r, int x)
 	y = r->drawstart;
 	f.currentdist = 0;
 	floor_side(&f, r);
-	while (y > 0)
+	while (y >= 0)
 	{
 		f.currentdist = (double)SCREEN_HEIGHT / -(double)(2 * y
 			- (SCREEN_HEIGHT + data->yaw) + 1);

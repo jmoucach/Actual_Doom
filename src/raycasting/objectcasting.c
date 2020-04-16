@@ -61,7 +61,7 @@ static void		draw_object(t_data *data, t_objcast o, SDL_Surface *surf,
 				o.tex.y = ((y - o.movescreen) * 2 - (SCREEN_HEIGHT + data->yaw)
 						+ o.height) * (surf->h / 2) / (o.height + 1);
 				o.color = get_pixel(surf, o.tex.x, o.tex.y);
-				if (o.color != 0)
+				if (o.color != 0 && is_in_frame((t_point){x, y}))
 					data->pixels[x + y * SCREEN_WIDTH] = shaded_color(data,
 							o.color, obj->dist_to_player, obj);
 			}

@@ -107,6 +107,12 @@ SDL_Surface		*loadimage(char *path);
 void			loadmedia(t_data *data);
 
 /*
+** Image utils
+*/
+
+short	is_in_frame(t_point pt);
+
+/*
 ** Parsing
 */
 

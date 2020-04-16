@@ -59,6 +59,7 @@ static void	get_map3_values(t_data *data)
 static void	get_custom_map_values(t_data *data)
 {
 	data->ceiling = 1;
+	data->shaded = 0;
 	data->p.dir.x = 1;
 	data->p.plane.y = -0.66;
 	data->toggle_minimap = 1;

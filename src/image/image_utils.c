@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   text_screen_inputs.c                               :+:      :+:    :+:   */
+/*   image_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 14:39:53 by acostaz           #+#    #+#             */
-/*   Updated: 2020/03/25 16:52:32 by acostaz          ###   ########.fr       */
+/*   Created: 2019/09/19 16:27:49 by acostaz           #+#    #+#             */
+/*   Updated: 2020/02/26 12:49:25 by acostaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/doom_nukem.h"
 
-void	handle_text_screen_input(t_data *data, const Uint8 *state)
+short	is_in_frame(t_point pt)
 {
-	if (state[SDL_SCANCODE_ESCAPE])
-		data->quit = 1;
-	if (state[SDL_SCANCODE_SPACE])
-	{
-		if (data->enter_screen)
-			data->enter_screen = 0;
-		else if (data->exit_screen || data->death_screen)
-		{
-			free_objects(data);
-			data->exit_screen = 0;
-			data->death_screen = 0;
-			data->menu = 1;
-		}
-	}
+	if (pt.x >= 0 && pt.y >= 0 && pt.x < SCREEN_WIDTH && pt.y < SCREEN_HEIGHT)
+		return (1);
+	return (0);
 }

@@ -30,7 +30,8 @@ static void		display_hud_or_end_screen(t_data *data)
 static void		manage_sdl_events(SDL_Event *e, t_data *data)
 {
 	if (e->type == SDL_QUIT)
-		clean_exit(data, NULL);
+		data->quit = 1;
+		//clean_exit(data, NULL);
 	if (e->type == SDL_MOUSEBUTTONDOWN)
 	{
 		if (e->button.button == SDL_BUTTON_LEFT)

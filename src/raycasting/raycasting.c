@@ -107,7 +107,7 @@ void	raycasting(t_data *data)
 		get_texturing_values(&r, data);
 		give_draw_values(&r, data);
 		pt.y = r.drawstart - 1;
-		while (++pt.y <= r.drawend)
+		while (++pt.y <= r.drawend && is_in_frame(pt))
 		{
 			r.tex.y = (pt.y * 2 - (SCREEN_HEIGHT + data->yaw) + r.lineheight)
 											* (r.texh / 2) / (r.lineheight + 1);
