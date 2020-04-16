@@ -18,15 +18,11 @@ void		ft_sub_fix_coords(t_map *map, int *x, int *y)
 	int		tempy;
 	int		crossx;
 	int		crossy;
-//	float	decimalx;
-//	float	decimaly;
 
 	tempx = *x - map->ox;
 	tempy = *y - map->oy;
 	crossx = tempx / map->base_gap;
 	crossy = tempy / map->base_gap;
-//	decimalx = tempx % (int)map->base_gap;
-//	decimaly = tempy % (int)map->base_gap;
 	*x = crossx; 
 	*y = crossy; 
 }

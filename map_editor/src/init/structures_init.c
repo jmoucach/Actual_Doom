@@ -72,7 +72,6 @@ t_map			*ft_map_init(t_line *list)
 		return (NULL);
 	map->base_gap = ft_gap(map);
 	map->base_h = ft_height(map);
-	//map->zmax = 1;//NOT USED.
 	ft_origin(map);
 	map->endx = map->ox + ((map->x - 1) * map->base_gap);
 	map->endy = map->oy + ((map->y - 1) * map->base_gap);

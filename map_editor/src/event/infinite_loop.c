@@ -41,10 +41,8 @@ void		ft_fdf(t_map *map, char *map_name)
 	t_key	key;
 
 	if (!(img = ft_ptr_init(map_name)))
-		//return ;
 		ft_clean_exit(img, "Problems during main structure creation");//NEWLY ADDED
 	if (!(ft_mouse_init(&mous)) || !(ft_key_init(&key)))
-		//return ;
 		ft_clean_exit(img, "Problems during mouse or key initilization");//NEWLY ADDED
 	img->map = map;
 	ft_clear_and_render(img, mous.loop);

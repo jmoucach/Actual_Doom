@@ -29,7 +29,6 @@ void		key_press(t_fdf *img, t_key *key, SDL_Event e)
 		if (e.key.keysym.sym == ZOOM_OUT)
 			key->zoom_out = 1;
 		if (e.key.keysym.sym == 27)
-			//exit(0);//replaced by clean_exit
 			ft_clean_exit(img, "You pushed esc");
 	}
 }

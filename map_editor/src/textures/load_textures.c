@@ -20,15 +20,11 @@ SDL_Texture		*loadimage(char *path, t_fdf *img)
 	loadedsurface = SDL_LoadBMP(path);
 	if (!loadedsurface)
 	{
-		/*ft_putstr_fd("Couldn't load image:", 2);
-		ft_putendl_fd(path, 2);
-		ft_putstr_fd("Error: ", 2);*/
 		ft_putendl_fd(SDL_GetError(), 2);
 		return (NULL);
 	}
 	if (!(texture = SDL_CreateTextureFromSurface(img->renderer, loadedsurface)))
 		{
-			//ft_putendl_fd(SDL_GetError(), 2);
 			SDL_FreeSurface(loadedsurface);//NEWLY ADDED
 			ft_clean_exit(img, (char *)SDL_GetError);//NEWLY ADDED
 		}

@@ -29,19 +29,7 @@ void			ft_print_rectangle(t_fdf *img, int x, int y, int w, int h)
 	draw_line(pt_d, pt_a, img->pixels, WHITE);
 }
 
-void			print_button_add_and_substract(t_fdf *img)
-{
-	//WE COULD ALSO MODIFY THIS FUNCTION TO HAVE TEXTURED BUTTONS I/O JUST COLORS
-	SDL_Rect	red_button;
-	SDL_Rect	minus_bar;
-	
-	SDL_SetRenderDrawColor(img->renderer, 215, 0, 0, 0);
-	red_button = (SDL_Rect){1321, 780, 230, 60};
-	SDL_RenderFillRect(img->renderer, &red_button);
-	SDL_SetRenderDrawColor(img->renderer, 255, 255, 255, 0);
-	minus_bar = (SDL_Rect){1410, 810, 50, 3};
-	SDL_RenderFillRect(img->renderer, &minus_bar);
-}
+
 void			draw_menu_squares(t_fdf *img)
 {
 	int			i;
