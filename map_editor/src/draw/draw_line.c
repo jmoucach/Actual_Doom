@@ -67,20 +67,11 @@ void	check_and_draw_line(t_pt start, t_pt end, t_fdf *img, int col)
 		end.x = WIDTH;
 	if (end.y > HEIGHT)
 		end.y = HEIGHT;
-	/*ft_putendl("\nstart.x");//DEBUG
-	ft_putnbr(start.x);//DEBUG
-	ft_putendl("\nstart.y");//DEBUG
-	ft_putnbr(start.y);//DEBUG
-	ft_putendl("\nend.x");//DEBUG
-	ft_putnbr(end.x);//DEBUG
-	ft_putendl("\nend.y");//DEBUG
-	ft_putnbr(end.y);//DEBUG*/
 	draw_line(start, end, img->pixels, col);
 }
 
-void			ft_trace_line(t_pt a, t_pt b, t_fdf *img, int col)
+void			ft_calculate_grid_coord_and_draw_line(t_pt a, t_pt b, t_fdf *img, int col)
 {
-	//FUNCTION THAT WE SOULD USE BUT NOT WORKING
 	t_pt			pt_one;
 	t_pt			pt_two;
 
@@ -89,20 +80,4 @@ void			ft_trace_line(t_pt a, t_pt b, t_fdf *img, int col)
 	pt_two.x = img->map->ox + b.x * img->map->base_gap;
 	pt_two.y = img->map->oy + b.y * img->map->base_gap;
 	check_and_draw_line(pt_one, pt_two, img, col);
-	
-	//Function as it was with SDL_Render... not to be used but working
-/*	int			gap;
-	int			ox;
-	int			oy;
-	SDL_Color 	color;
-
-	gap = img->map->base_gap;
-	ox = img->map->ox;
-	oy = img->map->oy;
-	//color = ft_color_of_lower_element(a, b);
-	color = ft_hexa_to_SDL(col);//fixed color until we adjust it
-	SDL_SetRenderDrawColor(img->renderer, color.r, color.g, color.b,
-			color.a);
-	SDL_RenderDrawLine(img->renderer, ox + a.x * gap,
-			oy + a.y * gap, ox + b.x * gap, oy + b.y * gap);*/
 }

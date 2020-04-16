@@ -61,5 +61,5 @@ void		mk_point_and_trace_line(int x1, int y1, int x2, int y2, t_fdf *img)
 
 	start = coord_to_pt(x1, y1);
 	end = coord_to_pt(x2, y2);
-	ft_trace_line(start, end, img, WHITE);
+	ft_calculate_grid_coord_and_draw_line(start, end, img, WHITE);
 }

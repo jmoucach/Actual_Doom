@@ -20,9 +20,6 @@ void			ft_print_menu_background(t_fdf *img)
 	t_pt		end;
 
 	i = -1;
-	//color = ft_hexa_to_SDL(0x2E2E2E);
-	//SDL_SetRenderDrawColor(img->renderer, color.r, color.g, color.b,
-//			color.a);
 	while (++i < 270)
 	{
 		start = coord_to_pt((WIDTH - 300) + i, 0);
@@ -31,7 +28,6 @@ void			ft_print_menu_background(t_fdf *img)
 		//end = coord_to_pt(100, 100);
 		draw_line(start, end, img->pixels, 0x2E2E2E);
 	}
-		//SDL_RenderDrawLine(img->renderer, (WIDTH - 300) + i, 0, (WIDTH - 300) + i, HEIGHT);
 }
 
 void			ft_clear_and_render(t_fdf *img, int	loop)
@@ -39,10 +35,10 @@ void			ft_clear_and_render(t_fdf *img, int	loop)
 	//IN THIS FIRST PART WE PRINT LINES
 	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
 	ft_print_grid(img);
-	if (!(img->grid = SDL_CreateTexture(img->renderer,
+	/*if (!(img->grid = SDL_CreateTexture(img->renderer,
 		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH,
 		HEIGHT)))
-		ft_clean_exit(img, (char *)SDL_GetError());
+		ft_clean_exit(img, (char *)SDL_GetError());*/
 	draw_menu_squares(img);
 	ft_print_pressed_button(img, loop);
 	SDL_UpdateTexture(img->grid, NULL, img->pixels, WIDTH * 4);

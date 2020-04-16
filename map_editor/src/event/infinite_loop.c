@@ -24,18 +24,13 @@ void			ft_infinite_loop(t_fdf *img, t_mouse *mous, t_key *key)
 		ft_clean_exit(img, (char *)SDL_GetError());
 	while (isquit == 0)
 	{
-		//while (event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_KEYDOWN)
 		SDL_PollEvent(&event);
-//		while (SDL_PollEvent(&event))
-//		{
-			if (event.type == SDL_QUIT)
-				exit (0);
-			ft_menu_event( mous, event);
-			//ft_print_pressed_button(img, mous->loop);
-			ft_clear_and_render(img, mous->loop);
-			ft_keys_event(img, event, key);
-			ft_mouse_event(img, mous, event);
-//		}
+		if (event.type == SDL_QUIT)
+			exit (0);
+		ft_menu_event( mous, event);
+		ft_clear_and_render(img, mous->loop);
+		ft_keys_event(img, event, key);
+		ft_mouse_event(img, mous, event);
 	}
 }
 

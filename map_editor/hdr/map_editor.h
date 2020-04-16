@@ -219,7 +219,7 @@ void				ft_print_blocks(int x, int y, int map_value,
 void				ft_parse_and_print_textures(t_fdf *img);
 void				draw_line(t_pt pt_one, t_pt pt_two, Uint32 *pixels, int colour);
 void				check_and_draw_line(t_pt start, t_pt end, t_fdf *img, int col);
-void				ft_trace_line(t_pt a, t_pt b, t_fdf *img, int col);
+void				ft_calculate_grid_coord_and_draw_line(t_pt a, t_pt b, t_fdf *img, int col);
 void				print_button_add_and_substract(t_fdf *img);
 /*
 **			COLORS
