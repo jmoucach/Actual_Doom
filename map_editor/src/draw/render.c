@@ -53,7 +53,7 @@ void			ft_clear_and_render(t_fdf *img, int	loop)
 	draw_menu_textures(img);
 	//ft_print_menu_background(img);
 //	SDL_RenderClear(img->renderer);//whole screen is red if uncommented
-	SDL_SetRenderDrawColor(img->renderer, 0, 0, 0, 0);
+	//SDL_SetRenderDrawColor(img->renderer, 0, 0, 0, 0);
 	SDL_RenderPresent(img->renderer);
 	SDL_RenderClear(img->renderer);
 }
