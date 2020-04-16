@@ -89,8 +89,8 @@ void		clean_exit(t_data *data, char *err)
 	free_surf_and_sprites(data);
 	free_hud(data);
 	free_objects(data);
-	if (data->zBuffer)
-		free(data->zBuffer);
+	if (data->zbuffer)
+		free(data->zbuffer);
 	if (data->pixels)
 		free(data->pixels);
 	if (data->texture)

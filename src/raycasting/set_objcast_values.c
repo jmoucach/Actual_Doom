@@ -34,11 +34,11 @@ void		set_objcast_values(t_data *data, t_objcast *val, t_object *iterator,
 {
 	val->relative_pos.x = iterator->pos.x - data->p.pos.x;
 	val->relative_pos.y = iterator->pos.y - data->p.pos.y;
-	val->invDet = 1.0 / (data->p.plane.x * data->p.dir.y
+	val->invdet = 1.0 / (data->p.plane.x * data->p.dir.y
 		- data->p.dir.x * data->p.plane.y);
-	val->pos.x = val->invDet * (data->p.dir.y * val->relative_pos.x
+	val->pos.x = val->invdet * (data->p.dir.y * val->relative_pos.x
 		- data->p.dir.x * val->relative_pos.y);
-	val->pos.y = val->invDet * (-data->p.plane.y * val->relative_pos.x
+	val->pos.y = val->invdet * (-data->p.plane.y * val->relative_pos.x
 		+ data->p.plane.x * val->relative_pos.y);
 	val->screen_x = ((SCREEN_WIDTH / 2) * (1 + val->pos.x / val->pos.y));
 	val->height = abs((int)(SCREEN_HEIGHT / val->pos.y)) * sprite.scale.y;

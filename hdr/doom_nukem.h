@@ -13,10 +13,6 @@
 #ifndef DOOM_NUKEM_H
 # define DOOM_NUKEM_H
 
-//# include "/Users/acostaz/.brew/include/SDL2/SDL.h"
-//# include "/Users/acostaz/.brew/include/SDL2/SDL_TTF.h"
-//# include "/usr/local/include/SDL2/SDL.h"
-//# include "/usr/local/include/SDL2/SDL_ttf.h"
 # include "/usr/include/SDL2/SDL.h"
 # include "/usr/include/SDL2/SDL_ttf.h"
 # include "struct.h"

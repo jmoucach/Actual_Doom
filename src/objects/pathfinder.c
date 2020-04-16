@@ -14,20 +14,20 @@
 
 void			get_moving_sprite(t_data *data, t_object *obj)
 {
-	obj->lastUpdate += data->ftime;
+	obj->lastupdate += data->ftime;
 	if (obj->current_sprite < obj->first_sprite_walk
 		|| obj->current_sprite > obj->first_sprite_walk
 		+ obj->num_of_sprites_walk)
 	{
-		obj->lastUpdate = 0;
+		obj->lastupdate = 0;
 		obj->current_sprite = obj->first_sprite_walk;
 	}
-	else if (obj->lastUpdate >= 1.0 / obj->num_of_sprites_walk)
+	else if (obj->lastupdate >= 1.0 / obj->num_of_sprites_walk)
 	{
-		obj->lastFrame++;
-		obj->lastFrame %= obj->num_of_sprites_walk;
-		obj->lastUpdate = 0;
-		obj->current_sprite = obj->first_sprite_walk + obj->lastFrame;
+		obj->lastframe++;
+		obj->lastframe %= obj->num_of_sprites_walk;
+		obj->lastupdate = 0;
+		obj->current_sprite = obj->first_sprite_walk + obj->lastframe;
 	}
 }
 

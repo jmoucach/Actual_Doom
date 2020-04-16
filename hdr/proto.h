@@ -43,7 +43,7 @@ void			drawline(t_point pt_one, t_point pt_two,
 ** Main
 */
 
-short				name_parser(char *file_name);
+short			name_parser(char *file_name);
 void			free_maps(t_data *data);
 
 /*
@@ -141,72 +141,72 @@ void			print_skybox(t_data *data);
 /*
 ** HUD
 */
-void prepare_hud(t_data *data);
-void display_hud(t_data *data);
-void display_health(t_data *data);
-void display_ammo_side(t_data *data);
-void	display_hud_keys(t_data *data);
+void			prepare_hud(t_data *data);
+void			display_hud(t_data *data);
+void			display_health(t_data *data);
+void			display_ammo_side(t_data *data);
+void			display_hud_keys(t_data *data);
 
 /*
 ** Weapon
 */
-short use_weapon(t_data *data, short id);
-short use_knuckle(t_data *data, short is_firing);
-short use_shotgun(t_data *data, short is_firing);
-short use_plasma(t_data *data, short is_firing);
-short use_chainsaw(t_data *data, short is_firing);
-short use_handgun(t_data *data, short is_firing);
-short use_bfg(t_data *data, short is_firing);
-short use_minigun(t_data *data, short is_firing);
+short			use_weapon(t_data *data, short id);
+short			use_knuckle(t_data *data, short is_firing);
+short			use_shotgun(t_data *data, short is_firing);
+short			use_plasma(t_data *data, short is_firing);
+short			use_chainsaw(t_data *data, short is_firing);
+short			use_handgun(t_data *data, short is_firing);
+short			use_bfg(t_data *data, short is_firing);
+short			use_minigun(t_data *data, short is_firing);
 
 /*
 ** Combat
 */
 
-void	combat(t_data *data);
-void	hits_dealt(t_data *data);
-void	red_hit_screen(t_data *data);
-void	green_hp_screen(t_data *data);
-void	blue_hp_screen(t_data *data);
+void			combat(t_data *data);
+void			hits_dealt(t_data *data);
+void			red_hit_screen(t_data *data);
+void			green_hp_screen(t_data *data);
+void			blue_hp_screen(t_data *data);
 
 /*
 ** Object list
 */
 
-void remove_object(t_object **head, int key);
-void rollback_object(t_object **head);
-void addback_object(t_object **head, t_object *new);
-t_object *new_object(int id, int type, t_d_point pos);
-void swap_objects(t_object **head, t_object *obj1, t_object *obj2);
+void			remove_object(t_object **head, int key);
+void			rollback_object(t_object **head);
+void			addback_object(t_object **head, t_object *new);
+t_object		*new_object(int id, int type, t_d_point pos);
+void			swap_objects(t_object **head, t_object *obj1, t_object *obj2);
 
-//
-void pathfind(t_data *data, t_object *obj);
-short	count_enemies(t_data *data);
+void			pathfind(t_data *data, t_object *obj);
+short			count_enemies(t_data *data);
 
 /*
 ** Object caster
 */
 
-void sort_objects(t_data *data);
-void objectcaster(t_data *data, t_object *obj);
-void set_objcast_values(t_data *data, t_objcast *val, t_object *iterator, t_sprite sprite);
-int get_movescreen_value(t_data *data, t_objcast o, int pos);
-void		get_dist_to_player(t_data *data);
+void			sort_objects(t_data *data);
+void			objectcaster(t_data *data, t_object *obj);
+void			set_objcast_values(t_data *data, t_objcast *val,
+						t_object *iterator, t_sprite sprite);
+int				get_movescreen_value(t_data *data, t_objcast o, int pos);
+void			get_dist_to_player(t_data *data);
 
 /*
 ** Items
 */
 
-void	item_pickup(t_data *data);
-short	cell_pickup(t_data *data, t_object **obj);
-short	shell_pickup(t_data *data, t_object **obj);
-short	bullet_pickup(t_data *data, t_object **obj);
+void			item_pickup(t_data *data);
+short			cell_pickup(t_data *data, t_object **obj);
+short			shell_pickup(t_data *data, t_object **obj);
+short			bullet_pickup(t_data *data, t_object **obj);
 
 /*
 ** Doors
 */
 
-void	check_doors(t_data *data);
+void			check_doors(t_data *data);
 
 /*
 ** Get obj data
@@ -221,52 +221,52 @@ void			get_obj_data_3(t_object **obj);
 ** Nullify
 */
 
-void nullify_mallocs(t_data *data);
-void nullify_tab(void **tab, int size);
-void nullify_sprites(t_sprite *sprites, int size);
+void			nullify_mallocs(t_data *data);
+void			nullify_tab(void **tab, int size);
+void			nullify_sprites(t_sprite *sprites, int size);
 
 /*
 ** Clean exit
 */
 
-void clean_exit(t_data *data, char *err);
-void	free_objects(t_data *data);
+void			clean_exit(t_data *data, char *err);
+void			free_objects(t_data *data);
 
 /*
 ** Shading
 */
 
-Uint32			shaded_color(t_data *data, Uint32 color, double dist, t_object *o);
+Uint32			shaded_color(t_data *data, Uint32 color,
+									double dist, t_object *o);
 
 /*
 ** State machine
 */
 
-void	hits_taken(t_data *data, t_object *obj);
-void state_machine(t_data *data);
-void	enemy_death(t_data *data, t_object *obj);
-short	get_dying_sprite(t_data *data, t_object *obj);
+void			hits_taken(t_data *data, t_object *obj);
+void			state_machine(t_data *data);
+void			enemy_death(t_data *data, t_object *obj);
+short			get_dying_sprite(t_data *data, t_object *obj);
 
 /*
 ** Menu
 */
 
-void	menu(t_data *data);
-void	menu_selection(t_data *data);
-void	get_map_values(t_data *data, short selected);
+void			menu(t_data *data);
+void			menu_selection(t_data *data);
+void			get_map_values(t_data *data, short selected);
 
 /*
 ** Enemy Vision
 */
 
-short   can_see_player(t_data *data, t_object *obj);
+short			can_see_player(t_data *data, t_object *obj);
 
 /*
 ** Story
 */
 
-void	handle_text_screen_input(t_data *data, const Uint8 *state);
-void	display_story_screen(t_data *data);
-
+void			handle_text_screen_input(t_data *data, const Uint8 *state);
+void			display_story_screen(t_data *data);
 
 #endif

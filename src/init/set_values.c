@@ -20,17 +20,17 @@ static void	alloc_data_structs(t_data *data)
 	if (!(data->obj_sprite = (t_sprite*)malloc(sizeof(t_sprite) * 44)))
 		clean_exit(data, "Object sprite malloc error");
 	nullify_sprites(data->obj_sprite, 44);
-	if (!(data->zBuffer = (double *)malloc(sizeof(double) * SCREEN_WIDTH)))
+	if (!(data->zbuffer = (double *)malloc(sizeof(double) * SCREEN_WIDTH)))
 		clean_exit(data, "ZBuffer malloc error");
+	if (!(data->sprites = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 33)))
+		clean_exit(data, "Sprites malloc error");
+	nullify_tab((void**)data->sprites, 33);
 }
 
 void		set_values(t_data *data, int argc)
 {
 	ft_bzero(data, sizeof(t_data));
 	nullify_mallocs(data);
-	if (!(data->sprites = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 33)))
-		clean_exit(data, "Sprites malloc error");
-	nullify_tab((void**)data->sprites, 33);
 	data->custom_map = (argc == 1) ? 0 : 1;
 	data->p.dir.x = 1;
 	data->toggle_minimap = 1;

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   combat.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:39:58 by acostaz           #+#    #+#             */
 /*   Updated: 2020/03/11 18:06:28 by acostaz          ###   ########.fr       */
@@ -14,20 +14,20 @@
 
 void	get_attacking_sprite(t_data *data, t_object *obj)
 {
-	obj->lastUpdate += data->ftime;
+	obj->lastupdate += data->ftime;
 	if (obj->current_sprite < obj->first_sprite_attack
 			|| obj->current_sprite > obj->first_sprite_attack
 			+ obj->num_of_sprites_attack)
 	{
-		obj->lastUpdate = 0;
+		obj->lastupdate = 0;
 		obj->current_sprite = obj->first_sprite_attack;
 	}
-	else if (obj->lastUpdate >= 0.5 / obj->num_of_sprites_attack)
+	else if (obj->lastupdate >= 0.5 / obj->num_of_sprites_attack)
 	{
-		obj->lastFrame++;
-		obj->lastFrame %= obj->num_of_sprites_attack;
-		obj->lastUpdate = 0;
-		obj->current_sprite = obj->first_sprite_attack + obj->lastFrame;
+		obj->lastframe++;
+		obj->lastframe %= obj->num_of_sprites_attack;
+		obj->lastupdate = 0;
+		obj->current_sprite = obj->first_sprite_attack + obj->lastframe;
 	}
 }
 

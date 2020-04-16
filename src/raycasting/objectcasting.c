@@ -53,7 +53,7 @@ static void		draw_object(t_data *data, t_objcast o, SDL_Surface *surf,
 		o.tex.x = (x - (-o.width / 2 + o.screen_x)) * surf->w / o.width;
 		y = o.drawstart.y - 1;
 		if (o.pos.y > 0 && x > 0 && x < SCREEN_WIDTH
-				&& o.pos.y < data->zBuffer[x])
+				&& o.pos.y < data->zbuffer[x])
 		{
 			obj->visible = 1;
 			while (++y < o.drawend.y)

@@ -116,7 +116,7 @@ void	raycasting(t_data *data)
 			data->pixels[pt.x + pt.y * SCREEN_WIDTH] = shaded_color(data,
 													r.color, r.walldist, NULL);
 		}
-		data->zBuffer[pt.x] = r.walldist;
+		data->zbuffer[pt.x] = r.walldist;
 		floorcaster(data, &r, pt.x);
 	}
 }

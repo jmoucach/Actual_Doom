@@ -17,22 +17,22 @@ short	get_dying_sprite(t_data *data, t_object *obj)
 	short	removed;
 
 	removed = 0;
-	obj->lastUpdate += data->ftime;
+	obj->lastupdate += data->ftime;
 	if (obj->current_sprite < obj->first_sprite_death
 		|| obj->current_sprite > obj->first_sprite_death
 		+ obj->num_of_sprites_death)
 	{
-		obj->lastUpdate = 0;
+		obj->lastupdate = 0;
 		obj->current_sprite = obj->first_sprite_death;
 	}
-	else if (obj->lastFrame == obj->num_of_sprites_death - 1)
+	else if (obj->lastframe == obj->num_of_sprites_death - 1)
 		removed = 1;
-	else if (obj->lastUpdate >= 0.5 / obj->num_of_sprites_death)
+	else if (obj->lastupdate >= 0.5 / obj->num_of_sprites_death)
 	{
-		obj->lastFrame++;
-		obj->lastFrame %= obj->num_of_sprites_death;
-		obj->lastUpdate = 0;
-		obj->current_sprite = obj->first_sprite_death + obj->lastFrame;
+		obj->lastframe++;
+		obj->lastframe %= obj->num_of_sprites_death;
+		obj->lastupdate = 0;
+		obj->current_sprite = obj->first_sprite_death + obj->lastframe;
 	}
 	return (removed);
 }
