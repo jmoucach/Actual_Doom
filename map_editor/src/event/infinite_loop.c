@@ -18,10 +18,10 @@ void			ft_infinite_loop(t_fdf *img, t_mouse *mous, t_key *key)
 	SDL_Event	event;
 
 	isquit = 0;
-	if (!(img->grid = SDL_CreateTexture(img->renderer,
+	/*if (!(img->grid = SDL_CreateTexture(img->renderer,
 		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH,
 		HEIGHT)))
-		ft_clean_exit(img, (char *)SDL_GetError());
+		ft_clean_exit(img, (char *)SDL_GetError());*/
 	while (isquit == 0)
 	{
 		SDL_PollEvent(&event);

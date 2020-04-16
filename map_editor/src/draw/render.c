@@ -30,17 +30,36 @@ void			ft_print_menu_background(t_fdf *img)
 	}
 }
 
+void			initialize_and_write_lines(t_fdf *img, int loop)
+{
+	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
+	ft_print_grid(img);
+	if (!img->grid)
+		{
+			if (!(img->grid = SDL_CreateTexture(img->renderer,
+			SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH,
+			HEIGHT)))
+			ft_clean_exit(img, (char *)SDL_GetError());
+		}
+	draw_menu_squares(img);
+	ft_print_pressed_button(img, loop);
+}
 void			ft_clear_and_render(t_fdf *img, int	loop)
 {
 	//IN THIS FIRST PART WE PRINT LINES
+	initialize_and_write_lines(img, loop);
+	/* Moved in function initialize_and_... right above
 	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
 	ft_print_grid(img);
-	/*if (!(img->grid = SDL_CreateTexture(img->renderer,
-		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH,
-		HEIGHT)))
-		ft_clean_exit(img, (char *)SDL_GetError());*/
+	if (!img->grid)
+		{
+			if (!(img->grid = SDL_CreateTexture(img->renderer,
+			SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH,
+			HEIGHT)))
+			ft_clean_exit(img, (char *)SDL_GetError());
+		}
 	draw_menu_squares(img);
-	ft_print_pressed_button(img, loop);
+	ft_print_pressed_button(img, loop);*/
 	SDL_UpdateTexture(img->grid, NULL, img->pixels, WIDTH * 4);
 	SDL_RenderCopy(img->renderer, img->grid, NULL, NULL);
 
@@ -48,7 +67,7 @@ void			ft_clear_and_render(t_fdf *img, int	loop)
 	ft_parse_and_print_textures(img);
 	draw_menu_textures(img);
 	//ft_print_menu_background(img);
-//	SDL_RenderClear(img->renderer);//whole screen is red if uncommented
+	//SDL_RenderClear(img->renderer);//whole screen is white if uncommented
 	//SDL_SetRenderDrawColor(img->renderer, 0, 0, 0, 0);
 	SDL_RenderPresent(img->renderer);
 	SDL_RenderClear(img->renderer);
