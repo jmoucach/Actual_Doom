@@ -3,21 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   doom_nukem.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JP <JP@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 12:50:44 by acostaz           #+#    #+#             */
-/*   Updated: 2020/03/11 15:25:27 by acostaz          ###   ########.fr       */
+/*   Updated: 2020/04/17 16:28:17 by JP               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOOM_NUKEM_H
 # define DOOM_NUKEM_H
 
-# include "/usr/include/SDL2/SDL.h"
-# include "/usr/include/SDL2/SDL_ttf.h"
+# include "/usr/local/include/SDL2/SDL.h"
+# include "/usr/local/include/SDL2/SDL_ttf.h"
 # include "struct.h"
 # include "proto.h"
 # include "../libft/inc/libft.h"
+# include "../libft/inc/get_next_line.h"
+# include "../libft/inc/ft_printf.h"
 
 # include <fcntl.h>
 # include <unistd.h>

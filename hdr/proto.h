@@ -6,7 +6,7 @@
 /*   By: JP <JP@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 15:03:28 by jmoucach          #+#    #+#             */
-/*   Updated: 2020/03/25 16:06:58 by JP               ###   ########.fr       */
+/*   Updated: 2020/04/17 17:53:02 by JP               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void			create_renderer_texture_and_pixels(t_data *data);
 void			nullify_surfaces(t_data *data);
 void			init(t_data *data);
 void			set_values(t_data *data, int argc);
-void			get_hud_text_1(t_data *data);
+void			get_infinite_text(t_data *data);
+short			get_hud_text(t_data *data, char *text, SDL_Texture **tex);
 void			set_raycast_values(t_raycast *value, t_player player, int x);
 t_sprite		create_sprites(char *path, t_d_point scale, t_data *data);
 void			create_sprites_1(t_data *data);
@@ -54,6 +55,7 @@ char			*join_strings(char *s1, char *s2);
 void			allocate_map(t_data *data, short id);
 char			*read_map(int fd);
 void			new_map(t_data *data, char *title, short id);
+short			map_too_big(char *name);
 
 /*
 ** Fill map
@@ -110,7 +112,7 @@ void			loadmedia(t_data *data);
 ** Image utils
 */
 
-short	is_in_frame(t_point pt);
+short			is_in_frame(t_point pt);
 
 /*
 ** Parsing

@@ -67,8 +67,8 @@ short		can_see_player(t_data *data, t_object *obj)
 	get_sidedist_values(ray, &sidedist, deltadist, m_pos);
 	step.x = ray.dir.x < 0 ? -1 : 1;
 	step.y = ray.dir.y < 0 ? -1 : 1;
-	while (m_pos.x >= 0 && m_pos.x < data->cur_map.width
-			&& m_pos.y >= 0 && m_pos.y < data->cur_map.height)
+	while (m_pos.x >= 0 && m_pos.x < data->cur_map.height
+			&& m_pos.y >= 0 && m_pos.y < data->cur_map.width)
 	{
 		vision_step(&sidedist, deltadist, &m_pos, step);
 		if (data->cur_map.map[m_pos.x][m_pos.y] > 0)

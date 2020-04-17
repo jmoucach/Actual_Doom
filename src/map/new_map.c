@@ -12,35 +12,6 @@
 
 #include "../../hdr/doom_nukem.h"
 
-short			count_lines_and_col(t_data *data, char *str, short id)
-{
-	t_parse		p;
-
-	p.i = -1;
-	while (++p.i < (int)ft_strlen(str))
-	{
-		p.col = data->maps[id].width;
-		data->maps[id].width = 0;
-		p.tmp = 0;
-		while (str[p.i] && str[p.i] != '\n')
-		{
-			if (p.tmp == 1 && str[p.i] != ',')
-				return (0);
-			if (p.tmp == 1 && str[p.i] == ',')
-				p.tmp = 0;
-			if (p.tmp == 0 && str[p.i] != ',')
-				data->maps[id].width++;
-			if (p.tmp == 0 && str[p.i] != ',')
-				p.tmp = 1;
-			p.i++;
-		}
-		if (data->maps[id].width != p.col && p.col != 0)
-			return (0);
-		data->maps[id].height++;
-	}
-	return (1);
-}
-
 char			*join_strings(char *s1, char *s2)
 {
 	char		*str;
@@ -98,6 +69,8 @@ void			new_map(t_data *data, char *title, short id)
 	int			fd;
 	char		*str;
 
+	if (map_too_big(title))
+		clean_exit(data, "Map is too big or has too many enemies");
 	fd = open(title, O_NOCTTY | O_RDONLY | O_NOFOLLOW | O_NONBLOCK);
 	if (!(str = read_map(fd)))
 		clean_exit(data, "Read error");

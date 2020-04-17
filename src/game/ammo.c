@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ammo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JP <JP@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:38:39 by jmoucach          #+#    #+#             */
-/*   Updated: 2020/03/04 11:41:02 by acostaz          ###   ########.fr       */
+/*   Updated: 2020/04/17 17:45:21 by JP               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,22 @@
 void				display_bullets_side(t_data *data)
 {
 	static short	old_bullets = MAX_BULLETS;
-	SDL_Surface		*tmp;
 	int				w;
 	int				h;
+	char			*str;
 	SDL_Rect		rect;
 
-	tmp = NULL;
-	if (data->p.bullets != old_bullets)
+	if (data->p.bullets != old_bullets || data->hud.bullets_text)
 	{
 		old_bullets = data->p.bullets;
-		SDL_DestroyTexture(data->hud.bullets_text);
-		tmp = TTF_RenderText_Solid(data->hud.font,
-			ft_itoa(data->p.bullets), data->hud.text_color);
-		data->hud.bullets_text = SDL_CreateTextureFromSurface(data->renderer,
-			tmp);
-		SDL_FreeSurface(tmp);
+		if (!(str = ft_itoa(data->p.bullets)))
+			clean_exit(data, "Text malloc error");
+		if (!(get_hud_text(data, str, &(data->hud.bullets_text))))
+		{
+			free(str);
+			clean_exit(data, "Get text error");
+		}
+		free(str);
 	}
 	SDL_QueryTexture(data->hud.bullets_text, NULL, NULL, &w, &h);
 	rect = (SDL_Rect){SCREEN_WIDTH * 290 / 320 - w / 2,
@@ -40,21 +41,22 @@ void				display_bullets_side(t_data *data)
 void				display_shells_side(t_data *data)
 {
 	static short	old_shells = MAX_SHELLS;
-	SDL_Surface		*tmp;
 	int				w;
 	int				h;
+	char			*str;
 	SDL_Rect		rect;
 
-	tmp = NULL;
-	if (data->p.shells != old_shells)
+	if (data->p.shells != old_shells || !data->hud.shells_text)
 	{
 		old_shells = data->p.shells;
-		SDL_DestroyTexture(data->hud.shells_text);
-		tmp = TTF_RenderText_Solid(data->hud.font,
-			ft_itoa(data->p.shells), data->hud.text_color);
-		data->hud.shells_text = SDL_CreateTextureFromSurface(data->renderer,
-			tmp);
-		SDL_FreeSurface(tmp);
+		if (!(str = ft_itoa(data->p.shells)))
+			clean_exit(data, "Text malloc error");
+		if (!(get_hud_text(data, str, &(data->hud.shells_text))))
+		{
+			free(str);
+			clean_exit(data, "Get text error");
+		}
+		free(str);
 	}
 	SDL_QueryTexture(data->hud.shells_text, NULL, NULL, &w, &h);
 	rect = (SDL_Rect){SCREEN_WIDTH * 290 / 320 - w / 2,
@@ -65,20 +67,22 @@ void				display_shells_side(t_data *data)
 void				display_cells_side(t_data *data)
 {
 	static short	old_cells = MAX_CELLS;
-	SDL_Surface		*tmp;
 	int				w;
 	int				h;
+	char			*str;
 	SDL_Rect		rect;
 
-	if (data->p.cells != old_cells)
+	if (data->p.cells != old_cells || !data->hud.cells_text)
 	{
 		old_cells = data->p.cells;
-		SDL_DestroyTexture(data->hud.cells_text);
-		tmp = TTF_RenderText_Solid(data->hud.font,
-			ft_itoa(data->p.cells), data->hud.text_color);
-		data->hud.cells_text = SDL_CreateTextureFromSurface(data->renderer,
-			tmp);
-		SDL_FreeSurface(tmp);
+		if (!(str = ft_itoa(data->p.cells)))
+			clean_exit(data, "Text malloc error");
+		if (!(get_hud_text(data, str, &(data->hud.cells_text))))
+		{
+			free(str);
+			clean_exit(data, "Get text error");
+		}
+		free(str);
 	}
 	SDL_QueryTexture(data->hud.cells_text, NULL, NULL, &w, &h);
 	rect = (SDL_Rect){SCREEN_WIDTH * 290 / 320 - w / 2,

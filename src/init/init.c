@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <jmoucach@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JP <JP@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 17:57:11 by jmoucach          #+#    #+#             */
-/*   Updated: 2020/03/11 17:27:26 by acostaz          ###   ########.fr       */
+/*   Updated: 2020/04/17 17:53:30 by JP               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		prepare_hud(t_data *data)
 	data->hud.text_color.g = 2;
 	data->hud.text_color.b = 4;
 	data->hud.text_color.a = 255;
-	get_hud_text_1(data);
+	get_infinite_text(data);
 }
 
 void		set_raycast_values(t_raycast *values, t_player player, int x)
