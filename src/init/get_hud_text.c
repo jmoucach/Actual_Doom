@@ -3,54 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   get_hud_text.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acostaz <acostaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: JP <JP@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 17:25:39 by acostaz           #+#    #+#             */
-/*   Updated: 2020/03/11 17:27:04 by acostaz          ###   ########.fr       */
+/*   Updated: 2020/04/17 17:51:38 by JP               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/doom_nukem.h"
 
-static void	get_hud_text_2(t_data *data)
+void				get_infinite_text(t_data *data)
 {
-	SDL_Surface	*tmp;
-
-	tmp = TTF_RenderText_Solid(data->hud.font, "INFINITE",
-														data->hud.text_color);
-	if (!(data->hud.infinite_text = SDL_CreateTextureFromSurface(data->renderer,
-																		tmp)))
-		clean_exit(data, (char*)SDL_GetError());
-	SDL_FreeSurface(tmp);
-	tmp = TTF_RenderText_Solid(data->hud.font, ft_itoa(data->p.cells),
-														data->hud.text_color);
-	if (!(data->hud.cells_text = SDL_CreateTextureFromSurface(data->renderer,
-																		tmp)))
-		clean_exit(data, (char*)SDL_GetError());
-	SDL_FreeSurface(tmp);
+	if (!(get_hud_text(data, "INFINITE", &(data->hud.infinite_text))))
+		clean_exit(data, "Infinite text malloc error");
 }
 
-void		get_hud_text_1(t_data *data)
+short				get_hud_text(t_data *data, char *text, SDL_Texture **tex)
 {
-	SDL_Surface	*tmp;
+	SDL_Surface		*tmp;
+	short return_value;
 
-	tmp = TTF_RenderText_Solid(data->hud.font, ft_itoa(data->p.hp),
-														data->hud.text_color);
-	if (!(data->hud.hp_text = SDL_CreateTextureFromSurface(data->renderer,
-																		tmp)))
-		clean_exit(data, (char*)SDL_GetError());
-	SDL_FreeSurface(tmp);
-	tmp = TTF_RenderText_Solid(data->hud.font, ft_itoa(data->p.bullets),
-														data->hud.text_color);
-	if (!(data->hud.bullets_text = SDL_CreateTextureFromSurface(data->renderer,
-																		tmp)))
-		clean_exit(data, (char*)SDL_GetError());
-	SDL_FreeSurface(tmp);
-	tmp = TTF_RenderText_Solid(data->hud.font, ft_itoa(data->p.shells),
-														data->hud.text_color);
-	if (!(data->hud.shells_text = SDL_CreateTextureFromSurface(data->renderer,
-																		tmp)))
-		clean_exit(data, (char*)SDL_GetError());
-	SDL_FreeSurface(tmp);
-	get_hud_text_2(data);
+	return_value = 1;
+	if (tex) {
+		if (*text)
+			SDL_DestroyTexture(*tex);
+		tmp = TTF_RenderText_Solid(data->hud.font, text, data->hud.text_color);
+		if (!(*tex = SDL_CreateTextureFromSurface(data->renderer, tmp)))
+			return_value = 0;
+		SDL_FreeSurface(tmp);
+	}
+	return (return_value);
 }
