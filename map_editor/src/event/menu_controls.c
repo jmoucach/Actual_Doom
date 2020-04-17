@@ -39,9 +39,9 @@ void			ft_menu_event(t_mouse *mous, SDL_Event e)
 				i = y * 3 + x + 1;
 				set_mous_loop(mous, i);
 			}
-			if (tmx >= 1320 && tmx <= (1320 + 230) && tmy >= (280 + 500) && tmy <= (280 + 560))
+			if (tmx >= 1320 && tmx <= (1320 + 230) && tmy >= 650 && tmy <= (650 + 112))
 				set_mous_loop(mous, 0);
-			if (tmx >= 1320 && tmx <= (1320 + 230) && tmy >= (360 + 500) && tmy <= (360 + 560))
+			if (tmx >= 1320 && tmx <= (1320 + 230) && tmy >= 782 && tmy <= (782 + 112))
 				set_mous_loop(mous, -1);
 		}
 	}
