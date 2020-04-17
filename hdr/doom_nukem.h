@@ -18,6 +18,8 @@
 # include "struct.h"
 # include "proto.h"
 # include "../libft/inc/libft.h"
+# include "../libft/inc/get_next_line.h"
+# include "../libft/inc/ft_printf.h"
 
 # include <fcntl.h>
 # include <unistd.h>

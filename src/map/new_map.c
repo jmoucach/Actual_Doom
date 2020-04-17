@@ -93,11 +93,42 @@ void			allocate_map(t_data *data, short id)
 	}
 }
 
+short			map_too_big(char *name)
+{
+	int			fd;
+	int			i;
+	int			len;
+	int			objects;
+	char		*line;
+
+	fd = open(name, O_NOCTTY | O_RDONLY | O_NOFOLLOW | O_NONBLOCK);
+	len = 0;
+	objects = 0;
+	while (get_next_line(fd, &line) > 0)
+	{
+		len += ft_strlen(line);
+		i = -1;
+		while (line[++i] != '\0')
+			if (line[i] == 'E' || line[i] == 'L' || line[i] == 'D'
+					|| line[i] == 'K' || line[i] == 'S' || line[i] == 'B'
+					|| line[i] == 'C')
+				objects++;
+		free(line);
+		if (len > 5000 || objects > 100)
+			return (1);
+	}
+	close(fd);
+	free(line);
+	return (0);
+}
+
 void			new_map(t_data *data, char *title, short id)
 {
 	int			fd;
 	char		*str;
 
+	if (map_too_big(title))
+		clean_exit(data, "Map is too big or has too many enemies");
 	fd = open(title, O_NOCTTY | O_RDONLY | O_NOFOLLOW | O_NONBLOCK);
 	if (!(str = read_map(fd)))
 		clean_exit(data, "Read error");

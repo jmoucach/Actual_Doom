@@ -103,7 +103,7 @@ all: $(SUBDIRS)
 
 $(NAME): $(OBJS) $(INCLUDES)
 	@echo "\033[2K \033[A"
-	@clang $(CFLAGS) -o $(NAME) $(OBJS) $(LIB) $(LIBFT) -lm
+	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(LIB) $(LIBFT) -lm
 	@echo "\033[32m[$(NAME)]: compiled\033[0m"
 
 $(SUBDIRS):
@@ -113,7 +113,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT)
 	@ mkdir -p $(OBJ_DIR)
 	@ mkdir -p $(SUBDIRS)
 	@echo "\033[2K [$(NAME)]: Compilation of $< \033[A"
-	@clang $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+	@gcc $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 
 clean:
 	@$(MAKE) clean -C libft
@@ -129,8 +129,9 @@ fclean: clean
 	@rm -f $(NAME)
 	@echo "\033[31m[$(NAME)]: deleted\033[0m"
 
-instalSDL:
-	brew install SDL2
+installSDL:
+	sudo apt-get install libsdl2-dev
+	sudo apt-get install libsdl2-ttf-dev
 
 re : fclean all
 
