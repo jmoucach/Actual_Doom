@@ -12,6 +12,7 @@
 
 #include "../../hdr/map_editor.h"
 
+/*COMMENTED BECAUSE WE REMOVED THE POSSIBILITIES TO ZOOM AND MOVE BECAUSE IT WAS CAUSING TOO MANY ERRORS
 void		key_press(t_fdf *img, t_key *key, SDL_Event e)
 {
 	if (e.type == SDL_KEYDOWN)
@@ -51,9 +52,15 @@ void		key_release(t_key *key, SDL_Event e)
 			key->zoom_out = 0;
 	}
 }
-
-void		ft_keys_event(t_fdf *img, SDL_Event e, t_key *key)
+*/
+void		ft_keys_event(t_fdf *img, SDL_Event e/*, t_key *key*/)
 {
+	if (e.type == SDL_KEYDOWN)
+	{
+		if (e.key.keysym.sym == 27)
+			ft_clean_exit(img, "You pushed esc");
+	}
+	/*COMMENTED BECAUSE WE REMOVED THE POSSIBILITIES TO ZOOM AND MOVE BECAUSE IT WAS CAUSING TOO MANY ERRORS
 	key_press(img, key, e);
 	key_release(key, e);
 	ft_move(key, img->map);
@@ -63,5 +70,5 @@ void		ft_keys_event(t_fdf *img, SDL_Event e, t_key *key)
 	{
 		img->map->endx = img->map->ox + ((img->map->x - 1) * img->map->base_gap);
 		img->map->endy = img->map->oy + ((img->map->y - 1) * img->map->base_gap);
-	}
+	}*/
 }

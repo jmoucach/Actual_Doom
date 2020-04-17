@@ -48,9 +48,39 @@ void				draw_line(t_pt pt_one, t_pt pt_two,
 	}
 	pix[pt.x + pt.y * WIDTH] = colour;
 }
+/*
+int		is_out_of_grid(t_pt *pt)
+{
+	int	out_of_grid;
+
+	out_of_grid = 0;
+	if (pt->x < 0)
+	{
+		pt->x = 0;
+		out_of_grid++;
+	}
+	if (pt->y < 0)
+	{
+		pt->y = 0;
+		out_of_grid++;
+	}
+	if (pt->x >= WIDTH)
+	{
+		pt->x = WIDTH - 1;
+		out_of_grid++;
+	}
+	if (pt->y >= HEIGHT)
+	{
+		pt->y = HEIGHT - 1;
+		out_of_grid++;
+	}
+	return (out_of_grid);
+}
 
 void	check_and_draw_line(t_pt start, t_pt end, t_fdf *img, int col)
 {
+	//if (is_out_of_grid(&start) && is_out_of_grid(&end))
+	//	return ;
 	if (start.x < 0)
 		start.x = 0;
 	if (start.y < 0)
@@ -59,17 +89,17 @@ void	check_and_draw_line(t_pt start, t_pt end, t_fdf *img, int col)
 		end.x = 0;
 	if (end.y < 0)
 		end.y = 0;
-	if (start.x > WIDTH)
-		start.x = WIDTH;
-	if (start.y > HEIGHT)
-		start.y = HEIGHT;
-	if (end.x > WIDTH)
-		end.x = WIDTH;
-	if (end.y > HEIGHT)
-		end.y = HEIGHT;
+	if (start.x >= WIDTH)
+		start.x = WIDTH - 1;
+	if (start.y >= HEIGHT)
+		start.y = HEIGHT - 1;
+	if (end.x >= WIDTH)
+		end.x = WIDTH - 1;
+	if (end.y >= HEIGHT)
+		end.y = HEIGHT - 1;
 	draw_line(start, end, img->pixels, col);
 }
-
+*/
 void			ft_calculate_grid_coord_and_draw_line(t_pt a, t_pt b, t_fdf *img, int col)
 {
 	t_pt			pt_one;
@@ -79,5 +109,6 @@ void			ft_calculate_grid_coord_and_draw_line(t_pt a, t_pt b, t_fdf *img, int col
 	pt_one.y = img->map->oy + a.y * img->map->base_gap;
 	pt_two.x = img->map->ox + b.x * img->map->base_gap;
 	pt_two.y = img->map->oy + b.y * img->map->base_gap;
-	check_and_draw_line(pt_one, pt_two, img, col);
+	//check_and_draw_line(pt_one, pt_two, img, col);//replaced by draw_line since we cannot move or zoom the map anymore
+	draw_line(pt_one, pt_two, img->pixels, col);
 }
