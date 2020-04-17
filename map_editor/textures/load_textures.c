@@ -36,7 +36,7 @@ char			**path_to_textures(void)
 {
 	char		**path_tab;
 
-	if (!(path_tab = malloc(sizeof(char *) * 19)))
+	if (!(path_tab = malloc(sizeof(char *) * 21)))
 		return (NULL);
 	path_tab[0] = NULL;
 	path_tab[1] = ft_strdup("../pics/bluestone.bmp");
@@ -57,7 +57,9 @@ char			**path_to_textures(void)
 	path_tab[16] = ft_strdup("../sprites/health_button.bmp");
 	path_tab[17] = ft_strdup("../sprites/key_button.bmp");
 	path_tab[18] = ft_strdup("../sprites/pickups/armor_pu.bmp");
-	path_tab[19] = NULL;
+	path_tab[19] = ft_strdup("../sprites/delete.bmp");
+	path_tab[20] = ft_strdup("../sprites/save.bmp");
+	path_tab[21] = NULL;
 	return (path_tab);
 }
 
@@ -69,7 +71,7 @@ short			loadmedia(t_fdf *img)
 	i = 0;
 	path_tab = path_to_textures();
 	img->texture[0] = NULL;
-	while (++i <= 18)
+	while (++i <= 20)
 	{
 		img->texture[i] = loadimage(path_tab[i], img);
 		if (!img->texture[i])

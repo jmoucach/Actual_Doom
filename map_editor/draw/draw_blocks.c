@@ -27,15 +27,15 @@ void			ft_print_blocks(int x, int y, int map_value, t_fdf *img, int size)
 void			print_buttons_delete_and_save(t_fdf *img)
 {
 	//WE COULD ALSO MODIFY THIS FUNCTION TO HAVE TEXTURED BUTTONS I/O JUST COLORS
-	SDL_Rect	red_button;
-	SDL_Rect	minus_bar;
-	
-	SDL_SetRenderDrawColor(img->renderer, 215, 0, 0, 0);
-	red_button = (SDL_Rect){1321, 780, 230, 60};
-	SDL_RenderFillRect(img->renderer, &red_button);
-	SDL_SetRenderDrawColor(img->renderer, 255, 255, 255, 0);
-	minus_bar = (SDL_Rect){1410, 810, 50, 3};
-	SDL_RenderFillRect(img->renderer, &minus_bar);
+	SDL_Rect	rect;
+	SDL_Texture	*texture;
+
+	rect = (SDL_Rect){1320, 650, 230, 112};
+	texture = img->texture[19];
+	SDL_RenderCopy(img->renderer, texture, NULL, &rect);
+	rect = (SDL_Rect){1320, 650+132, 230, 112};
+	texture = img->texture[20];
+	SDL_RenderCopy(img->renderer, texture, NULL, &rect);
 }
 
 void			draw_menu_textures(t_fdf *img)

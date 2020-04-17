@@ -41,8 +41,6 @@ void			draw_menu_squares(t_fdf *img)
 			i++;
 		ft_print_rectangle(img, 1320 + (((i - 1) % 3) * 80) - 1, 120 + (((i  - 1 ) / 3) * 80) - 1, 70 + 2, 70 + 2);
 	}
-	ft_print_rectangle(img, 1320 - 1, 280 + 500 - 1, 230 + 2, 60 + 2);//rem wall
-	ft_print_rectangle(img, 1320 - 1, 360 + 500 - 1, 230 + 2, 60 + 2);//save wall
 }
 
 void			ft_print_pressed_button(t_fdf *img, int i)
@@ -54,8 +52,8 @@ void			ft_print_pressed_button(t_fdf *img, int i)
 		return ;
 	if (i == 0)
 	{
-		ft_print_rectangle(img, 1319, 279 + 500, 232, 62);
-		ft_print_rectangle(img, 1318, 278 + 500, 234, 64);
+		ft_print_rectangle(img, 1319, 649, 232, 114);
+		ft_print_rectangle(img, 1318, 648, 234, 116);
 	}
 	else
 	{
