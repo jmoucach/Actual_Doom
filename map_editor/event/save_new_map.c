@@ -14,7 +14,6 @@
 
 void		write_objects(int i, int fd)
 {
-
 	if (i == 7)
 		ft_putchar_fd('P', fd);
 	else if (i == 8)
@@ -46,7 +45,6 @@ void		write_tab(int **tab, int width, int height, int fd)
 	int		x;
 	int		y;
 
-	//ft_putendl("Ok entree write_tab");//DEBUG
 	y = -1;
 	while (++y < height)
 	{
@@ -75,14 +73,13 @@ void		ft_save_map(t_fdf *img)
 	int_tab = img->map->map;
 	width = img->map->x;
 	height = img->map->y;
-	//ft_putendl("Ok entree ft_save_map");
 	if ((fd = open(img->map_name, O_RDWR | O_TRUNC, 0666)) <= 0)
 	{
 		ft_putendl(ft_itoa(fd));
 		ft_error_fd("Unable to write in the map file", 2);
 	}
 	write_tab(int_tab, width, height, fd);
-	//free_tab(img->map->map);
-	ft_putstr("Map updated succesfully\n");//DEBUG
-	exit (0);
+	//free_tab(img->map->map); // KEEP IT OR REMOVE IT?
+	ft_putstr("Map updated succesfully\n");
+	ft_clean_exit(img, NULL);
 }

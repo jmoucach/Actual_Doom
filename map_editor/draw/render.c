@@ -14,28 +14,61 @@
 
 void			ft_print_menu_background(t_fdf *img)
 {
-	SDL_Color	color;
+	//SDL_Color	color;
 	int		i;
+	t_pt		start;
+	t_pt		end;
 
 	i = -1;
-	color = ft_hexa_to_SDL(0x2E2E2E);
-	SDL_SetRenderDrawColor(img->renderer, color.r, color.g, color.b,
-			color.a);
 	while (++i < 270)
-		SDL_RenderDrawLine(img->renderer, (WIDTH - 300) + i, 0, (WIDTH - 300) + i, HEIGHT);
+	{
+		start = coord_to_pt((WIDTH - 300) + i, 0);
+		end = coord_to_pt(start.x, HEIGHT - 1);
+		//start = coord_to_pt(0, 0);
+		//end = coord_to_pt(100, 100);
+		draw_line(start, end, img->pixels, 0x2E2E2E);
+	}
 }
 
-
+void			initialize_and_write_lines(t_fdf *img, int loop)
+{
+	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
+	ft_print_grid(img);
+	if (!img->grid)
+		{
+			if (!(img->grid = SDL_CreateTexture(img->renderer,
+			SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH,
+			HEIGHT)))
+			ft_clean_exit(img, (char *)SDL_GetError());
+		}
+	draw_menu_squares(img);
+	ft_print_pressed_button(img, loop);
+}
 void			ft_clear_and_render(t_fdf *img, int	loop)
 {
-	ft_render_buttons(img);
-	ft_parse_and_print_textures(img);
-	ft_print_grid(img, img->map);
-	ft_print_menu_background(img);
-	ft_render_buttons(img);
-	ft_print_pressed_button(img, loop);
-	SDL_RenderPresent(img->renderer);
+	//IN THIS FIRST PART WE PRINT LINES
+	initialize_and_write_lines(img, loop);
+	/* Moved in function initialize_and_... right above
 	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
-	SDL_SetRenderDrawColor(img->renderer, 0, 0, 0, 0);
+	ft_print_grid(img);
+	if (!img->grid)
+		{
+			if (!(img->grid = SDL_CreateTexture(img->renderer,
+			SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH,
+			HEIGHT)))
+			ft_clean_exit(img, (char *)SDL_GetError());
+		}
+	draw_menu_squares(img);
+	ft_print_pressed_button(img, loop);*/
+	SDL_UpdateTexture(img->grid, NULL, img->pixels, WIDTH * 4);
+	SDL_RenderCopy(img->renderer, img->grid, NULL, NULL);
+
+	//IN THIS SECOND PART WE PRINT TEXTURES
+	ft_parse_and_print_textures(img);
+	draw_menu_textures(img);
+	//ft_print_menu_background(img);
+	//SDL_RenderClear(img->renderer);//whole screen is white if uncommented
+	//SDL_SetRenderDrawColor(img->renderer, 0, 0, 0, 0);
+	SDL_RenderPresent(img->renderer);
 	SDL_RenderClear(img->renderer);
 }

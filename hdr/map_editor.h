@@ -73,7 +73,7 @@ typedef	struct		s_key
 	int				zoom_in;
 	int				zoom_out;
 }					t_key;
-
+/*
 typedef struct		s_item
 {
 	SDL_Rect		rect;
@@ -89,7 +89,7 @@ typedef struct		s_txt
 	SDL_Rect		txt_through;
 	SDL_Color		color;
 }					t_txt;
-
+*/
 typedef struct		s_map
 {
 	int				**map;
@@ -110,10 +110,11 @@ typedef struct		s_fdf
 	char			*map_name;
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
-	SDL_Texture		*map_texture;
+	//SDL_Texture		*map_texture;
 	SDL_Texture		**texture;
-	SDL_Texture		*text_texture;
-	t_txt			*txt;
+	SDL_Texture		*grid;
+	//SDL_Texture		*text_texture;
+	//t_txt			*txt;
 	t_map			*map;
 	int				height;
 	Uint32			*pixels;
@@ -175,14 +176,14 @@ void				ft_fdf(t_map *map, char *map_name);
 */
 t_fdf				*ft_ptr_init(char *name);
 t_map				*ft_map_init(t_line *list);
-t_txt				*ft_txt_init(t_fdf *img);
+//t_txt				*ft_txt_init(t_fdf *img);
 int					ft_mouse_init(t_mouse *mous);
 int					ft_key_init(t_key *key);
-t_item				*ft_sub_init(TTF_Font *font, SDL_Color color,
-		SDL_Renderer *renderer);
-t_item				*ft_menu_init(TTF_Font *font, SDL_Color color,
-		SDL_Renderer *renderer);
-t_txt				*ft_txt_init(t_fdf *img);
+//t_item				*ft_sub_init(TTF_Font *font, SDL_Color color,
+		//SDL_Renderer *renderer);
+//t_item				*ft_menu_init(TTF_Font *font, SDL_Color color,
+		//SDL_Renderer *renderer);
+//t_txt				*ft_txt_init(t_fdf *img);
 void				nullify_textures(t_fdf *img);
 short				loadmedia(t_fdf *img);
 
@@ -192,27 +193,36 @@ short				loadmedia(t_fdf *img);
 void				ft_free_map(t_map *map);
 void				ft_free_line(t_line *list);
 void				ft_free_fdf(t_fdf *fdf);
+void				ft_clean_exit(t_fdf *img, char *err);
+//static void			ft_free_textures(t_fdf *img);
 
 /*
 **			EVENT
 */
 void				loop_til_release();
 void				ft_menu_event(t_mouse *mous, SDL_Event e);
-void				ft_keys_event(t_map *map, SDL_Event e, t_key *key);
+void				ft_keys_event(t_fdf *img, SDL_Event e, t_key *key);
 void				ft_mouse_event(t_fdf *img, t_mouse *mous, SDL_Event e);
 void				click_to_modify_map(t_map *map, t_mouse *mous);
 void				ft_save_map(t_fdf *img);
+
 /*
 **			DRAW
 */
 void				ft_clear_and_render(t_fdf *img, int	loop);
-void				ft_print_grid(t_fdf *img, t_map *map);
-void				ft_render_buttons(t_fdf *img);
+void				ft_print_grid(t_fdf *img);
+void				ft_render_button_squares(t_fdf *img);
+void				draw_menu_squares(t_fdf *img);
+void				draw_menu_textures(t_fdf *img);
 void				ft_print_pressed_button(t_fdf *img, int i);
 void				ft_print_blocks(int x, int y, int map_value,
 		t_fdf *img, int size);
 void				ft_parse_and_print_textures(t_fdf *img);
 void				draw_line(t_pt pt_one, t_pt pt_two, Uint32 *pixels, int colour);
+void				check_and_draw_line(t_pt start, t_pt end, t_fdf *img, int col);
+void				ft_calculate_grid_coord_and_draw_line(t_pt a, t_pt b, t_fdf *img, int col);
+void				print_button_add_and_substract(t_fdf *img);
+
 /*
 **			COLORS
 */
@@ -231,5 +241,7 @@ int					ft_gap(t_map *map);
 void				ft_origin(t_map *map);
 float				ft_height(t_map *map);
 void				ft_fix_coords(t_map *map, int *x, int *y);
+t_pt				coord_to_pt(int x, int y);
+void				mk_point_and_trace_line(int x1, int y1, int x2, int y2, t_fdf *img);
 
 #endif

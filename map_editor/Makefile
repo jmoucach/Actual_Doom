@@ -31,7 +31,6 @@ SRC = init/main.c \
 	   parsing/check_map.c \
 	   parsing/map_copy.c \
 	   parsing/parsing.c \
-	   tools/cart_to_iso.c \
 	   tools/colorize.c \
 	   tools/fix_coords.c \
 	   tools/free_functions.c \
@@ -41,7 +40,6 @@ SRC = init/main.c \
 	   init/mouse_and_key_init.c \
 	   init/surfaces_init.c \
 	   init/structures_init.c \
-	   init/text_init.c \
 	   textures/load_textures.c
 
 SRC_DIR = ./

@@ -18,20 +18,19 @@ void			ft_infinite_loop(t_fdf *img, t_mouse *mous, t_key *key)
 	SDL_Event	event;
 
 	isquit = 0;
+	/*if (!(img->grid = SDL_CreateTexture(img->renderer,
+		SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH,
+		HEIGHT)))
+		ft_clean_exit(img, (char *)SDL_GetError());*/
 	while (isquit == 0)
 	{
-		//while (event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_KEYDOWN)
 		SDL_PollEvent(&event);
-//		while (SDL_PollEvent(&event))
-//		{
-			if (event.type == SDL_QUIT)
-				exit (0);
-			ft_menu_event( mous, event);
-			//ft_print_pressed_button(img, mous->loop);
-			ft_clear_and_render(img, mous->loop);
-			ft_keys_event(img->map, event, key);
-			ft_mouse_event(img, mous, event);
-//		}
+		if (event.type == SDL_QUIT)
+			exit (0);
+		ft_menu_event( mous, event);
+		ft_clear_and_render(img, mous->loop);
+		ft_keys_event(img, event, key);
+		ft_mouse_event(img, mous, event);
 	}
 }
 
@@ -42,9 +41,9 @@ void		ft_fdf(t_map *map, char *map_name)
 	t_key	key;
 
 	if (!(img = ft_ptr_init(map_name)))
-		return ;
+		ft_clean_exit(img, "Problems during main structure creation");
 	if (!(ft_mouse_init(&mous)) || !(ft_key_init(&key)))
-		return ;
+		ft_clean_exit(img, "Problems during mouse or key initilization");
 	img->map = map;
 	ft_clear_and_render(img, mous.loop);
 	ft_infinite_loop(img, &mous, &key);

@@ -23,6 +23,10 @@ int			ft_sdl_init(t_fdf *ptr, char *name)
 		ft_error_fd((char *)SDL_GetError(), 2);
 	if (!(ptr->renderer = SDL_CreateRenderer(ptr->window, -1, 0)))
 		ft_error_fd((char *)SDL_GetError(), 2);
+	if (!(ptr->texture = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 19)))
+		exit(EXIT_FAILURE);
+	/*if (!(ptr->grid = SDL_CreateTexture(ptr->renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT)))
+		exit(EXIT_FAILURE);//FOR THE GRID*///DOES NOT WORK WHEN CALLED HERE
 	return (1);
 }
 
@@ -34,10 +38,8 @@ t_fdf			*ft_ptr_init(char *name)
 		return (NULL);
 	if (!(ft_sdl_init(ptr, NAME)))
 		return (NULL);
-	if (!(ptr->txt = ft_txt_init(ptr)))
-		return (NULL);
-	if (!(ptr->texture = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 19)))
-		exit(EXIT_FAILURE);
+	//if (!(ptr->txt = ft_txt_init(ptr)))
+		//return (NULL);//DO we use ptr->txt? not sure
 	nullify_textures(ptr);
 	loadmedia(ptr);
 	ptr->map_name = name;
@@ -70,7 +72,6 @@ t_map			*ft_map_init(t_line *list)
 		return (NULL);
 	map->base_gap = ft_gap(map);
 	map->base_h = ft_height(map);
-	map->zmax = 1;//when we can give altitude to elements, we'll parse the list to save the highest value.
 	ft_origin(map);
 	map->endx = map->ox + ((map->x - 1) * map->base_gap);
 	map->endy = map->oy + ((map->y - 1) * map->base_gap);

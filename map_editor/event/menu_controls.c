@@ -17,10 +17,9 @@ void			set_mous_loop(t_mouse *mous, int i)
 	if (i == 12)
 		return ;
 	mous->loop = i;
-//	loop_til_release();
 }
 
-void			ft_menu_event(/*t_map *map, */t_mouse *mous, SDL_Event e)
+void			ft_menu_event(t_mouse *mous, SDL_Event e)
 {
 	int			tmx;
 	int			tmy;

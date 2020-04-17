@@ -12,7 +12,7 @@
 
 #include "../../hdr/map_editor.h"
 
-void		ft_modify_height(int key, t_fdf *ptr)
+/*void		ft_modify_height(int key, t_fdf *ptr)
 {
 	if (ptr->map->zmax < 100)
 	{
@@ -28,7 +28,7 @@ void		ft_modify_height(int key, t_fdf *ptr)
 		if (key == 6 && ptr->map->proj == 'I')
 			ptr->map->base_h -= 0.1;
 	}
-}
+}*/
 
 void		ft_zoom(t_key *key, t_map *map)
 {
@@ -52,37 +52,3 @@ void		ft_move(t_key *key, t_map *map)
 	if (key->right == 1)
 		map->ox += 3;
 }
-
-/*
-void		ft_iso_or_cart(int key, t_fdf *ptr)
-{
-	int		i;
-	int		j;
-	t_point	iso;
-
-	if (key == 8 && ptr->map->proj == 'I')
-	{
-		i = -1;
-		while (++i < ptr->map->y)
-		{
-			j = -1;
-			while (++j < ptr->map->x)
-			{
-				iso = ptr->map->map[i][j];
-				ptr->map->map[i][j].x = iso.y + iso.x / 2;
-				ptr->map->map[i][j].y = iso.y - iso.x / 2;
-			}
-		}
-		ptr->map->proj = 'C';
-	}
-	if (key == 34 && ptr->map->proj == 'C')
-		ft_cart_to_iso(ptr->map);
-}
-
-void		ft_positive_or_negative(int key, t_fdf *ptr)
-{
-	if (key == 35)
-		ptr->color = 'P';
-	if (key == 45)
-		ptr->color = 'N';
-}*/

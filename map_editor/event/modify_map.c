@@ -12,7 +12,7 @@
 
 #include "../../hdr/map_editor.h"
 
-void			click_to_modify_map(t_map *map, t_mouse *mous)//, SDL_Event e)
+void			click_to_modify_map(t_map *map, t_mouse *mous)
 {
 	int			x;
 	int			y;

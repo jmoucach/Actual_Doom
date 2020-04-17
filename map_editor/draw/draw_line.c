@@ -34,7 +34,7 @@ void				draw_line(t_pt pt_one, t_pt pt_two,
 	pt = pt_one;
 	while (pt.x != pt_two.x || pt.y != pt_two.y)
 	{
-		pix[pt.x + pt.y/* * WIDTH*/] = colour;
+		pix[pt.x + pt.y * WIDTH] = colour;
 		if ((line_param.error = line_param.off * 2) > -line_param.diff.y)
 		{
 			line_param.off -= line_param.diff.y;
@@ -46,5 +46,38 @@ void				draw_line(t_pt pt_one, t_pt pt_two,
 			pt.y += line_param.inc.y;
 		}
 	}
-	pix[pt.x + pt.y/* * WIDTH*/] = colour;
+	pix[pt.x + pt.y * WIDTH] = colour;
+}
+
+void	check_and_draw_line(t_pt start, t_pt end, t_fdf *img, int col)
+{
+	if (start.x < 0)
+		start.x = 0;
+	if (start.y < 0)
+		start.y = 0;
+	if (end.x < 0)
+		end.x = 0;
+	if (end.y < 0)
+		end.y = 0;
+	if (start.x > WIDTH)
+		start.x = WIDTH;
+	if (start.y > HEIGHT)
+		start.y = HEIGHT;
+	if (end.x > WIDTH)
+		end.x = WIDTH;
+	if (end.y > HEIGHT)
+		end.y = HEIGHT;
+	draw_line(start, end, img->pixels, col);
+}
+
+void			ft_calculate_grid_coord_and_draw_line(t_pt a, t_pt b, t_fdf *img, int col)
+{
+	t_pt			pt_one;
+	t_pt			pt_two;
+
+	pt_one.x = img->map->ox + a.x * img->map->base_gap;
+	pt_one.y = img->map->oy + a.y * img->map->base_gap;
+	pt_two.x = img->map->ox + b.x * img->map->base_gap;
+	pt_two.y = img->map->oy + b.y * img->map->base_gap;
+	check_and_draw_line(pt_one, pt_two, img, col);
 }

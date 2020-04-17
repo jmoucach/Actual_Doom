@@ -24,10 +24,7 @@ void		ft_free_map(t_map *map)
 
 void		ft_free_fdf(t_fdf *fdf)
 {
-//	mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);
-//	mlx_destroy_image(fdf->mlx_ptr, fdf->img_ptr);
 	ft_free_map(fdf->map);
-//	free(fdf->mlx_ptr);
 	free(fdf);
 }
 
@@ -43,4 +40,59 @@ void		ft_free_line(t_line *list)
 		free(tmp);
 	}
 	free(list);
+}
+/*
+static void	free_surfaces(t_data *data)
+{
+	int	i;
+	if (data->surface && (i = -1))
+	{
+		while (++i < 20)
+			if (data->surface[i])
+				SDL_FreeSurface(data->surface[i]);
+		free(data->surface);
+	}
+}*/
+
+static void	ft_free_textures(t_fdf *img)
+{
+	int		i;
+
+	i = 0;
+	while (++i < 18)
+	{
+		if (img->texture[i] != NULL)
+			SDL_DestroyTexture(img->texture[i]);
+	}
+	if (img->grid != NULL)
+		SDL_DestroyTexture(img->grid);
+}
+
+void		ft_clean_exit(t_fdf *img, char *err)
+{
+	if (err)
+		ft_putendl_fd(err, 2);
+	ft_free_textures(img);
+	/*
+	free_surfaces(data);
+	free_hud(data);
+	free_objects(data);
+	if (data->zBuffer)
+		free(data->zBuffer);
+	if (data->pixels)
+		free(data->pixels);
+	if (data->texture)
+		SDL_DestroyTexture(data->texture);*/
+	if (img->renderer)
+		SDL_DestroyRenderer(img->renderer);
+	if (img->window)
+		SDL_DestroyWindow(img->window);
+	if (TTF_WasInit())
+		TTF_Quit();
+	if (SDL_WasInit(SDL_INIT_VIDEO) & SDL_INIT_VIDEO)
+		SDL_Quit();
+	if (err)
+		exit(EXIT_FAILURE);
+	else
+		exit(EXIT_SUCCESS);
 }
