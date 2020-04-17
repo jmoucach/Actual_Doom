@@ -12,7 +12,7 @@
 
 #include "../../hdr/map_editor.h"
 
-void			ft_infinite_loop(t_fdf *img, t_mouse *mous, t_key *key)
+void			ft_infinite_loop(t_fdf *img, t_mouse *mous/*, t_key *key*/)
 {
 	int			isquit;
 	SDL_Event	event;
@@ -29,7 +29,7 @@ void			ft_infinite_loop(t_fdf *img, t_mouse *mous, t_key *key)
 			exit (0);
 		ft_menu_event( mous, event);
 		ft_clear_and_render(img, mous->loop);
-		ft_keys_event(img, event, key);
+		ft_keys_event(img, event/*, key*/);
 		ft_mouse_event(img, mous, event);
 	}
 }
@@ -46,5 +46,5 @@ void		ft_fdf(t_map *map, char *map_name)
 		ft_clean_exit(img, "Problems during mouse or key initilization");
 	img->map = map;
 	ft_clear_and_render(img, mous.loop);
-	ft_infinite_loop(img, &mous, &key);
+	ft_infinite_loop(img, &mous/*, &key*/);
 }
