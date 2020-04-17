@@ -54,6 +54,7 @@ char			*join_strings(char *s1, char *s2);
 void			allocate_map(t_data *data, short id);
 char			*read_map(int fd);
 void			new_map(t_data *data, char *title, short id);
+short			map_too_big(char *name);
 
 /*
 ** Fill map
@@ -110,7 +111,7 @@ void			loadmedia(t_data *data);
 ** Image utils
 */
 
-short	is_in_frame(t_point pt);
+short			is_in_frame(t_point pt);
 
 /*
 ** Parsing

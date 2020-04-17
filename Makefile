@@ -47,6 +47,7 @@ SRC =	draw/display_hud.c\
 		map/default_map_values.c\
 		map/fill_map.c\
 		map/new_map.c\
+		map/new_map_utils.c\
 		map/parsing.c\
 		menu/menu.c\
 		menu/menu_selection.c\
