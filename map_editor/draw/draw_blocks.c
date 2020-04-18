@@ -26,14 +26,13 @@ void			ft_print_blocks(int x, int y, int map_value, t_fdf *img, int size)
 
 void			print_buttons_delete_and_save(t_fdf *img)
 {
-	//WE COULD ALSO MODIFY THIS FUNCTION TO HAVE TEXTURED BUTTONS I/O JUST COLORS
 	SDL_Rect	rect;
 	SDL_Texture	*texture;
 
-	rect = (SDL_Rect){1320, 650, 230, 112};
+	rect = (SDL_Rect){1120, 650, 230, 112};
 	texture = img->texture[19];
 	SDL_RenderCopy(img->renderer, texture, NULL, &rect);
-	rect = (SDL_Rect){1320, 650+132, 230, 112};
+	rect = (SDL_Rect){1120, 650 + 132, 230, 112};
 	texture = img->texture[20];
 	SDL_RenderCopy(img->renderer, texture, NULL, &rect);
 }
@@ -47,7 +46,7 @@ void			draw_menu_textures(t_fdf *img)
 	{
 		if (i == 12)
 			i++;
-		ft_print_blocks(1320 + (((i - 1) % 3) * 80), 120 + (((i - 1) / 3) * 80), i, img, 70);
+		ft_print_blocks(1120 + (((i - 1) % 3) * 80), 120 + (((i - 1) / 3) * 80), i, img, 70);
 	}
 	print_buttons_delete_and_save(img);
 }

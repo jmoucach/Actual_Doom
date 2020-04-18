@@ -14,7 +14,7 @@
 
 void		ft_origin(t_map *map)
 {
-	map->ox = (1320 - ((map->x) * map->base_gap)) / 2;
+	map->ox = (1120 - ((map->x) * map->base_gap)) / 2;
 	map->oy = (HEIGHT - ((map->y) * map->base_gap)) / 2;
 }
 
@@ -39,7 +39,7 @@ int			ft_gap(t_map *map)
 	int		gap_W;
 
 	gap_H = (HEIGHT * 0.9) / map->y;
-	gap_W = (1320 * 0.9) / map->x;
+	gap_W = (1120 * 0.9) / map->x;
 	if (gap_H > gap_W)
 		return (gap_W);
 	else

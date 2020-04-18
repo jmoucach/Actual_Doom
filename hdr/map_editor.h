@@ -26,8 +26,8 @@
 # include <stdio.h>//DEBUG
 # include <math.h>
 
-# define WIDTH 1600
-# define HEIGHT 1200
+# define WIDTH 1400
+# define HEIGHT 1000
 # define NAME "MAP EDITOR"
 # define OCRE 0xffa700
 # define WHITE 0xf0f8ff
@@ -141,21 +141,6 @@ typedef struct		s_line_param
 	int				error;
 	int				off;
 }					t_line_param;
-
-typedef	struct		s_bres
-{
-	int				dx;
-	int				dy;
-	int				dz;
-	int				i;
-	int				xinc;
-	int				yinc;
-	int				error;
-	int				x;
-	int				y;
-	int				z;
-	int				col;
-}					t_bres;
 
 /*
 **			PARSING

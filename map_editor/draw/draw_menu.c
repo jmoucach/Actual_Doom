@@ -39,7 +39,7 @@ void			draw_menu_squares(t_fdf *img)
 	{
 		if (i == 12)
 			i++;
-		ft_print_rectangle(img, 1320 + (((i - 1) % 3) * 80) - 1, 120 + (((i  - 1 ) / 3) * 80) - 1, 70 + 2, 70 + 2);
+		ft_print_rectangle(img, 1120 + (((i - 1) % 3) * 80) - 1, 120 + (((i  - 1 ) / 3) * 80) - 1, 70 + 2, 70 + 2);
 	}
 }
 
@@ -52,12 +52,12 @@ void			ft_print_pressed_button(t_fdf *img, int i)
 		return ;
 	if (i == 0)
 	{
-		ft_print_rectangle(img, 1319, 649, 232, 114);
-		ft_print_rectangle(img, 1318, 648, 234, 116);
+		ft_print_rectangle(img, 1119, 649, 232, 114);
+		ft_print_rectangle(img, 1118, 648, 234, 116);
 	}
 	else
 	{
-		startx = 1320 + (((i - 1) % 3) * 80);
+		startx = 1120 + (((i - 1) % 3) * 80);
 		starty = 120 + (((i - 1) / 3) * 80);
 		ft_print_rectangle(img, startx - 1, starty - 1, 72, 72);
 		ft_print_rectangle(img, startx - 2, starty - 2, 74, 74);
