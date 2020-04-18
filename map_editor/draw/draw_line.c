@@ -46,7 +46,8 @@ void				draw_line(t_pt pt_one, t_pt pt_two,
 			pt.y += line_param.inc.y;
 		}
 	}
-	pix[pt.x + pt.y * WIDTH] = colour;
+	if (pt.x + pt.y * WIDTH > 0 && pt.x + pt.y * WIDTH < WIDTH * HEIGHT)//protection for the SDL_DestroyRenderer problem
+		pix[pt.x + pt.y * WIDTH] = colour;
 }
 /*
 int		is_out_of_grid(t_pt *pt)

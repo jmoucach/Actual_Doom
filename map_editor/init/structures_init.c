@@ -25,8 +25,6 @@ int			ft_sdl_init(t_fdf *ptr, char *name)
 		ft_error_fd((char *)SDL_GetError(), 2);
 	if (!(ptr->texture = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 21)))
 		exit(EXIT_FAILURE);
-	/*if (!(ptr->grid = SDL_CreateTexture(ptr->renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT)))
-		exit(EXIT_FAILURE);//FOR THE GRID*///DOES NOT WORK WHEN CALLED HERE
 	return (1);
 }
 

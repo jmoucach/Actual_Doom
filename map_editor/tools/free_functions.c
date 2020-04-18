@@ -78,12 +78,11 @@ void		ft_clean_exit(t_fdf *img, char *err)
 	ft_putendl("Ok1");
 	ft_free_textures(img);
 	ft_putendl("Ok2");
-	ft_putendl("Ok3");
+	if (img->renderer != NULL)
+		SDL_DestroyRenderer(img->renderer);
+	ft_putendl("Ok4");
 	if (img->pixels != NULL)
 		free(img->pixels);
-	ft_putendl("Ok4");
-	if (img->renderer)
-		SDL_DestroyRenderer(img->renderer);
 	ft_putendl("Ok5");
 	if (img->window)
 		SDL_DestroyWindow(img->window);
