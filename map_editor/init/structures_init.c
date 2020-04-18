@@ -38,8 +38,8 @@ t_fdf			*ft_ptr_init(char *name)
 		return (NULL);
 	if (!(ft_sdl_init(ptr, NAME)))
 		return (NULL);
-	//if (!(ptr->txt = ft_txt_init(ptr)))
-		//return (NULL);//DO we use ptr->txt? not sure
+	ptr->pixels = (Uint32*)malloc(sizeof(Uint32) * (WIDTH * HEIGHT));
+	ft_bzero(ptr->pixels, (WIDTH * HEIGHT * sizeof(Uint32)));
 	nullify_textures(ptr);
 	loadmedia(ptr);
 	ptr->map_name = name;
@@ -47,9 +47,7 @@ t_fdf			*ft_ptr_init(char *name)
 	ptr->s_l = WIDTH * 4;
 	ptr->height = HEIGHT;
 	ptr->endian = 0;
-	ptr->color = ft_hexa_to_SDL(LIGHT_BLUE);//MAKE THE COLOR CHANGEABLE
-	ptr->pixels = (Uint32*)malloc(sizeof(Uint32) * (WIDTH * HEIGHT));
-	ft_bzero(ptr->pixels, (WIDTH * HEIGHT * sizeof(Uint32)));
+	ptr->color = ft_hexa_to_SDL(LIGHT_BLUE);
 	return (ptr);
 }
 

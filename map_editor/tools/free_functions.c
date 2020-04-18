@@ -59,40 +59,44 @@ static void	ft_free_textures(t_fdf *img)
 	int		i;
 
 	i = 0;
-	while (++i < 18)
+	if (img->texture)
 	{
-		if (img->texture[i] != NULL)
-			SDL_DestroyTexture(img->texture[i]);
-	}
-	if (img->grid != NULL)
-		SDL_DestroyTexture(img->grid);
+		while (++i < 21)
+		{
+			if (img->texture[i] != NULL)
+				SDL_DestroyTexture(img->texture[i]);
+		}
+		if (img->grid != NULL)
+			SDL_DestroyTexture(img->grid);
+	}	
 }
 
 void		ft_clean_exit(t_fdf *img, char *err)
 {
 	if (err)
 		ft_putendl_fd(err, 2);
+	ft_putendl("Ok1");
 	ft_free_textures(img);
-	/*
-	free_surfaces(data);
-	free_hud(data);
-	free_objects(data);
-	if (data->zBuffer)
-		free(data->zBuffer);
-	if (data->pixels)
-		free(data->pixels);
-	if (data->texture)
-		SDL_DestroyTexture(data->texture);*/
+	ft_putendl("Ok2");
+	ft_putendl("Ok3");
+	if (img->pixels != NULL)
+		free(img->pixels);
+	ft_putendl("Ok4");
 	if (img->renderer)
 		SDL_DestroyRenderer(img->renderer);
+	ft_putendl("Ok5");
 	if (img->window)
 		SDL_DestroyWindow(img->window);
+	ft_putendl("Ok6");
 	if (TTF_WasInit())
 		TTF_Quit();
+	ft_putendl("Ok7");
 	if (SDL_WasInit(SDL_INIT_VIDEO) & SDL_INIT_VIDEO)
 		SDL_Quit();
+	ft_putendl("Ok8");
 	if (err)
 		exit(EXIT_FAILURE);
 	else
 		exit(EXIT_SUCCESS);
+	ft_putendl("Ok9");
 }

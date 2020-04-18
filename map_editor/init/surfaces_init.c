@@ -17,7 +17,7 @@ void			nullify_textures(t_fdf *img)
 	int			i;
 
 	i = -1;
-	while (++i < 19)
+	while (++i <= 21)
 		img->texture[i] = NULL;
 	img->grid = NULL;
 }

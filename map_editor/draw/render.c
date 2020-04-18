@@ -32,7 +32,7 @@ void			ft_print_menu_background(t_fdf *img)
 
 void			initialize_and_write_lines(t_fdf *img, int loop)
 {
-	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
+	ft_bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
 	ft_print_grid(img);
 	if (!img->grid)
 		{
@@ -49,7 +49,7 @@ void			ft_clear_and_render(t_fdf *img, int	loop)
 	//IN THIS FIRST PART WE PRINT LINES
 	initialize_and_write_lines(img, loop);
 	/* Moved in function initialize_and_... right above
-	bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
+	ft_bzero(img->pixels, WIDTH * HEIGHT * sizeof(Uint32));
 	ft_print_grid(img);
 	if (!img->grid)
 		{
