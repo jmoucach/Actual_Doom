@@ -13,8 +13,8 @@
 #ifndef DOOM_NUKEM_H
 # define DOOM_NUKEM_H
 
-# include "/usr/local/include/SDL2/SDL.h"
-# include "/usr/local/include/SDL2/SDL_ttf.h"
+# include "/usr/include/SDL2/SDL.h"
+# include "/usr/include/SDL2/SDL_ttf.h"
 # include "struct.h"
 # include "proto.h"
 # include "../libft/inc/libft.h"
@@ -32,6 +32,8 @@
 # define MAX_SHELLS 20
 # define MAX_CELLS 100
 # define MAX_ROCKETS 8
+# define MAX_HEALTH 100
+# define MAX_ARMOR 100
 
 # define BUFF_SIZE 4096
 
