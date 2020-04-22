@@ -24,21 +24,16 @@ SDL_Texture		*loadimage(char *path, t_fdf *img)
 		return (NULL);
 	}
 	if (!(texture = SDL_CreateTextureFromSurface(img->renderer, loadedsurface)))
-		{
-			SDL_FreeSurface(loadedsurface);//NEWLY ADDED
-			ft_clean_exit(img, (char *)SDL_GetError);//NEWLY ADDED
-		}
+	{
+		SDL_FreeSurface(loadedsurface);
+		ft_clean_exit(img, (char *)SDL_GetError);
+	}
 	SDL_FreeSurface(loadedsurface);
 	return (texture);
 }
 
-char			**path_to_textures(void)
+void			fill_path_tab(char **path_tab)
 {
-	char		**path_tab;
-
-	if (!(path_tab = malloc(sizeof(char *) * 22)))
-		return (NULL);
-	path_tab[0] = NULL;
 	path_tab[1] = ft_strdup("../pics/bluestone.bmp");
 	path_tab[2] = ft_strdup("../pics/greystone.bmp");
 	path_tab[3] = ft_strdup("../pics/mossy.bmp");
@@ -50,7 +45,7 @@ char			**path_to_textures(void)
 	path_tab[9] = ft_strdup("../sprites/soul_button.bmp");
 	path_tab[10] = ft_strdup("../sprites/boss_button.bmp");
 	path_tab[11] = ft_strdup("../pics/keydoor.bmp");
-	path_tab[12]= ft_strdup("../pics/pillar.bmp");//could also not load anything, but then it will return NULL and will cause trouble
+	path_tab[12] = ft_strdup("../pics/pillar.bmp");
 	path_tab[13] = ft_strdup("../sprites/shells_button.bmp");
 	path_tab[14] = ft_strdup("../sprites/bullets_button.bmp");
 	path_tab[15] = ft_strdup("../sprites/cell_button.bmp");
@@ -59,6 +54,16 @@ char			**path_to_textures(void)
 	path_tab[18] = ft_strdup("../sprites/pickups/armor_pu.bmp");
 	path_tab[19] = ft_strdup("../sprites/delete.bmp");
 	path_tab[20] = ft_strdup("../sprites/save.bmp");
+}
+
+char			**path_to_textures(void)
+{
+	char		**path_tab;
+
+	if (!(path_tab = malloc(sizeof(char *) * 22)))
+		return (NULL);
+	path_tab[0] = NULL;
+	fill_path_tab(path_tab);
 	path_tab[21] = NULL;
 	return (path_tab);
 }
@@ -73,7 +78,7 @@ short			loadmedia(t_fdf *img)
 	img->texture[0] = NULL;
 	while (++i <= 20)
 	{
-		img->texture[i] = loadimage(path_tab[i], img); //loadimage
+		img->texture[i] = loadimage(path_tab[i], img);
 		if (!img->texture[i])
 		{
 			free_tab(path_tab);
