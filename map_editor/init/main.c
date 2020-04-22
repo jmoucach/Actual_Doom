@@ -63,8 +63,8 @@ int		ft_create_map(char *map_name, char *width, char *height)
 		return (ft_error_fd("map name must end with '.doom'", 2));
 	if ((fd = open(map_name, O_RDONLY | O_NOFOLLOW)) > 0)
 		return (ft_error_fd("Map already exists, remove the size parameters", 2));
-	if ((h <= 0 || w <= 0 || h >= 100 || w >= 100))
-		return (ft_error_fd("Dimensions should be greater than 0 and lesser than 100", 2));
+	if ((h <= 3 || w <= 3 || h >= 100 || w >= 100))
+		return (ft_error_fd("Dimensions should be greater than 3 and lesser than 100", 2));
 	if ((fd = open(map_name, O_CREAT | O_NOFOLLOW | O_WRONLY, 0666)) <= 0)
 			return (ft_error_fd("Unable to create file", 2));
 	ft_draw_empty_map(w, h, fd);
