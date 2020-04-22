@@ -46,7 +46,7 @@ t_fdf			*ft_ptr_init(char *name)
 	ptr->s_l = WIDTH * 4;
 	ptr->height = HEIGHT;
 	ptr->endian = 0;
-	ptr->color = ft_hexa_to_SDL(LIGHT_BLUE);
+	ptr->color = ft_hexa_to_sdl(LIGHT_BLUE);
 	return (ptr);
 }
 /*
