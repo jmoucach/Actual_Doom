@@ -41,18 +41,6 @@ void		ft_free_line(t_line *list)
 	}
 	free(list);
 }
-/*
-static void	free_surfaces(t_data *data)
-{
-	int	i;
-	if (data->surface && (i = -1))
-	{
-		while (++i < 20)
-			if (data->surface[i])
-				SDL_FreeSurface(data->surface[i]);
-		free(data->surface);
-	}
-}*/
 
 static void	ft_free_textures(t_fdf *img)
 {
@@ -68,7 +56,7 @@ static void	ft_free_textures(t_fdf *img)
 			img->texture[i] = NULL;
 		}
 		free(img->texture);
-	}	
+	}
 }
 
 void		ft_clean_exit(t_fdf *img, char *err)

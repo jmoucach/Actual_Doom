@@ -23,13 +23,12 @@ void		ft_sub_fix_coords(t_map *map, int *x, int *y)
 	tempy = *y - map->oy;
 	crossx = tempx / map->base_gap;
 	crossy = tempy / map->base_gap;
-	*x = crossx; 
-	*y = crossy; 
+	*x = crossx;
+	*y = crossy;
 }
 
 void		ft_fix_coords(t_map *map, int *x, int *y)
 {
-//	printf("original x = %d\n original y = %d\n ox = %d\n oy = %d\n endx = %d\n endy = %d\n", *x, *y, map->ox, map->oy, map->endx, map->endy);
 	if (*x < map->ox)
 		*x = map->ox;
 	if (*y < map->oy)
