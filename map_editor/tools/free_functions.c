@@ -65,9 +65,9 @@ static void	ft_free_textures(t_fdf *img)
 		{
 			if (img->texture[i] != NULL)
 				SDL_DestroyTexture(img->texture[i]);
+			img->texture[i] = NULL;
 		}
-		if (img->grid != NULL)
-			SDL_DestroyTexture(img->grid);
+		free(img->texture);
 	}	
 }
 
@@ -78,6 +78,9 @@ void		ft_clean_exit(t_fdf *img, char *err)
 	ft_putendl("Ok1");
 	ft_free_textures(img);
 	ft_putendl("Ok2");
+	if (img->grid != NULL)
+		SDL_DestroyTexture(img->grid);
+	ft_putendl("Ok3");
 	if (img->renderer != NULL)
 		SDL_DestroyRenderer(img->renderer);
 	ft_putendl("Ok4");

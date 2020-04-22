@@ -36,7 +36,7 @@ char			**path_to_textures(void)
 {
 	char		**path_tab;
 
-	if (!(path_tab = malloc(sizeof(char *) * 21)))
+	if (!(path_tab = malloc(sizeof(char *) * 22)))
 		return (NULL);
 	path_tab[0] = NULL;
 	path_tab[1] = ft_strdup("../pics/bluestone.bmp");
@@ -73,7 +73,7 @@ short			loadmedia(t_fdf *img)
 	img->texture[0] = NULL;
 	while (++i <= 20)
 	{
-		img->texture[i] = loadimage(path_tab[i], img);
+		img->texture[i] = loadimage(path_tab[i], img); //loadimage
 		if (!img->texture[i])
 		{
 			free_tab(path_tab);

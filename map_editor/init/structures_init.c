@@ -23,7 +23,7 @@ int			ft_sdl_init(t_fdf *ptr, char *name)
 		ft_error_fd((char *)SDL_GetError(), 2);
 	if (!(ptr->renderer = SDL_CreateRenderer(ptr->window, -1, 0)))
 		ft_error_fd((char *)SDL_GetError(), 2);
-	if (!(ptr->texture = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 21)))
+	if (!(ptr->texture = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 22)))
 		exit(EXIT_FAILURE);
 	return (1);
 }
@@ -37,6 +37,7 @@ t_fdf			*ft_ptr_init(char *name)
 	if (!(ft_sdl_init(ptr, NAME)))
 		return (NULL);
 	ptr->pixels = (Uint32*)malloc(sizeof(Uint32) * (WIDTH * HEIGHT));
+	// ^ not protected ^
 	ft_bzero(ptr->pixels, (WIDTH * HEIGHT * sizeof(Uint32)));
 	nullify_textures(ptr);
 	loadmedia(ptr);
@@ -48,7 +49,7 @@ t_fdf			*ft_ptr_init(char *name)
 	ptr->color = ft_hexa_to_SDL(LIGHT_BLUE);
 	return (ptr);
 }
-
+/*
 t_point		*ft_init_coord(int x, int y)
 {
 	t_point	*p;
@@ -59,7 +60,7 @@ t_point		*ft_init_coord(int x, int y)
 	p->y = y;
 	return (p);
 }
-
+*/
 t_map			*ft_map_init(t_line *list)
 {
 	t_map		*map;

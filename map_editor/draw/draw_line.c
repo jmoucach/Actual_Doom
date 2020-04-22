@@ -31,10 +31,12 @@ void				draw_line(t_pt pt_one, t_pt pt_two,
 
 	pix = pixels;
 	setup_param(pt_one, pt_two, &line_param);
-	pt = pt_one;
+	pt.x = pt_one.x;
+	pt.y = pt_one.y;
 	while (pt.x != pt_two.x || pt.y != pt_two.y)
 	{
-		pix[pt.x + pt.y * WIDTH] = colour;
+		if (pt.x + pt.y * WIDTH >= 0 && pt.x + pt.y * WIDTH < WIDTH * HEIGHT)//protection for the SDL_DestroyRenderer problem
+			pix[pt.x + pt.y * WIDTH] = colour;
 		if ((line_param.error = line_param.off * 2) > -line_param.diff.y)
 		{
 			line_param.off -= line_param.diff.y;
@@ -46,7 +48,7 @@ void				draw_line(t_pt pt_one, t_pt pt_two,
 			pt.y += line_param.inc.y;
 		}
 	}
-	if (pt.x + pt.y * WIDTH > 0 && pt.x + pt.y * WIDTH < WIDTH * HEIGHT)//protection for the SDL_DestroyRenderer problem
+	if (pt.x + pt.y * WIDTH >= 0 && pt.x + pt.y * WIDTH < WIDTH * HEIGHT)//protection for the SDL_DestroyRenderer problem
 		pix[pt.x + pt.y * WIDTH] = colour;
 }
 /*

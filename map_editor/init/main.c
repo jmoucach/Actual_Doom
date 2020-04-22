@@ -114,4 +114,5 @@ int			main(int argc, char **argv)
 	}
 	else
 		ft_fdf(map, argv[1]);
+	return (0);
 }

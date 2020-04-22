@@ -41,6 +41,6 @@ void		ft_fdf(t_map *map, char *map_name)
 	if (!(ft_mouse_init(&mous)) || !(ft_key_init(&key)))
 		ft_clean_exit(img, "Problems during mouse or key initilization");
 	img->map = map;
-	ft_clear_and_render(img, mous.loop);
+	ft_clear_and_render(img, mous.loop); //this
 	ft_infinite_loop(img, &mous);
 }
