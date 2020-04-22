@@ -100,7 +100,7 @@ void			game_loop(t_data *data)
 		SDL_RenderCopy(data->renderer, data->texture, NULL, NULL);
 		display_hud_or_end_screen(data);
 		SDL_RenderPresent(data->renderer);
-		ft_bzero(data->pixels, (SCREEN_WIDTH * SCREEN_HEIGHT + 1) * 4);
+		ft_bzero(data->pixels, (SCREEN_WIDTH * SCREEN_HEIGHT) * 4);
 	}
 }
 
