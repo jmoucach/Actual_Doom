@@ -14,7 +14,7 @@
 
 void				display_bullets_side(t_data *data)
 {
-	static short	old_bullets = MAX_BULLETS;
+	static short	old_bullets = MAX_BULLETS + 1;
 	int				w;
 	int				h;
 	char			*str;
@@ -40,7 +40,7 @@ void				display_bullets_side(t_data *data)
 
 void				display_shells_side(t_data *data)
 {
-	static short	old_shells = MAX_SHELLS;
+	static short	old_shells = MAX_SHELLS + 1;
 	int				w;
 	int				h;
 	char			*str;
@@ -66,7 +66,7 @@ void				display_shells_side(t_data *data)
 
 void				display_cells_side(t_data *data)
 {
-	static short	old_cells = MAX_CELLS;
+	static short	old_cells = MAX_CELLS + 1;
 	int				w;
 	int				h;
 	char			*str;
