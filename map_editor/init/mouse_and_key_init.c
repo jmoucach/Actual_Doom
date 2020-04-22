@@ -12,14 +12,14 @@
 
 #include "../../hdr/map_editor.h"
 
-int			ft_mouse_init(t_mouse *mous)
+int		ft_mouse_init(t_mouse *mous)
 {
 	mous->click = 0;
 	mous->loop = 1;
 	return (1);
 }
 
-int				ft_key_init(t_key *key)
+int		ft_key_init(t_key *key)
 {
 	key->up = 0;
 	key->down = 0;
