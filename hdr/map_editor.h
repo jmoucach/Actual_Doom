@@ -210,7 +210,7 @@ void				print_button_add_and_substract(t_fdf *img);
 /*
 **			COLORS
 */
-SDL_Color			ft_hexa_to_SDL(int color);
+SDL_Color			ft_hexa_to_sdl(int color);
 
 /*
 **			MOVING
