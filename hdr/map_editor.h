@@ -200,8 +200,7 @@ void				ft_render_button_squares(t_fdf *img);
 void				draw_menu_squares(t_fdf *img);
 void				draw_menu_textures(t_fdf *img);
 void				ft_print_pressed_button(t_fdf *img, int i);
-void				ft_print_blocks(int x, int y, int map_value,
-		t_fdf *img, int size);
+void				ft_print_blocks(t_pt pt, int map_value, t_fdf *img, int size);
 void				ft_parse_and_print_textures(t_fdf *img);
 void				draw_line(t_pt pt_one, t_pt pt_two, Uint32 *pixels, int colour);
 void				check_and_draw_line(t_pt start, t_pt end, t_fdf *img, int col);
@@ -228,5 +227,5 @@ float				ft_height(t_map *map);
 void				ft_fix_coords(t_map *map, int *x, int *y);
 t_pt				coord_to_pt(int x, int y);
 void				mk_point_and_trace_line(int x1, int y1, int x2, int y2, t_fdf *img);
-
+t_fdf				*ft_img(void);
 #endif
