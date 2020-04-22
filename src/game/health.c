@@ -14,7 +14,7 @@
 
 void				display_armor(t_data *data)
 {
-	static short	old_armor = 100;
+	static short	old_armor = MAX_ARMOR + 1;
 	int				w;
 	int				h;
 	char			*str;
@@ -40,7 +40,7 @@ void				display_armor(t_data *data)
 
 void				display_health(t_data *data)
 {
-	static short	old_hp = 100;
+	static short	old_hp = MAX_HEALTH + 1;
 	int				w;
 	int				h;
 	char			*str;

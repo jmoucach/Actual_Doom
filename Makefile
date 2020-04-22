@@ -104,7 +104,7 @@ all: $(SUBDIRS)
 
 $(NAME): $(OBJS) $(INCLUDES)
 	@echo "\033[2K \033[A"
-	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(LIB) $(LIBFT) -lm
+	@clang $(CFLAGS) -o $(NAME) $(OBJS) $(LIB) $(LIBFT) -lm
 	@echo "\033[32m[$(NAME)]: compiled\033[0m"
 
 $(SUBDIRS):
@@ -114,7 +114,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT)
 	@ mkdir -p $(OBJ_DIR)
 	@ mkdir -p $(SUBDIRS)
 	@echo "\033[2K [$(NAME)]: Compilation of $< \033[A"
-	@gcc $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+	@clang $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 
 clean:
 	@$(MAKE) clean -C libft
