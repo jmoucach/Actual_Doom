@@ -14,10 +14,6 @@
 # define MAP_EDITOR_H
 
 # include "../libft/inc/libft.h"
-//# include "/usr/local/include/SDL2/SDL.h"
-//# include "/usr/local/include/SDL2/SDL_TTF.h"
-//# include "/usr/include/SDL2/SDL.h"
-//# include "/usr/include/SDL2/SDL_ttf.h"
 # include <SDL.h>
 # include <SDL_ttf.h>
 # include "../libft/inc/get_next_line.h"
