@@ -84,8 +84,9 @@ fclean: clean
 	@rm -f $(NAME)
 	@echo "\033[31m[$(NAME)]: deleted\033[0m"
 
-instalSDL:
-	brew install SDL2
+installSDL:
+	sudo apt-get install libsdl2-dev
+	sudo apt-get install libsdl2-ttf-dev
 
 re : fclean all
 
