@@ -34,50 +34,50 @@ SDL_Texture		*loadimage(char *path, t_fdf *img)
 
 short			fill_path_tab_2(char **path_tab)
 {
-	if (!(path_tab[11] = ft_strdup("../pics/keydoor.bmp")))
+	if (!(path_tab[11] = ft_strdup("pics/keydoor.bmp")))
 		return (0);
-	if (!(path_tab[12] = ft_strdup("../pics/pillar.bmp")))
+	if (!(path_tab[12] = ft_strdup("pics/pillar.bmp")))
 		return (0);
-	if (!(path_tab[13] = ft_strdup("../sprites/shells_button.bmp")))
+	if (!(path_tab[13] = ft_strdup("sprites/shells_button.bmp")))
 		return (0);
-	if (!(path_tab[14] = ft_strdup("../sprites/bullets_button.bmp")))
+	if (!(path_tab[14] = ft_strdup("sprites/bullets_button.bmp")))
 		return (0);
-	if (!(path_tab[15] = ft_strdup("../sprites/cell_button.bmp")))
+	if (!(path_tab[15] = ft_strdup("sprites/cell_button.bmp")))
 		return (0);
-	if (!(path_tab[16] = ft_strdup("../sprites/health_button.bmp")))
+	if (!(path_tab[16] = ft_strdup("sprites/health_button.bmp")))
 		return (0);
-	if (!(path_tab[17] = ft_strdup("../sprites/key_button.bmp")))
+	if (!(path_tab[17] = ft_strdup("sprites/key_button.bmp")))
 		return (0);
-	if (!(path_tab[18] = ft_strdup("../sprites/pickups/armor_pu.bmp")))
+	if (!(path_tab[18] = ft_strdup("sprites/pickups/armor_pu.bmp")))
 		return (0);
-	if (!(path_tab[19] = ft_strdup("../sprites/delete.bmp")))
+	if (!(path_tab[19] = ft_strdup("sprites/delete.bmp")))
 		return (0);
-	if (!(path_tab[20] = ft_strdup("../sprites/save.bmp")))
+	if (!(path_tab[20] = ft_strdup("sprites/save.bmp")))
 		return (0);
 	return (1);
 }
 
 short			fill_path_tab(char **path_tab)
 {
-	if (!(path_tab[1] = ft_strdup("../pics/bluestone.bmp")))
+	if (!(path_tab[1] = ft_strdup("pics/bluestone.bmp")))
 		return (0);
-	if (!(path_tab[2] = ft_strdup("../pics/greystone.bmp")))
+	if (!(path_tab[2] = ft_strdup("pics/greystone.bmp")))
 		return (0);
-	if (!(path_tab[3] = ft_strdup("../pics/mossy.bmp")))
+	if (!(path_tab[3] = ft_strdup("pics/mossy.bmp")))
 		return (0);
-	if (!(path_tab[4] = ft_strdup("../pics/tile2.bmp")))
+	if (!(path_tab[4] = ft_strdup("pics/tile2.bmp")))
 		return (0);
-	if (!(path_tab[5] = ft_strdup("../pics/wood.bmp")))
+	if (!(path_tab[5] = ft_strdup("pics/wood.bmp")))
 		return (0);
-	if (!(path_tab[6] = ft_strdup("../pics/redbrick.bmp")))
+	if (!(path_tab[6] = ft_strdup("pics/redbrick.bmp")))
 		return (0);
-	if (!(path_tab[7] = ft_strdup("../sprites/doom_guy_face.bmp")))
+	if (!(path_tab[7] = ft_strdup("sprites/doom_guy_face.bmp")))
 		return (0);
-	if (!(path_tab[8] = ft_strdup("../sprites/enemy_face.bmp")))
+	if (!(path_tab[8] = ft_strdup("sprites/enemy_face.bmp")))
 		return (0);
-	if (!(path_tab[9] = ft_strdup("../sprites/soul_button.bmp")))
+	if (!(path_tab[9] = ft_strdup("sprites/soul_button.bmp")))
 		return (0);
-	if (!(path_tab[10] = ft_strdup("../sprites/boss_button.bmp")))
+	if (!(path_tab[10] = ft_strdup("sprites/boss_button.bmp")))
 		return (0);
 	return (fill_path_tab_2(path_tab));
 }

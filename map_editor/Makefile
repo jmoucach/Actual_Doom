@@ -12,7 +12,7 @@
 
 CFLAGS = -Wall -Werror -Wextra -MMD `sdl2-config --cflags`
 
-NAME = map_editor
+NAME = ../mapeditor
 
 LIBFT = ../libft/libft.a
 
