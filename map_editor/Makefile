@@ -12,7 +12,7 @@
 
 CFLAGS = -Wall -Werror -Wextra -MMD `sdl2-config --cflags`
 
-NAME = ../mapeditor
+NAME = mapeditor
 
 LIBFT = ../libft/libft.a
 
@@ -60,11 +60,11 @@ LIB= `sdl2-config --libs` \
 INCLUDES= ../hdr/map_editor.h
 
 all: $(SUBDIRS)
-	@$(MAKE) -j $(NAME)
+	@$(MAKE) -j ../$(NAME)
 
-$(NAME): $(OBJS) $(INCLUDES)
+../$(NAME): $(OBJS) $(INCLUDES)
 	@echo "\033[2K \033[A"
-	@clang $(CFLAGS) -o $(NAME) $(OBJS) $(LIB) $(LIBFT) -lm
+	@clang $(CFLAGS) -o ../$(NAME) $(OBJS) $(LIB) $(LIBFT) -lm
 	@echo "\033[32m[$(NAME)]: compiled\033[0m"
 
 $(SUBDIRS):
@@ -81,7 +81,7 @@ clean:
 	@echo "\033[33m[$(NAME)]: OBJ deleted\033[0m"
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f ../$(NAME)
 	@echo "\033[31m[$(NAME)]: deleted\033[0m"
 
 installSDL:
