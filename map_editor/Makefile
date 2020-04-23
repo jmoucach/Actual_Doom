@@ -34,6 +34,7 @@ SRC = init/main.c \
 	   tools/colorize.c \
 	   tools/fix_coords.c \
 	   tools/free_functions.c \
+	   tools/free_path_tab.c \
 	   tools/gnl_incoming_map.c \
 	   tools/change_appearance.c \
 	   init/center_map.c \

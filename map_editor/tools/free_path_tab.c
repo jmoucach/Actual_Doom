@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_controls.c                                   :+:      :+:    :+:   */
+/*   free_path_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoulvel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 14:38:23 by jpoulvel          #+#    #+#             */
-/*   Updated: 2020/03/08 20:09:48 by aruiz-ba         ###   ########.fr       */
+/*   Created: 2020/03/04 18:22:53 by jpoulvel          #+#    #+#             */
+/*   Updated: 2020/03/10 19:19:38 by jpoulvel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../hdr/map_editor.h"
 
-void			ft_mouse_event(t_fdf *img, t_mouse *mous, SDL_Event e)
+void			free_path_tab(char **path_tab)
 {
-	if (e.type == SDL_MOUSEBUTTONDOWN)
-	{
-		if (e.button.button == SDL_BUTTON_LEFT)
-		{
-			if (mous->loop == -1)
-				ft_save_map(img);
-			else
-				click_to_modify_map(img->map, mous);
-		}
-	}
+	short		i;
+
+	i = -1;
+	while (++i < 22)
+		if (path_tab[i])
+			free(path_tab[i]);
+	free(path_tab);
 }

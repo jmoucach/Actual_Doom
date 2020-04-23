@@ -32,7 +32,7 @@ void			ft_menu_event(t_mouse *mous, SDL_Event e)
 		if (e.button.button == SDL_BUTTON_LEFT)
 		{
 			SDL_GetMouseState(&tmx, &tmy);
-			if (tmx >= 1120 && tmx <= 1560 && tmy >= 120 && tmy <= 600)
+			if (tmx >= 1120 && tmx <= 1355 && tmy >= 120 && tmy <= 600)
 			{
 				x = (tmx - 1120) / 80;
 				y = (tmy - 120) / 80;

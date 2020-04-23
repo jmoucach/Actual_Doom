@@ -146,6 +146,7 @@ short				loadmedia(t_fdf *img);
 /*
 **			FREE_FUNCTIONS
 */
+void				free_path_tab(char **path_tab);
 void				ft_free_map(t_map *map);
 void				ft_free_line(t_line *list);
 void				ft_free_fdf(t_fdf *fdf);
