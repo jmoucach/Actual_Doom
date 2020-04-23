@@ -17,6 +17,6 @@ void		ft_keys_event(t_fdf *img, SDL_Event e)
 	if (e.type == SDL_KEYDOWN)
 	{
 		if (e.key.keysym.sym == 27)
-			ft_clean_exit(img, "You pushed esc");
+			ft_clean_exit(img, NULL);
 	}
 }
