@@ -46,20 +46,26 @@ char			*read_map(int fd)
 	return (str);
 }
 
-void			allocate_map(t_data *data, short id)
+static void		allocate_map(t_data *data, char *str, short id)
 {
 	int			i;
 
 	i = 0;
 	if (!(data->maps[id].map =
 				(int**)malloc(sizeof(int*) * data->maps[id].height)))
+	{
+		free(str);
 		clean_exit(data, "Map malloc error");
+	}
 	nullify_tab((void**)data->maps[id].map, data->maps[id].height);
 	while (i < data->maps[id].height)
 	{
 		if (!(data->maps[id].map[i] =
 					(int*)malloc(sizeof(int) * data->maps[id].width)))
+		{
+			free(str);
 			clean_exit(data, "Map malloc error");
+		}
 		i++;
 	}
 }
@@ -69,14 +75,14 @@ void			new_map(t_data *data, char *title, short id)
 	int			fd;
 	char		*str;
 
-	fd = open(title, O_NOCTTY | O_RDONLY | O_NOFOLLOW | O_NONBLOCK);
-	if (fd < 0)
+	if ((fd = open(title, O_NOCTTY | O_RDONLY | O_NOFOLLOW | O_NONBLOCK)) < 0)
 		clean_exit(data, "Couldn't open map");
 	close(fd);
-	fd = open(title, O_DIRECTORY);
-	if (fd >= 0)
+	if ((fd = open(title, O_DIRECTORY)) >= 0)
+	{
+		close(fd);
 		clean_exit(data, "Map is a directory, not a file");
-	close(fd);
+	}
 	if (map_too_big(title))
 		clean_exit(data, "Map is too big or has too many enemies");
 	fd = open(title, O_NOCTTY | O_RDONLY | O_NOFOLLOW | O_NONBLOCK);
@@ -86,7 +92,7 @@ void			new_map(t_data *data, char *title, short id)
 		clean_exit(data, "Map is not rectangular");
 	str = ft_replace(str, '\n', ',');
 	close(fd);
-	allocate_map(data, id);
+	allocate_map(data, str, id);
 	fill_raw_map(data, str, id);
 	parse_map(data, str, id);
 	free(str);

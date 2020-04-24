@@ -52,7 +52,10 @@ t_line			*ft_list_alloc(int fd)
 		if (line == NULL)
 		{
 			if (!(line = ft_newline(linetmp)))
+			{
+				free(linetmp);
 				return (NULL);
+			}
 		}
 		else
 			add_new_line(linetmp, &line);

@@ -86,6 +86,8 @@ void		clean_exit(t_data *data, char *err)
 {
 	if (err)
 		ft_putendl_fd(err, 2);
+	free_maps(data);
+	delete_cur_map(data);
 	free_surf_and_sprites(data);
 	free_hud(data);
 	free_objects(data);
@@ -105,8 +107,5 @@ void		clean_exit(t_data *data, char *err)
 		TTF_Quit();
 	if (SDL_WasInit(SDL_INIT_VIDEO) & SDL_INIT_VIDEO)
 		SDL_Quit();
-	if (err)
-		exit(EXIT_FAILURE);
-	else
-		exit(EXIT_SUCCESS);
+	exit(err ? EXIT_FAILURE : EXIT_SUCCESS);
 }

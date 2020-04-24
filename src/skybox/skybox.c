@@ -29,10 +29,6 @@ double		two_pi_mod(double angle)
 	return (angle);
 }
 
-/*
-** each skybox should be 3200*300px
-*/
-
 int			get_y(t_data *data, double i)
 {
 	int		diff;
@@ -42,10 +38,6 @@ int			get_y(t_data *data, double i)
 	res = 150 - diff + (int)(i * 150.0 / ((double)SCREEN_HEIGHT / 2.0));
 	return (res);
 }
-
-/*
-** TODO get the skybox height & width in defines (3200 * 300)
-*/
 
 void		print_skybox(t_data *data)
 {

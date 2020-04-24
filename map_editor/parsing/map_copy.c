@@ -89,6 +89,15 @@ int				*ft_fill_map(char *charline, int *len)
 	return (line);
 }
 
+static void		*free_map_and_return(t_map *map, short which)
+{
+	if (which == 0)
+		free(map);
+	if (which == 1)
+		ft_free_map(map);
+	return (NULL);
+}
+
 t_map			*ft_map_copy(t_line *list)
 {
 	t_line		*tmp;
@@ -105,12 +114,13 @@ t_map			*ft_map_copy(t_line *list)
 		tmp = tmp->next;
 	map->y = tmp->y + 1;
 	if (!(map->map = malloc(sizeof(int *) * (map->y + 1))))
-		return (0);
+		return (free_map_and_return(map, 0));
 	tmp = list;
 	while (++i < map->y)
 	{
 		conform_line = ft_conform_line(tmp->str);
-		map->map[i] = ft_fill_map(conform_line, &tmp->x);
+		if (!(map->map[i] = ft_fill_map(conform_line, &tmp->x)))
+			return (free_map_and_return(map, 1));
 		map->x = tmp->x;
 		tmp = tmp->next;
 	}

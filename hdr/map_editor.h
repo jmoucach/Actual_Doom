@@ -91,9 +91,6 @@ typedef struct		s_fdf
 	t_map			*map;
 	int				height;
 	Uint32			*pixels;
-	int				bpp;
-	int				s_l;
-	int				endian;
 	int				*point_color;
 	SDL_Color		color;
 }					t_fdf;

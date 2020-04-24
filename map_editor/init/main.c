@@ -108,10 +108,7 @@ int			main(int argc, char **argv)
 		return (0);
 	}
 	if (!(map = ft_parser(fd)))
-	{
-		map != NULL ? ft_free_map(map) : 0;
 		return (ft_error_fd("Invalid map", 2));
-	}
 	else
 		ft_fdf(map, argv[1]);
 	return (0);
