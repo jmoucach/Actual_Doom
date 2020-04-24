@@ -54,11 +54,24 @@ t_fdf		*ft_ptr_init(char *name)
 	return (ptr);
 }
 
+int			get_light_ceiling(t_map *map, t_line *list)
+{
+	int		value;
+
+	value = ft_atoi(&list->str[0]);
+	if (value < 0 || value > 3)
+		return (0);
+	map->light_ceiling = value;
+	return (1);
+}
+
 t_map		*ft_map_init(t_line *list)
 {
 	t_map	*map;
 
 	if (!(map = ft_map_copy(list)))
+		return (NULL);
+	if (get_light_ceiling(map, list) == 0)
 		return (NULL);
 	map->base_gap = ft_gap(map);
 	ft_origin(map);

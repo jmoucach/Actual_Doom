@@ -79,6 +79,7 @@ typedef struct		s_map
 	char			proj;
 	int				endx;
 	int				endy;
+	int				light_ceiling;
 }					t_map;
 
 typedef struct		s_fdf
