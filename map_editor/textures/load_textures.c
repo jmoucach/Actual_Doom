@@ -50,9 +50,17 @@ short			fill_path_tab_2(char **path_tab)
 		return (0);
 	if (!(path_tab[18] = ft_strdup("sprites/pickups/armor_pu.bmp")))
 		return (0);
-	if (!(path_tab[19] = ft_strdup("sprites/delete.bmp")))
+	if (!(path_tab[19] = ft_strdup("sprites/Ceiling_on.bmp")))
 		return (0);
-	if (!(path_tab[20] = ft_strdup("sprites/save.bmp")))
+	if (!(path_tab[20] = ft_strdup("sprites/Ceiling_off.bmp")))
+		return (0);
+	if (!(path_tab[21] = ft_strdup("sprites/Day_mode.bmp")))
+		return (0);
+	if (!(path_tab[22] = ft_strdup("sprites/Night_mode.bmp")))
+		return (0);
+	if (!(path_tab[23] = ft_strdup("sprites/delete.bmp")))
+		return (0);
+	if (!(path_tab[24] = ft_strdup("sprites/save.bmp")))
 		return (0);
 	return (1);
 }
@@ -87,7 +95,7 @@ char			**path_to_textures(void)
 	char		**path_tab;
 	short		i;
 
-	if (!(path_tab = malloc(sizeof(char *) * 22)))
+	if (!(path_tab = malloc(sizeof(char *) * 26)))
 		return (NULL);
 	i = -1;
 	while (++i < 22)
@@ -109,7 +117,7 @@ short			loadmedia(t_fdf *img)
 	if (!(path_tab = path_to_textures()))
 		ft_clean_exit(img, "Error allocating texture paths");
 	img->texture[0] = NULL;
-	while (++i <= 20)
+	while (++i <= 24)
 	{
 		img->texture[i] = loadimage(path_tab[i], img);
 		if (!img->texture[i])

@@ -23,7 +23,7 @@ int			ft_sdl_init(t_fdf *ptr, char *name)
 		return (ft_error_fd((char *)SDL_GetError(), 2));
 	if (!(ptr->renderer = SDL_CreateRenderer(ptr->window, -1, 0)))
 		return (ft_error_fd((char *)SDL_GetError(), 2));
-	if (!(ptr->texture = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 22)))
+	if (!(ptr->texture = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 26)))
 		return (0);
 	return (1);
 }

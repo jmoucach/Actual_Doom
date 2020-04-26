@@ -35,7 +35,7 @@ void			draw_menu_squares(t_fdf *img)
 	t_pt		pt;
 
 	i = 0;
-	while (++i <= 18)
+	while (++i <= 22)
 	{
 		if (i == 12)
 			i++;
@@ -53,10 +53,10 @@ void			ft_print_pressed_button(t_fdf *img, int i)
 		return ;
 	if (i == 0)
 	{
-		start = coord_to_pt(1119, 649);
-		ft_print_rectangle(img, start, 232, 114);
-		start = coord_to_pt(1118, 648);
-		ft_print_rectangle(img, start, 234, 116);
+		start = coord_to_pt(1119, 759);
+		ft_print_rectangle(img, start, 201, 98);
+		start = coord_to_pt(1118, 758);
+		ft_print_rectangle(img, start, 203, 100);
 	}
 	else
 	{
