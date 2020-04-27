@@ -36,7 +36,7 @@ short			fill_path_tab_2(char **path_tab)
 {
 	if (!(path_tab[11] = ft_strdup("pics/keydoor.bmp")))
 		return (0);
-	if (!(path_tab[12] = ft_strdup("pics/pillar.bmp")))
+	if (!(path_tab[12] = ft_strdup("pics/glass.bmp")))
 		return (0);
 	if (!(path_tab[13] = ft_strdup("sprites/shells_button.bmp")))
 		return (0);

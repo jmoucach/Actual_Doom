@@ -43,8 +43,6 @@ void			draw_menu_textures(t_fdf *img)
 	i = 0;
 	while (++i <= 22)
 	{
-		if (i == 12)
-			i++;
 		pt.x = 1120 + (((i - 1) % 3) * 80);
 		pt.y = 120 + (((i - 1) / 3) * 80);
 		ft_print_blocks(pt, i, img, 70);
