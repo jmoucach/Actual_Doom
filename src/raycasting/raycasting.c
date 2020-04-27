@@ -15,11 +15,22 @@
 void	cast_one_pixel(t_data *data, t_raycast *r, t_point pt)
 {
 	r->tex.y = (pt.y * 2 - (SCREEN_HEIGHT + data->yaw) + r->lineheight)
-									* (r->texh / 2) / (r->lineheight + 1);
+		* (r->texh / 2) / (r->lineheight + 1);
 	r->color = get_pixel(data->surface[r->texnum],
-						r->tex.x, r->tex.y);
-	data->pixels[pt.x + pt.y * SCREEN_WIDTH] = shaded_color(data,
-											r->color, r->walldist, NULL);
+			r->tex.x, r->tex.y);
+	if (data->pixels[pt.x + pt.y * SCREEN_WIDTH] == 0
+			|| (r->texnum == 7 && r->color != 0))
+		data->pixels[pt.x + pt.y * SCREEN_WIDTH] = shaded_color(data,
+				r->color, r->walldist, NULL);
+}
+
+static void	column_calc(t_data *data, t_raycast *r, t_point pt)
+{
+	get_texturing_values(r, data);
+	give_draw_values(r, data);
+	pt.y = r->drawstart - 1;
+	while (++pt.y <= r->drawend && is_in_frame(pt))
+		cast_one_pixel(data, r, pt);
 }
 
 void	*cast_one_column(void *d)
@@ -27,6 +38,7 @@ void	*cast_one_column(void *d)
 	t_data	*data;
 	t_raycast	r;
 	t_point		pt;
+	short		hit;
 
 	data = (t_data*)d;
 	pt.x = 0;
@@ -36,12 +48,20 @@ void	*cast_one_column(void *d)
 	{
 		set_raycast_values(&r, data->p, pt.x);
 		set_dist_and_step(&r);
-		hit_wall(&r, data);
-		get_texturing_values(&r, data);
-		give_draw_values(&r, data);
-		pt.y = r.drawstart - 1;
-		while (++pt.y <= r.drawend && is_in_frame(pt))
-			cast_one_pixel(data, &r, pt);
+		while ((hit = hit_wall(&r, data)))
+		{
+			column_calc(data, &r, pt);
+			if (r.texnum == 7 && data->is_window.x == 0
+					&& data->is_window.y == 0 && pt.x > SCREEN_WIDTH * 2 / 5
+					&& pt.x < SCREEN_WIDTH * 3 / 5)
+			{
+				data->is_window.x = r.m_pos.x;
+				data->is_window.y = r.m_pos.y;
+				data->window_dist = r.walldist;
+			}
+			if (hit == 1)
+				break;
+		}
 		data->zbuffer[pt.x] = r.walldist;
 		floorcaster(data, &r, pt.x);
 		pt.x += NB_THREAD;

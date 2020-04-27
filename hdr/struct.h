@@ -233,6 +233,9 @@ typedef struct		s_data
 	short			enter_screen;
 	short			exit_screen;
 	short			death_screen;
+
+	t_point			is_window;
+	double			window_dist;
 }					t_data;
 
 #endif

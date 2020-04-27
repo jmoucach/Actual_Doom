@@ -58,9 +58,10 @@ void		print_skybox(t_data *data)
 		i = -1;
 		while (++i < (SCREEN_HEIGHT / 2) + data->yaw / 2)
 		{
-			color = get_pixel(data->surface[data->shaded ? 8 : 7],
+			color = get_pixel(data->surface[data->shaded ? 9 : 8],
 					sky.cur_col, get_y(data, (double)i));
-			data->pixels[i * SCREEN_WIDTH + counter] = color;
+			if (data->pixels[i * SCREEN_WIDTH + counter] == 0)
+				data->pixels[i * SCREEN_WIDTH + counter] = color;
 		}
 		counter++;
 	}

@@ -58,7 +58,7 @@ void	get_texturing_values(t_raycast *r, t_data *data)
 	r->lineheight = abs((int)(SCREEN_HEIGHT / r->walldist));
 }
 
-void	hit_wall(t_raycast *r, t_data *data)
+short	hit_wall(t_raycast *r, t_data *data)
 {
 	while (r->hit == 0)
 	{
@@ -74,9 +74,15 @@ void	hit_wall(t_raycast *r, t_data *data)
 			r->m_pos.y += r->step.y;
 			r->side = 1;
 		}
-		if (data->cur_map.map[r->m_pos.x][r->m_pos.y] > 0)
+		if (data->cur_map.map[r->m_pos.x][r->m_pos.y] == 8)
+			return (2);
+		else if (data->cur_map.map[r->m_pos.x][r->m_pos.y] > 0)
+		{
 			r->hit = 1;
+			return (1);
+		}
 	}
+	return (0);
 }
 
 void	give_draw_values(t_raycast *r, t_data *data)

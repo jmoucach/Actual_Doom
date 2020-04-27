@@ -49,10 +49,10 @@ static void		manage_sdl_events(SDL_Event *e, t_data *data)
 
 static void		display_game(t_data *data)
 {
+	state_machine(data);
+	raycasting(data);
 	if (!data->ceiling)
 		print_skybox(data);
-	raycasting(data);
-	state_machine(data);
 	item_pickup(data);
 	combat(data);
 	if (data->toggle_minimap)
