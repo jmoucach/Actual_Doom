@@ -49,6 +49,7 @@ static void		manage_sdl_events(SDL_Event *e, t_data *data)
 
 static void		display_game(t_data *data)
 {
+	ft_bzero(data->e_zbuffer, sizeof(double) * SCREEN_WIDTH);
 	state_machine(data);
 	raycasting(data);
 	if (!data->ceiling)

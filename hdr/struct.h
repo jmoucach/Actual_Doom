@@ -219,6 +219,7 @@ typedef struct		s_data
 	short			ceiling;
 
 	double			*zbuffer;
+	double			*e_zbuffer;
 	t_object		*obj;
 	t_hud			hud;
 

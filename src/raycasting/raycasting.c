@@ -19,7 +19,7 @@ void	cast_one_pixel(t_data *data, t_raycast *r, t_point pt)
 	r->color = get_pixel(data->surface[r->texnum],
 			r->tex.x, r->tex.y);
 	if (data->pixels[pt.x + pt.y * SCREEN_WIDTH] == 0
-			|| (r->texnum == 7 && r->color != 0))
+			|| (r->texnum == 7 && r->color != 0 && r->walldist < data->e_zbuffer[pt.x]))
 		data->pixels[pt.x + pt.y * SCREEN_WIDTH] = shaded_color(data,
 				r->color, r->walldist, NULL);
 	if (r->texnum == 7 && pt.x == SCREEN_WIDTH / 2 && pt.y > SCREEN_HEIGHT / 10 * 3 && pt.y < SCREEN_HEIGHT / 10 * 8)

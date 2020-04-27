@@ -47,10 +47,10 @@ static short	window_to_break(t_data *data)
 			return (0);
 		iterator = iterator->next;
 	}
-	if (data->hit_window && !(((data->p.selected_weapon == 0
-			|| data->p.selected_weapon == 3) && data->window_dist > 2)
-			|| (data->p.selected_weapon == 1 && data->window_dist > 7)
-			|| (data->p.selected_weapon == 2 && data->window_dist > 5)))
+	if (data->hit_window && !(data->p.selected_weapon == 0
+				|| data->p.selected_weapon == 3
+				|| (data->p.selected_weapon == 1 && data->window_dist > 7)
+				|| (data->p.selected_weapon == 2 && data->window_dist > 5)))
 	{
 		data->cur_map.map[data->is_window.x][data->is_window.y] = 0;
 		ft_bzero(&(data->is_window), sizeof(t_point));
