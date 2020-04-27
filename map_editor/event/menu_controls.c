@@ -14,8 +14,6 @@
 
 void			set_mous_loop(t_mouse *mous, int i)
 {
-	if (i == 12)
-		return ;
 	mous->loop = i;
 }
 
