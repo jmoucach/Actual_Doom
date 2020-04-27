@@ -22,6 +22,22 @@
 ** 6 : minigun
 */
 
+static short	window_to_break(t_data *data)
+{
+	if (data->is_window.x == 0 && data->is_window.y == 0)
+		return (0);
+	if (((data->p.selected_weapon == 0 || data->p.selected_weapon == 3)
+			&& data->window_dist > 2)
+			|| (data->p.selected_weapon == 1 && data->window_dist > 7)
+			|| (data->p.selected_weapon == 2 && data->window_dist > 5))
+		return (0);
+	data->cur_map.map[data->is_window.x][data->is_window.y] = 0;
+	data->is_window.x = 0;
+	data->is_window.y = 0;
+	data->p.has_fired = 1;
+	return (1);
+}
+
 static void		deal_damage(t_object *obj, short weapon)
 {
 	short	damage;
@@ -76,6 +92,8 @@ void			hits_dealt(t_data *data)
 	while (iterator->next)
 		iterator = iterator->next;
 	if (data->p.has_fired)
+		return ;
+	if (window_to_break(data))
 		return ;
 	while (iterator)
 	{

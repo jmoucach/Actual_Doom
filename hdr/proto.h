@@ -94,7 +94,7 @@ void			show_enemies(t_data *data, t_point length);
 void			give_draw_values(t_raycast *values, t_data *data);
 void			get_texturing_values(t_raycast *values, t_data *data);
 void			set_dist_and_step(t_raycast *values);
-void			hit_wall(t_raycast *values, t_data *data);
+short			hit_wall(t_raycast *values, t_data *data);
 void			raycasting(t_data *data);
 
 /*
