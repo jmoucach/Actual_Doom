@@ -14,6 +14,8 @@
 # define STRUCT_H
 # include "doom_nukem.h"
 
+# define NB_THREAD 8
+
 typedef union		u_color
 {
 	Uint32			number;
@@ -197,6 +199,7 @@ typedef struct		s_data
 	SDL_Renderer	*renderer;
 	SDL_Texture		*texture;
 	SDL_Surface		**surface;
+	pthread_t		thread[NB_THREAD];
 	t_sprite		*obj_sprite;
 	SDL_Texture		**sprites;
 	SDL_Texture		*weapon_texture;
