@@ -15,7 +15,7 @@
 void		ft_putnbr_comma_endl_fd(int nbr, int fd)
 {
 	ft_putnbr_fd(nbr, fd);
-	ft_putendl_fd(',', fd);
+	ft_putendl_fd(",", fd);
 }
 
 void		write_objects(int i, int fd)
