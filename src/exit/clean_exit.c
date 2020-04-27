@@ -93,6 +93,8 @@ void		clean_exit(t_data *data, char *err)
 	free_objects(data);
 	if (data->zbuffer)
 		free(data->zbuffer);
+	if (data->e_zbuffer)
+		free(data->e_zbuffer);
 	if (data->pixels)
 		free(data->pixels);
 	if (data->texture)

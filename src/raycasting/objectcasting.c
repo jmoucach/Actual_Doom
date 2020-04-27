@@ -56,6 +56,7 @@ static void		draw_object(t_data *data, t_objcast o, SDL_Surface *surf,
 				&& o.pos.y < data->zbuffer[x])
 		{
 			obj->visible = 1;
+			data->e_zbuffer[x] = obj->dist_to_player;
 			while (++y < o.drawend.y)
 			{
 				o.tex.y = ((y - o.movescreen) * 2 - (SCREEN_HEIGHT + data->yaw)

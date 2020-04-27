@@ -219,6 +219,7 @@ typedef struct		s_data
 	short			ceiling;
 
 	double			*zbuffer;
+	double			*e_zbuffer;
 	t_object		*obj;
 	t_hud			hud;
 
@@ -235,6 +236,7 @@ typedef struct		s_data
 	short			death_screen;
 
 	t_point			is_window;
+	short			hit_window;
 	double			window_dist;
 }					t_data;
 
