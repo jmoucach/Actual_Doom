@@ -235,6 +235,7 @@ typedef struct		s_data
 	short			death_screen;
 
 	t_point			is_window;
+	short			hit_window;
 	double			window_dist;
 }					t_data;
 

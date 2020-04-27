@@ -22,6 +22,8 @@ void	cast_one_pixel(t_data *data, t_raycast *r, t_point pt)
 			|| (r->texnum == 7 && r->color != 0))
 		data->pixels[pt.x + pt.y * SCREEN_WIDTH] = shaded_color(data,
 				r->color, r->walldist, NULL);
+	if (r->texnum == 7 && pt.x == SCREEN_WIDTH / 2 && pt.y > SCREEN_HEIGHT / 10 * 3 && pt.y < SCREEN_HEIGHT / 10 * 8)
+		data->hit_window = 1;
 }
 
 static void	column_calc(t_data *data, t_raycast *r, t_point pt)
@@ -51,9 +53,7 @@ void	*cast_one_column(void *d)
 		while ((hit = hit_wall(&r, data)))
 		{
 			column_calc(data, &r, pt);
-			if (r.texnum == 7 && data->is_window.x == 0
-					&& data->is_window.y == 0 && pt.x > SCREEN_WIDTH * 2 / 5
-					&& pt.x < SCREEN_WIDTH * 3 / 5)
+			if (pt.x == SCREEN_WIDTH / 2 && r.texnum == 7 && (data->window_dist > r.walldist || !data->window_dist))
 			{
 				data->is_window.x = r.m_pos.x;
 				data->is_window.y = r.m_pos.y;
@@ -73,6 +73,8 @@ void	raycasting(t_data *data)
 {
 	short		i;
 
+	data->hit_window = 0;
+	data->window_dist = 0;
 	i = -1;
 	while (++i < NB_THREAD)
 	{
