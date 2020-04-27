@@ -26,12 +26,13 @@
 # define OCRE 0xffa700
 # define WHITE 0xf0f8ff
 # define BROWN 0xcd7f32
-# define GREEN 0x87a96b
+# define GREEN 0x00ff00
 # define SAND 0xfad6a5
 # define LIGHT_BLUE 0xb2ffff
 # define BLUE 0x21abcd
 # define DEEP_BLUE 0x002fa7
 # define RED 0xe32636
+# define YELLOW 0xffff00
 # define ZOOM_IN 1073741911
 # define ZOOM_OUT 1073741910
 
@@ -56,6 +57,8 @@ typedef struct		s_mouse
 	int				click1[2];
 	int				click;
 	int				loop;
+	int				mtime;
+	int				mceiling;
 }					t_mouse;
 
 typedef	struct		s_key
@@ -159,12 +162,12 @@ void				ft_save_map(t_fdf *img);
 /*
 **			DRAW
 */
-void				ft_clear_and_render(t_fdf *img, int	loop);
+void				ft_clear_and_render(t_fdf *img, t_mouse *mous);
 void				ft_print_grid(t_fdf *img);
 void				ft_render_button_squares(t_fdf *img);
 void				draw_menu_squares(t_fdf *img);
 void				draw_menu_textures(t_fdf *img);
-void				ft_print_pressed_button(t_fdf *img, int i);
+void				ft_print_pressed_button(t_fdf *img, t_mouse *mous);
 void				ft_print_blocks(t_pt pt, int map_value, t_fdf *img, \
 					int size);
 void				ft_parse_and_print_textures(t_fdf *img);

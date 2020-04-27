@@ -12,7 +12,7 @@
 
 #include "../../hdr/map_editor.h"
 
-void			ft_print_rectangle(t_fdf *img, t_pt pt, int w, int h)
+void			ft_print_rectangle(t_fdf *img, t_pt pt, int w, int h, int colour)
 {
 	t_pt			pt_a;
 	t_pt			pt_b;
@@ -23,10 +23,10 @@ void			ft_print_rectangle(t_fdf *img, t_pt pt, int w, int h)
 	pt_b = coord_to_pt(pt.x + w, pt.y);
 	pt_c = coord_to_pt(pt.x + w, pt.y + h);
 	pt_d = coord_to_pt(pt.x, pt.y + h);
-	draw_line(pt_a, pt_b, img->pixels, WHITE);
-	draw_line(pt_b, pt_c, img->pixels, WHITE);
-	draw_line(pt_c, pt_d, img->pixels, WHITE);
-	draw_line(pt_d, pt_a, img->pixels, WHITE);
+	draw_line(pt_a, pt_b, img->pixels, colour);
+	draw_line(pt_b, pt_c, img->pixels, colour);
+	draw_line(pt_c, pt_d, img->pixels, colour);
+	draw_line(pt_d, pt_a, img->pixels, colour);
 }
 
 void			draw_menu_squares(t_fdf *img)
@@ -39,30 +39,55 @@ void			draw_menu_squares(t_fdf *img)
 	{
 		pt.x = 1120 + (((i - 1) % 3) * 80) - 1;
 		pt.y = 120 + (((i - 1) / 3) * 80) - 1;
-		ft_print_rectangle(img, pt, 70 + 2, 70 + 2);
+		ft_print_rectangle(img, pt, 70 + 2, 70 + 2, WHITE);
 	}
 }
 
-void			ft_print_pressed_button(t_fdf *img, int i)
+void			ft_print_pressed_skybutton(t_fdf *img, t_mouse *mous)
+{
+		t_pt		start;
+		int		i;
+		
+		if (mous->mtime == 0)
+			i = GREEN;
+		else
+			i = RED;
+		start.x = 1120 + (((mous->mtime + 18) % 3) * 80) - 1;
+		start.y = 120 + (((mous->mtime + 18) / 3) * 80) - 1;
+		ft_print_rectangle(img, start, 72, 72, i);
+		start.x = 1120 + (((mous->mtime + 18) % 3) * 80) - 2;
+		start.y = 120 + (((mous->mtime + 18) / 3) * 80) - 2;
+		ft_print_rectangle(img, start, 74, 74, i);
+
+		start.x = 1120 + (((mous->mceiling + 20) % 3) * 80) - 1;
+		start.y = 120 + (((mous->mceiling + 20) / 3) * 80) - 1;
+		ft_print_rectangle(img, start, 72, 72, YELLOW);
+		start.x = 1120 + (((mous->mceiling + 20) % 3) * 80) - 2;
+		start.y = 120 + (((mous->mceiling + 20) / 3) * 80) - 2;
+		ft_print_rectangle(img, start, 74, 74, YELLOW);
+}
+
+void			ft_print_pressed_button(t_fdf *img, t_mouse *mous)
 {
 	t_pt		start;
 
-	if (i == -1)
+	if (mous->loop == -1)
 		return ;
-	if (i == 0)
+	if (mous->loop == 0)
 	{
 		start = coord_to_pt(1119, 759);
-		ft_print_rectangle(img, start, 201, 98);
+		ft_print_rectangle(img, start, 201, 98, WHITE);
 		start = coord_to_pt(1118, 758);
-		ft_print_rectangle(img, start, 203, 100);
+		ft_print_rectangle(img, start, 203, 100, WHITE);
 	}
 	else
 	{
-		start.x = 1120 + (((i - 1) % 3) * 80) - 1;
-		start.y = 120 + (((i - 1) / 3) * 80) - 1;
-		ft_print_rectangle(img, start, 72, 72);
-		start.x = 1120 + (((i - 1) % 3) * 80) - 2;
-		start.y = 120 + (((i - 1) / 3) * 80) - 2;
-		ft_print_rectangle(img, start, 74, 74);
+		start.x = 1120 + (((mous->loop - 1) % 3) * 80) - 1;
+		start.y = 120 + (((mous->loop - 1) / 3) * 80) - 1;
+		ft_print_rectangle(img, start, 72, 72, WHITE);
+		start.x = 1120 + (((mous->loop - 1) % 3) * 80) - 2;
+		start.y = 120 + (((mous->loop - 1) / 3) * 80) - 2;
+		ft_print_rectangle(img, start, 74, 74, WHITE);
+		ft_print_pressed_skybutton(img, mous);
 	}
 }
