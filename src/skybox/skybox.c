@@ -60,7 +60,7 @@ void		print_skybox(t_data *data)
 		{
 			color = get_pixel(data->surface[data->shaded ? 9 : 8],
 					sky.cur_col, get_y(data, (double)i));
-			if (data->pixels[i * SCREEN_WIDTH + counter] == 0)
+			if (data->pixels[i * SCREEN_WIDTH + counter] == 0x000000)
 				data->pixels[i * SCREEN_WIDTH + counter] = color;
 		}
 		counter++;
