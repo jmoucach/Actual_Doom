@@ -12,10 +12,10 @@
 
 #include "../../hdr/map_editor.h"
 
-void		ft_putnbrendl_fd(int nbr, int fd)
+void		ft_putnbr_comma_endl_fd(int nbr, int fd)
 {
 	ft_putnbr_fd(nbr, fd);
-	ft_putchar_fd('\n', fd);
+	ft_putendl_fd(',', fd);
 }
 
 void		write_objects(int i, int fd)
@@ -84,7 +84,7 @@ void		ft_save_map(t_fdf *img)
 		ft_putendl(ft_itoa(fd));
 		ft_error_fd("Unable to write in the map file", 2);
 	}
-	ft_putnbrendl_fd(img->map->light_ceiling, fd); //printing the value for day + sky
+	ft_putnbr_comma_endl_fd(img->map->light_ceiling, fd); //printing the value for day + sky
 	write_tab(int_tab, width, height, fd);
 	ft_putstr("Map updated succesfully\n");
 	ft_clean_exit(img, NULL);
