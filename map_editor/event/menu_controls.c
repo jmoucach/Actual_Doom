@@ -23,8 +23,6 @@ void			set_mous_loop(t_mouse *mous, int i)
 		else
 			mous->mceiling = i - 21;
 	}
-	printf("test1: %i \n", mous->mtime);
-	printf("test2: %i \n\n", mous->mceiling);
 }
 
 void			ft_menu_event(t_mouse *mous, SDL_Event e)

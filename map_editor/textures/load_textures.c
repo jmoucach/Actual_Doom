@@ -48,7 +48,7 @@ short			fill_path_tab_2(char **path_tab)
 		return (0);
 	if (!(path_tab[17] = ft_strdup("sprites/key_button.bmp")))
 		return (0);
-	if (!(path_tab[18] = ft_strdup("sprites/pickups/armor_pu.bmp")))
+	if (!(path_tab[18] = ft_strdup("sprites/armor_button.bmp")))
 		return (0);
 	if (!(path_tab[19] = ft_strdup("sprites/Ceiling_on.bmp")))
 		return (0);
