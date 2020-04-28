@@ -26,15 +26,17 @@ char			*join_strings(char *s1, char *s2)
 	return (str);
 }
 
-char			*read_map(int fd, t_map *map)
+static short	read_first_line(int fd, t_map *map)
 {
-	int			ret;
-	char		buf[BUFF_SIZE + 1];
-	char		*str;
-	char		*tmp;
+	char		buf[4];
 
-	str = NULL;
 	read(fd, buf, 3);
+	buf[3] = '\0';
+	if (ft_strcmp(buf, "0,\n")
+			&& ft_strcmp(buf, "1,\n")
+			&& ft_strcmp(buf, "2,\n")
+			&& ft_strcmp(buf, "3,\n"))
+		return (0);
 	if (buf[0] == '0' || buf[0] == '1')
 		map->night = 1;
 	if (buf[0] == '2' || buf[0] == '3')
@@ -43,6 +45,19 @@ char			*read_map(int fd, t_map *map)
 		map->ceiling = 1;
 	if (buf[0] == '1' || buf[0] == '3')
 		map->ceiling = 0;
+	return (1);
+}
+
+char			*read_map(int fd, t_map *map)
+{
+	int			ret;
+	char		buf[BUFF_SIZE + 1];
+	char		*str;
+	char		*tmp;
+
+	if (!read_first_line(fd, map))
+		return (NULL);
+	str = NULL;
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
