@@ -19,7 +19,7 @@ void		ft_draw_empty_map(int width, int height, int fd)
 
 	h = 0;
 	w = -1;
-	ft_putendl_fd("0,", fd);//printing the default value "0" for day + sky
+	ft_putendl_fd("0,", fd);
 	while (++w < width - 1)
 		ft_putstr_fd("1,", fd);
 	ft_putstr_fd("1\n", fd);

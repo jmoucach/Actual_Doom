@@ -84,7 +84,7 @@ void		ft_save_map(t_fdf *img)
 		ft_putendl(ft_itoa(fd));
 		ft_error_fd("Unable to write in the map file", 2);
 	}
-	ft_putnbr_comma_endl_fd(img->map->light_ceiling, fd); //printing the value for day + sky
+	ft_putnbr_comma_endl_fd(img->map->light_ceiling, fd);
 	write_tab(int_tab, width, height, fd);
 	ft_putstr("Map updated succesfully\n");
 	ft_clean_exit(img, NULL);

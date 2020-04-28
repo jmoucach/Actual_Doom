@@ -14,28 +14,27 @@
 
 void			set_mlight_mceiling(t_fdf *img, t_mouse *mous)
 {
-	if(img->map->light_ceiling == 0)
+	if (img->map->light_ceiling == 0)
 	{
 		mous->mtime = 0;
 		mous->mceiling = 1;
 	}
-	if(img->map->light_ceiling == 1)
+	if (img->map->light_ceiling == 1)
 	{
 		mous->mtime = 1;
 		mous->mceiling = 1;
 	}
-	if(img->map->light_ceiling == 2)
+	if (img->map->light_ceiling == 2)
 	{
 		mous->mtime = 0;
 		mous->mceiling = 0;
 	}
-	if(img->map->light_ceiling == 3)
+	if (img->map->light_ceiling == 3)
 	{
 		mous->mtime = 1;
 		mous->mceiling = 0;
 	}
 }
-
 
 void			ft_infinite_loop(t_fdf *img, t_mouse *mous)
 {
@@ -43,7 +42,6 @@ void			ft_infinite_loop(t_fdf *img, t_mouse *mous)
 	SDL_Event	event;
 
 	isquit = 0;
-	
 	set_mlight_mceiling(img, mous);
 	while (isquit == 0)
 	{

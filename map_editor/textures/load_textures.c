@@ -34,10 +34,6 @@ SDL_Texture		*loadimage(char *path, t_fdf *img)
 
 short			fill_path_tab_2(char **path_tab)
 {
-	if (!(path_tab[11] = ft_strdup("pics/keydoor.bmp")))
-		return (0);
-	if (!(path_tab[12] = ft_strdup("pics/glass.bmp")))
-		return (0);
 	if (!(path_tab[13] = ft_strdup("sprites/shells_button.bmp")))
 		return (0);
 	if (!(path_tab[14] = ft_strdup("sprites/bullets_button.bmp")))
@@ -86,6 +82,10 @@ short			fill_path_tab(char **path_tab)
 	if (!(path_tab[9] = ft_strdup("sprites/soul_button.bmp")))
 		return (0);
 	if (!(path_tab[10] = ft_strdup("sprites/boss_button.bmp")))
+		return (0);
+	if (!(path_tab[11] = ft_strdup("pics/keydoor.bmp")))
+		return (0);
+	if (!(path_tab[12] = ft_strdup("pics/glass.bmp")))
 		return (0);
 	return (fill_path_tab_2(path_tab));
 }

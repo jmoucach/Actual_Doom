@@ -112,10 +112,10 @@ t_map			*ft_map_copy(t_line *list)
 	tmp = list;
 	while (tmp->next)
 		tmp = tmp->next;
-	map->y = tmp->y/* + 1*/;
+	map->y = tmp->y;
 	if (!(map->map = malloc(sizeof(int *) * (map->y + 1))))
 		return (free_map_and_return(map, 0));
-	tmp = list->next;//used to be tmp = list
+	tmp = list->next;
 	while (++i < map->y)
 	{
 		conform_line = ft_conform_line(tmp->str);

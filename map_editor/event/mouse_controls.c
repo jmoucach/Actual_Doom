@@ -30,10 +30,9 @@ void			ft_mouse_event(t_fdf *img, t_mouse *mous, SDL_Event e)
 	{
 		if (e.button.button == SDL_BUTTON_LEFT)
 		{
-			
 			if (mous->loop == -1)
 			{
-				set_light_ceiling(mous->mtime, mous->mceiling, img);	
+				set_light_ceiling(mous->mtime, mous->mceiling, img);
 				ft_save_map(img);
 			}
 			else
