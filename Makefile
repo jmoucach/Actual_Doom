@@ -67,6 +67,7 @@ SRC =	draw/display_hud.c\
 		raycasting/raycasting.c\
 		raycasting/raycast_utils.c\
 		raycasting/set_objcast_values.c\
+		raycasting/windowcasting.c\
 		skybox/skybox.c\
 		story/display_story_screen.c\
 		story/text_screen_inputs.c\

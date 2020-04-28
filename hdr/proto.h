@@ -95,6 +95,7 @@ void			give_draw_values(t_raycast *values, t_data *data);
 void			get_texturing_values(t_raycast *values, t_data *data);
 void			set_dist_and_step(t_raycast *values);
 short			hit_wall(t_raycast *values, t_data *data);
+void			column_calc(t_data *data, t_raycast *r, t_point pt);
 void			raycasting(t_data *data);
 
 /*
@@ -129,6 +130,12 @@ short			parse_char(char *str);
 void			floor_side(t_floorcast *f, t_raycast *r);
 void			roofcaster(t_data *data, t_raycast *r, int x);
 void			floorcaster(t_data *data, t_raycast *r, int x);
+
+/*
+** Window caster
+*/
+
+void			windowcasting(t_data *data);
 
 /*
 ** movement
