@@ -12,12 +12,12 @@
 
 #include "../../hdr/doom_nukem.h"
 
-void	get_attacking_sprite(t_data *data, t_object *obj)
+void			get_attacking_sprite(t_data *data, t_object *obj)
 {
 	obj->lastupdate += data->ftime;
 	if (obj->current_sprite < obj->first_sprite_attack
-			|| obj->current_sprite > obj->first_sprite_attack
-			+ obj->num_of_sprites_attack)
+					|| obj->current_sprite > obj->first_sprite_attack
+					+ obj->num_of_sprites_attack)
 	{
 		obj->lastupdate = 0;
 		obj->current_sprite = obj->first_sprite_attack;
@@ -31,12 +31,12 @@ void	get_attacking_sprite(t_data *data, t_object *obj)
 	}
 }
 
-void	hits_taken(t_data *data, t_object *obj)
+void			hits_taken(t_data *data, t_object *obj)
 {
 	get_attacking_sprite(data, obj);
 	if (obj->current_sprite == obj->first_sprite_attack
-		+ obj->num_of_sprites_attack - 1
-			&& data->time - data->p_dmgtime > 500)
+					+ obj->num_of_sprites_attack - 1
+					&& data->time - data->p_dmgtime > 500)
 	{
 		data->p_dmgtime = data->time;
 		data->p.hp -= data->p.armor > 5 ? 0 : 5 - data->p.armor;
@@ -73,7 +73,7 @@ static short	window_to_break(t_data *data)
 	return (0);
 }
 
-void	combat(t_data *data)
+void			combat(t_data *data)
 {
 	data->p.swap_weapon = use_weapon(data, data->p.selected_weapon);
 	if (!data->p.has_fired)

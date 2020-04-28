@@ -82,6 +82,16 @@ static void	free_hud(t_data *data)
 		SDL_DestroyTexture(data->hud.infinite_text);
 }
 
+static void	free_self_alloc_structs(t_data *data)
+{
+	if (data->zbuffer)
+		free(data->zbuffer);
+	if (data->e_zbuffer)
+		free(data->e_zbuffer);
+	if (data->pixels)
+		free(data->pixels);
+}
+
 void		clean_exit(t_data *data, char *err)
 {
 	if (err)
@@ -91,12 +101,7 @@ void		clean_exit(t_data *data, char *err)
 	free_surf_and_sprites(data);
 	free_hud(data);
 	free_objects(data);
-	if (data->zbuffer)
-		free(data->zbuffer);
-	if (data->e_zbuffer)
-		free(data->e_zbuffer);
-	if (data->pixels)
-		free(data->pixels);
+	free_self_alloc_structs(data);
 	if (data->texture)
 		SDL_DestroyTexture(data->texture);
 	if (data->renderer)

@@ -32,6 +32,7 @@ SRC =	draw/display_hud.c\
 		game/health.c\
 		game/menu_inputs.c\
 		game/movement.c\
+		game/multi_thread.c\
 		game/weap_hits.c\
 		image/image_utils.c\
 		image/load_image.c\

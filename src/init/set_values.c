@@ -22,7 +22,8 @@ static void	alloc_data_structs(t_data *data)
 	nullify_sprites(data->obj_sprite, 44);
 	if (!(data->zbuffer = (double *)malloc(sizeof(double) * SCREEN_WIDTH)))
 		clean_exit(data, "ZBuffer malloc error");
-	if (!(data->e_zbuffer = (double *)malloc(sizeof(double) * SCREEN_WIDTH * SCREEN_HEIGHT)))
+	if (!(data->e_zbuffer = (double *)malloc(sizeof(double)
+					* SCREEN_WIDTH * SCREEN_HEIGHT)))
 		clean_exit(data, "Enemy ZBuffer malloc error");
 	if (!(data->sprites = (SDL_Texture **)malloc(sizeof(SDL_Texture *) * 33)))
 		clean_exit(data, "Sprites malloc error");
