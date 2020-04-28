@@ -31,7 +31,7 @@ void		write_objects(int i, int fd)
 	else if (i == 11)
 		ft_putchar_fd('7', fd);
 	else if (i == 12)
-		ft_putchar_fd('0', fd);
+		ft_putchar_fd('8', fd);
 	else if (i == 13)
 		ft_putchar_fd('S', fd);
 	else if (i == 14)
