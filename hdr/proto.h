@@ -52,7 +52,7 @@ void			free_maps(t_data *data);
 */
 
 char			*join_strings(char *s1, char *s2);
-char			*read_map(int fd);
+char			*read_map(int fd, t_map *map);
 void			new_map(t_data *data, char *title, short id);
 short			map_too_big(char *name);
 
@@ -172,6 +172,7 @@ short			use_minigun(t_data *data, short is_firing);
 
 void			combat(t_data *data);
 void			hits_dealt(t_data *data);
+short			obj_mid_screen(t_object *obj);
 void			red_hit_screen(t_data *data);
 void			green_hp_screen(t_data *data);
 void			blue_hp_screen(t_data *data);

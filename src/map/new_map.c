@@ -26,7 +26,7 @@ char			*join_strings(char *s1, char *s2)
 	return (str);
 }
 
-char			*read_map(int fd)
+char			*read_map(int fd, t_map *map)
 {
 	int			ret;
 	char		buf[BUFF_SIZE + 1];
@@ -34,6 +34,15 @@ char			*read_map(int fd)
 	char		*tmp;
 
 	str = NULL;
+	read(fd, buf, 3);
+	if (buf[0] == '0' || buf[0] == '1')
+		map->night = 1;
+	if (buf[0] == '2' || buf[0] == '3')
+		map->night = 0;
+	if (buf[0] == '0' || buf[0] == '2')
+		map->ceiling = 1;
+	if (buf[0] == '1' || buf[0] == '3')
+		map->ceiling = 0;
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
@@ -86,7 +95,7 @@ void			new_map(t_data *data, char *title, short id)
 	if (map_too_big(title))
 		clean_exit(data, "Map is too big or has too many enemies");
 	fd = open(title, O_NOCTTY | O_RDONLY | O_NOFOLLOW | O_NONBLOCK);
-	if (!(str = read_map(fd)))
+	if (!(str = read_map(fd, &(data->maps[id]))))
 		clean_exit(data, "Read error");
 	if (!count_lines_and_col(data, str, id))
 		clean_exit(data, "Map is not rectangular");

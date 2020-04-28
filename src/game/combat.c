@@ -44,9 +44,40 @@ void	hits_taken(t_data *data, t_object *obj)
 	}
 }
 
+static short	window_to_break(t_data *data)
+{
+	t_object	*iterator;
+
+	if (data->is_window.x == 0 && data->is_window.y == 0)
+		return (0);
+	rollback_object(&(data->obj));
+	iterator = data->obj;
+	while (iterator)
+	{
+		if (iterator->dist_to_player < data->window_dist
+				&& obj_mid_screen(iterator) && iterator->visible)
+			return (0);
+		iterator = iterator->next;
+	}
+	if (data->hit_window && !(data->p.selected_weapon == 0
+				|| data->p.selected_weapon == 3
+				|| (data->p.selected_weapon == 1 && data->window_dist > 7)
+				|| (data->p.selected_weapon == 2 && data->window_dist > 5)))
+	{
+		data->cur_map.map[data->is_window.x][data->is_window.y] = 0;
+		ft_bzero(&(data->is_window), sizeof(t_point));
+		data->window_dist = 0;
+		data->p.has_fired = 1;
+		return (1);
+	}
+	return (0);
+}
+
 void	combat(t_data *data)
 {
 	data->p.swap_weapon = use_weapon(data, data->p.selected_weapon);
-	if (data->obj)
-		hits_dealt(data);
+	if (!data->p.has_fired)
+		if (!window_to_break(data))
+			if (data->obj)
+				hits_dealt(data);
 }

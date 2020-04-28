@@ -191,6 +191,8 @@ typedef struct		s_map
 	int				**map;
 	int				width;
 	int				height;
+	short			ceiling;
+	short			night;
 }					t_map;
 
 typedef struct		s_data
