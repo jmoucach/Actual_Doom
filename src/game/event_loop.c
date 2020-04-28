@@ -52,7 +52,7 @@ int			which_thread(t_data *data)
 	int		res;
 
 	res = 0;
-	while (res < SCREEN_WIDTH - 1 && pthread_self() != data->thread[res])
+	while (res < NB_THREAD && pthread_self() != data->thread[res])
 		res++;
 	return (res);
 }
@@ -63,11 +63,8 @@ void			*threaded_casting(void *d)
 
 	data = (t_data*)d;
 	raycasting(data);
-	if (pthread_self() == data->thread[NB_THREAD - 1])
-		cast_objects(data);
+	cast_objects(data);
 	windowcasting(data);
-	if (!data->ceiling)
-		print_skybox(data);
 	pthread_exit(0);
 }
 

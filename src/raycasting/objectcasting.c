@@ -46,29 +46,36 @@ static void		draw_object(t_data *data, t_objcast o, SDL_Surface *surf,
 {
 	int			x;
 	int			y;
+	t_point		limits;
 
-	x = o.drawstart.x - 1;
-	while (++x < o.drawend.x)
+	x = o.drawstart.x;
+	limits.x = which_thread(data) * (SCREEN_WIDTH / NB_THREAD) - 1;
+	limits.y = limits.x + (SCREEN_WIDTH / NB_THREAD) + 1;
+	while (x < o.drawend.x)
 	{
-		o.tex.x = (x - (-o.width / 2 + o.screen_x)) * surf->w / o.width;
-		y = o.drawstart.y - 1;
-		if (o.pos.y > 0 && x > 0 && x < SCREEN_WIDTH
-				&& o.pos.y < data->zbuffer[x])
+		if (x > limits.x && x < limits.y)
 		{
-			obj->visible = 1;
-			while (++y < o.drawend.y)
+			o.tex.x = (x - (-o.width / 2 + o.screen_x)) * surf->w / o.width;
+			y = o.drawstart.y - 1;
+			if (o.pos.y > 0 && x > 0 && x < SCREEN_WIDTH
+					&& o.pos.y < data->zbuffer[x])
 			{
-				o.tex.y = ((y - o.movescreen) * 2 - (SCREEN_HEIGHT + data->yaw)
-						+ o.height) * (surf->h / 2) / (o.height + 1);
-				o.color = get_pixel(surf, o.tex.x, o.tex.y);
-				if (o.color != 0 && is_in_frame((t_point){x, y}))
+				obj->visible = 1;
+				while (++y < o.drawend.y)
 				{
-					data->e_zbuffer[x + y * SCREEN_WIDTH] = obj->dist_to_player;
-					data->pixels[x + y * SCREEN_WIDTH] = shaded_color(data,
-							o.color, obj->dist_to_player, obj);
+					o.tex.y = ((y - o.movescreen) * 2 - (SCREEN_HEIGHT + data->yaw)
+							+ o.height) * (surf->h / 2) / (o.height + 1);
+					o.color = get_pixel(surf, o.tex.x, o.tex.y);
+					if (o.color != 0 && is_in_frame((t_point){x, y}))
+					{
+						data->e_zbuffer[x + y * SCREEN_WIDTH] = obj->dist_to_player;
+						data->pixels[x + y * SCREEN_WIDTH] = shaded_color(data,
+								o.color, obj->dist_to_player, obj);
+					}
 				}
 			}
 		}
+		x++;
 	}
 }
 
@@ -77,7 +84,6 @@ void			objectcaster(t_data *data, t_object *obj)
 	t_objcast	o;
 	t_sprite	sprite;
 
-	obj->visible = 0;
 	sprite = data->obj_sprite[obj->current_sprite];
 	set_objcast_values(data, &o, obj, sprite);
 	draw_object(data, o, sprite.surf, obj);

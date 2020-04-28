@@ -16,9 +16,11 @@ void	windowcasting(t_data *data)
 {
 	t_raycast	r;
 	t_point		pt;
+	int			end;
 
-	pt.x = which_thread(data);
-	while (pt.x < SCREEN_WIDTH)
+	pt.x = which_thread(data) * (SCREEN_WIDTH / NB_THREAD) - 1;
+	end = pt.x + 1 + (SCREEN_WIDTH / NB_THREAD);
+	while (++pt.x < end)
 	{
 		set_raycast_values(&r, data->p, pt.x);
 		set_dist_and_step(&r);
@@ -34,6 +36,5 @@ void	windowcasting(t_data *data)
 				data->window_dist = r.walldist;
 			}
 		}
-		pt.x += NB_THREAD - 1;
 	}
 }

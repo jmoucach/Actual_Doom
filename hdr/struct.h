@@ -14,7 +14,7 @@
 # define STRUCT_H
 # include "doom_nukem.h"
 
-# define NB_THREAD 7
+# define NB_THREAD 8
 
 typedef union		u_color
 {

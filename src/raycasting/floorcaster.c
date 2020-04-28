@@ -89,6 +89,4 @@ void			floorcaster(t_data *data, t_raycast *r, int x)
 			data->pixels[x + y * SCREEN_WIDTH] = shaded_color(data, color,
 														f.currentdist, NULL);
 	}
-	if (data->ceiling)
-		roofcaster(data, r, x);
 }

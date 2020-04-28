@@ -88,6 +88,7 @@ void			state_machine(t_data *data)
 				imp_state_machine(data, iterator);
 			else if (iterator->obj_type == 1)
 				soul_state_machine(data, iterator);
+			iterator->visible = 0;
 			iterator = iterator->next;
 		}
 	}

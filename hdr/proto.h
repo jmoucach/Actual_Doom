@@ -151,7 +151,7 @@ void			look_up_down(t_data *data);
 ** skybox
 */
 
-void			print_skybox(t_data *data);
+void			print_skybox(t_data *data, t_raycast *r, int x);
 
 /*
 ** HUD

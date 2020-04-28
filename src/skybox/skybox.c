@@ -39,10 +39,9 @@ int			get_y(t_data *data, double i)
 	return (res);
 }
 
-void		print_skybox(t_data *data)
+void		print_skybox(t_data *data, t_raycast *r, int x)
 {
 	t_skybox	sky;
-	int			counter;
 	int			i;
 	Uint32		color;
 
@@ -50,19 +49,13 @@ void		print_skybox(t_data *data)
 	sky.dir = two_pi_mod(sky.dir + M_PI / 3.0);
 	sky.col = (int)(sky.dir * 3200.0 / (2 * M_PI));
 	sky.col_step = 3200.0 / (double)SCREEN_WIDTH / 6.0;
-	counter = which_thread(data);
-	while (counter < SCREEN_WIDTH)
+	i = -1;
+	sky.cur_col = (int)(sky.col - (double)x * sky.col_step);
+	mod_col(&(sky.cur_col), 3200);
+	while (++i < r->drawstart)
 	{
-		sky.cur_col = (int)(sky.col - (double)counter * sky.col_step);
-		mod_col(&(sky.cur_col), 3200);
-		i = -1;
-		while (++i < (SCREEN_HEIGHT / 2) + data->yaw / 2)
-		{
-			color = get_pixel(data->surface[data->shaded ? 9 : 8],
-					sky.cur_col, get_y(data, (double)i));
-			if (data->pixels[i * SCREEN_WIDTH + counter] == 0x000000)
-				data->pixels[i * SCREEN_WIDTH + counter] = color;
-		}
-		counter += NB_THREAD - 1;
+		color = get_pixel(data->surface[data->shaded ? 9 : 8],
+				sky.cur_col, get_y(data, (double)i));
+		data->pixels[i * SCREEN_WIDTH + x] = color;
 	}
 }
