@@ -24,8 +24,8 @@ int				atoi_or_number(char *str)
 		return (9);
 	else if (str[0] == 'D')
 		return (10);
-	else if (str[0] == '7')
-		return (11);
+	else if (str[0] == '7' || str[0] == '8')
+		return (str[0] == '7' ? 11 : 12);
 	else if (str[0] == 'S')
 		return (13);
 	else if (str[0] == 'B')
