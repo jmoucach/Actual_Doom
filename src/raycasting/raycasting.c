@@ -38,15 +38,13 @@ void	column_calc(t_data *data, t_raycast *r, t_point pt)
 		cast_one_pixel(data, r, pt);
 }
 
-void	*cast_one_column(void *d)
+void	raycasting(t_data *data)
 {
-	t_data	*data;
 	t_raycast	r;
 	t_point		pt;
 
-	data = (t_data*)d;
 	pt.x = 0;
-	while (pt.x < NB_THREAD && pthread_self() != data->thread[pt.x])
+	while (pt.x < NB_THREAD && data->thread[pt.x] != pthread_self())
 		pt.x++;
 	while (pt.x < SCREEN_WIDTH)
 	{
@@ -59,22 +57,4 @@ void	*cast_one_column(void *d)
 		floorcaster(data, &r, pt.x);
 		pt.x += NB_THREAD;
 	}
-	pthread_exit(0);
-}
-
-void	raycasting(t_data *data)
-{
-	short		i;
-
-	data->window_dist = 0;
-	i = -1;
-	while (++i < NB_THREAD)
-	{
-		if (pthread_create(&data->thread[i], NULL, cast_one_column, data))
-			clean_exit(data, "pthread_create error");
-	}
-	i = -1;
-	while (++i < NB_THREAD)
-		if (pthread_join(data->thread[i], NULL))
-			clean_exit(data, "pthread_join error");
 }

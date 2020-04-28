@@ -203,6 +203,7 @@ short			count_enemies(t_data *data);
 
 void			sort_objects(t_data *data);
 void			objectcaster(t_data *data, t_object *obj);
+void			cast_objects(t_data *data);
 void			set_objcast_values(t_data *data, t_objcast *val,
 						t_object *iterator, t_sprite sprite);
 int				get_movescreen_value(t_data *data, t_objcast o, int pos);
