@@ -43,9 +43,7 @@ void	raycasting(t_data *data)
 	t_raycast	r;
 	t_point		pt;
 
-	pt.x = 0;
-	while (pt.x < NB_THREAD && data->thread[pt.x] != pthread_self())
-		pt.x++;
+	pt.x = which_thread(data);
 	while (pt.x < SCREEN_WIDTH)
 	{
 		set_raycast_values(&r, data->p, pt.x);
@@ -55,6 +53,6 @@ void	raycasting(t_data *data)
 		column_calc(data, &r, pt);
 		data->zbuffer[pt.x] = r.walldist;
 		floorcaster(data, &r, pt.x);
-		pt.x += NB_THREAD;
+		pt.x += NB_THREAD - 1;
 	}
 }

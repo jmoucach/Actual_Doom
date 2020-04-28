@@ -47,14 +47,27 @@ static void		manage_sdl_events(SDL_Event *e, t_data *data)
 			data->p.is_firing = 0;
 }
 
+int			which_thread(t_data *data)
+{
+	int		res;
+
+	res = 0;
+	while (res < SCREEN_WIDTH - 1 && pthread_self() != data->thread[res])
+		res++;
+	return (res);
+}
+
 void			*threaded_casting(void *d)
 {
 	t_data		*data;
 
 	data = (t_data*)d;
 	raycasting(data);
-	cast_objects(data);
+	if (pthread_self() == data->thread[NB_THREAD - 1])
+		cast_objects(data);
 	windowcasting(data);
+	if (!data->ceiling)
+		print_skybox(data);
 	pthread_exit(0);
 }
 
@@ -77,8 +90,6 @@ static void		display_game(t_data *data)
 	ft_bzero(data->e_zbuffer, sizeof(double) * SCREEN_WIDTH * SCREEN_HEIGHT);
 	state_machine(data);
 	thread_center(data);
-	if (!data->ceiling)
-		print_skybox(data);
 	item_pickup(data);
 	combat(data);
 	if (data->toggle_minimap)

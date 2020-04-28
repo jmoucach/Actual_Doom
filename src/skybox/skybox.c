@@ -50,7 +50,7 @@ void		print_skybox(t_data *data)
 	sky.dir = two_pi_mod(sky.dir + M_PI / 3.0);
 	sky.col = (int)(sky.dir * 3200.0 / (2 * M_PI));
 	sky.col_step = 3200.0 / (double)SCREEN_WIDTH / 6.0;
-	counter = 0;
+	counter = which_thread(data);
 	while (counter < SCREEN_WIDTH)
 	{
 		sky.cur_col = (int)(sky.col - (double)counter * sky.col_step);
@@ -63,6 +63,6 @@ void		print_skybox(t_data *data)
 			if (data->pixels[i * SCREEN_WIDTH + counter] == 0x000000)
 				data->pixels[i * SCREEN_WIDTH + counter] = color;
 		}
-		counter++;
+		counter += NB_THREAD - 1;
 	}
 }

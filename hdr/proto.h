@@ -78,6 +78,7 @@ void			draw_minimap(t_data *data);
 
 void			handle_input(t_data *data, const Uint8 *state);
 void			handle_menu_input(t_data *data, const Uint8 *state);
+int				which_thread(t_data *data);
 void			game_loop(t_data *data);
 
 /*

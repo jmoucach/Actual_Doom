@@ -48,17 +48,14 @@ static void		draw_object(t_data *data, t_objcast o, SDL_Surface *surf,
 	int			y;
 
 	x = o.drawstart.x - 1;
-	while (x < NB_THREAD && pthread_self() != data->thread[x % NB_THREAD])
-		x++;
-	while (x < o.drawend.x)
+	while (++x < o.drawend.x)
 	{
 		o.tex.x = (x - (-o.width / 2 + o.screen_x)) * surf->w / o.width;
 		y = o.drawstart.y - 1;
 		if (o.pos.y > 0 && x > 0 && x < SCREEN_WIDTH
 				&& o.pos.y < data->zbuffer[x])
 		{
-			if (pthread_self() == data->thread[0])
-				obj->visible = 1;
+			obj->visible = 1;
 			while (++y < o.drawend.y)
 			{
 				o.tex.y = ((y - o.movescreen) * 2 - (SCREEN_HEIGHT + data->yaw)
@@ -72,7 +69,6 @@ static void		draw_object(t_data *data, t_objcast o, SDL_Surface *surf,
 				}
 			}
 		}
-		x += NB_THREAD;
 	}
 }
 
@@ -81,15 +77,8 @@ void			objectcaster(t_data *data, t_object *obj)
 	t_objcast	o;
 	t_sprite	sprite;
 
-	short		i;
-	i = 0;
-	while (i < NB_THREAD && pthread_self() != data->thread[i])
-		i++;
-	ft_putnbrendl(i);
-
+	obj->visible = 0;
 	sprite = data->obj_sprite[obj->current_sprite];
 	set_objcast_values(data, &o, obj, sprite);
-	if (pthread_self() == data->thread[0])
-		obj->visible = 0;
 	draw_object(data, o, sprite.surf, obj);
 }
