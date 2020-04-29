@@ -37,7 +37,7 @@ static void	free_surf_and_sprites(t_data *data)
 
 	if (data->surface && (i = -1))
 	{
-		while (++i < 20)
+		while (++i < 21)
 			if (data->surface[i])
 				SDL_FreeSurface(data->surface[i]);
 		free(data->surface);
