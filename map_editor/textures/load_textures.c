@@ -98,7 +98,7 @@ char			**path_to_textures(void)
 	if (!(path_tab = malloc(sizeof(char *) * 26)))
 		return (NULL);
 	i = -1;
-	while (++i < 22)
+	while (++i < 26)
 		path_tab[i] = NULL;
 	if (!fill_path_tab(path_tab))
 	{
