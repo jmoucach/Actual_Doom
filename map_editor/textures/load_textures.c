@@ -46,13 +46,13 @@ short			fill_path_tab_2(char **path_tab)
 		return (0);
 	if (!(path_tab[18] = ft_strdup("sprites/armor_button.bmp")))
 		return (0);
-	if (!(path_tab[19] = ft_strdup("sprites/Ceiling_on.bmp")))
+	if (!(path_tab[19] = ft_strdup("sprites/ceiling_on.bmp")))
 		return (0);
-	if (!(path_tab[20] = ft_strdup("sprites/Ceiling_off.bmp")))
+	if (!(path_tab[20] = ft_strdup("sprites/ceiling_off.bmp")))
 		return (0);
-	if (!(path_tab[21] = ft_strdup("sprites/Day_mode.bmp")))
+	if (!(path_tab[21] = ft_strdup("sprites/day_mode.bmp")))
 		return (0);
-	if (!(path_tab[22] = ft_strdup("sprites/Night_mode.bmp")))
+	if (!(path_tab[22] = ft_strdup("sprites/night_mode.bmp")))
 		return (0);
 	if (!(path_tab[23] = ft_strdup("sprites/delete.bmp")))
 		return (0);
