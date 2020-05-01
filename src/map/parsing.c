@@ -50,7 +50,7 @@ void			parse_boudaries(char *str, t_data *data, short id)
 	while (y < data->maps[id].height)
 	{
 		if (str[2 * (y * data->maps[id].width)] < '1'
-			|| str[2 * (y * data->maps[id].width)] > '7'
+			|| str[2 * (y * data->maps[id].width)] > '6'
 			|| str[2 * ((y + 1) * data->maps[id].width - 1)] < '1'
 			|| str[2 * ((y + 1) * data->maps[id].width - 1)] > '6')
 			clean_exit(data, "Incomplete boundaries");
