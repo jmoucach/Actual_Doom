@@ -90,6 +90,6 @@ void			ft_print_pressed_button(t_fdf *img, t_mouse *mous)
 		start.x = 1120 + (((mous->loop - 1) % 3) * 80) - 2;
 		start.y = 120 + (((mous->loop - 1) / 3) * 80) - 2;
 		ft_print_rectangle(img, start, 74, 74);
-		ft_print_pressed_skybutton(img, mous);
 	}
+	ft_print_pressed_skybutton(img, mous);
 }
